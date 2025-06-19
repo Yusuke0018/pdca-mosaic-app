@@ -1062,6 +1062,250 @@
             font-weight: 500;
             margin-left: 0.5rem;
         }
+
+        /* カレンダースタイル */
+        .calendar-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .calendar-nav-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--light-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav-btn:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .calendar-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.25rem;
+            margin-top: 1rem;
+        }
+
+        .calendar-weekday {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gray);
+            padding: 0.5rem;
+            font-weight: 600;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            border: 2px solid transparent;
+            border-radius: var(--radius);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            background: var(--white);
+            font-weight: 500;
+        }
+
+        .calendar-day:hover {
+            background: var(--light-gray);
+            transform: scale(1.05);
+        }
+
+        .calendar-day.other-month {
+            color: var(--gray);
+            opacity: 0.5;
+        }
+
+        .calendar-day.today {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .calendar-day.has-activity {
+            border-color: var(--success);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .calendar-day.selected {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.05);
+        }
+
+        .calendar-day-number {
+            font-size: 0.875rem;
+        }
+
+        .calendar-day-indicator {
+            position: absolute;
+            bottom: 4px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .activity-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--success);
+        }
+
+        /* 日付詳細ビュー */
+        .day-detail {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            animation: slideUp 0.3s ease;
+        }
+
+        .day-detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .day-detail-date {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .day-detail-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .day-detail-section-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .day-detail-item {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 0.5rem;
+        }
+
+        .day-detail-project {
+            font-weight: 500;
+            color: var(--primary);
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        /* 片手操作の改善 */
+        @media (max-width: 768px) {
+            .main-content {
+                padding-bottom: 120px;
+            }
+
+            .bottom-nav {
+                height: 80px;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+            }
+
+            .nav-item {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-icon {
+                font-size: 1.5rem;
+            }
+
+            .nav-label {
+                font-size: 0.85rem;
+                font-weight: 500;
+            }
+
+            .project-card {
+                margin-bottom: 1rem;
+                padding: 1.25rem;
+            }
+
+            .fab {
+                bottom: 100px;
+                width: 64px;
+                height: 64px;
+                font-size: 1.75rem;
+            }
+
+            /* タップターゲットを大きく */
+            .btn {
+                min-height: 48px;
+                padding: 0.875rem 1.75rem;
+            }
+
+            .counter-btn {
+                width: 44px;
+                height: 44px;
+            }
+
+            .checkbox-group input[type="checkbox"] {
+                width: 24px;
+                height: 24px;
+            }
+
+            /* スワイプヒント */
+            .swipe-hint {
+                position: fixed;
+                bottom: 90px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: var(--white);
+                padding: 0.5rem 1rem;
+                border-radius: 999px;
+                font-size: 0.75rem;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                pointer-events: none;
+                z-index: 1000;
+            }
+
+            .swipe-hint.show {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1101,6 +1345,10 @@
             <button class="nav-tab" onclick="showSection('daily')">
                 <span class="nav-icon">💬</span>
                 <span class="nav-text">デイリー</span>
+            </button>
+            <button class="nav-tab" onclick="showSection('calendar')">
+                <span class="nav-icon">📅</span>
+                <span class="nav-text">カレンダー</span>
             </button>
         </div>
         <div class="nav-secondary">
@@ -1244,6 +1492,26 @@
                 </div>
             </div>
         </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="section">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav-btn" onclick="changeMonth(-1)">◀</button>
+                    <div class="calendar-title" id="calendarTitle">2024年1月</div>
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn" onclick="changeMonth(1)">▶</button>
+                        <button class="calendar-nav-btn" onclick="goToToday()">今日</button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be rendered here -->
+                </div>
+            </div>
+            <div id="dayDetail" style="display: none;">
+                <!-- Day detail will be shown here -->
+            </div>
+        </section>
     </main>
 
     <!-- Floating Action Button -->
@@ -1264,9 +1532,9 @@
                 <span class="nav-icon">📝</span>
                 <span class="nav-label">記録</span>
             </button>
-            <button class="nav-item" onclick="showSection('weekly')">
-                <span class="nav-icon">📊</span>
-                <span class="nav-label">分析</span>
+            <button class="nav-item" onclick="showSection('calendar')">
+                <span class="nav-icon">📅</span>
+                <span class="nav-label">カレンダー</span>
             </button>
         </div>
     </nav>
@@ -1536,7 +1804,7 @@
             let touchStartY = 0;
             let touchEndY = 0;
             const mainContent = document.querySelector('.main-content');
-            const sections = ['dashboard', 'play', 'completed', 'trash', 'weekly', 'daily', 'monthly', 'quarterly'];
+            const sections = ['dashboard', 'play', 'calendar', 'daily', 'weekly', 'monthly', 'quarterly', 'completed', 'trash'];
             
             // タッチ開始
             mainContent.addEventListener('touchstart', function(e) {
@@ -1767,6 +2035,8 @@
                 renderMonthlyInsight();
             } else if (sectionName === 'quarterly') {
                 renderQuarterlyInsight();
+            } else if (sectionName === 'calendar') {
+                renderCalendar();
             }
         }
 
@@ -3946,6 +4216,299 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             
             reader.readAsText(file);
             event.target.value = '';
+        }
+
+        // カレンダー関連の状態
+        const calendarState = {
+            currentYear: new Date().getFullYear(),
+            currentMonth: new Date().getMonth(),
+            selectedDate: null
+        };
+
+        // カレンダーの描画
+        function renderCalendar() {
+            const year = calendarState.currentYear;
+            const month = calendarState.currentMonth;
+            
+            // タイトルの更新
+            document.getElementById('calendarTitle').textContent = `${year}年${month + 1}月`;
+            
+            // カレンダーグリッドの生成
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+            
+            // 曜日ヘッダー
+            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+            weekdays.forEach(day => {
+                const weekdayDiv = document.createElement('div');
+                weekdayDiv.className = 'calendar-weekday';
+                weekdayDiv.textContent = day;
+                grid.appendChild(weekdayDiv);
+            });
+            
+            // 月の最初の日と最後の日を取得
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const prevLastDay = new Date(year, month, 0);
+            
+            // 前月の日付を埋める
+            const firstDayOfWeek = firstDay.getDay();
+            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+                const day = prevLastDay.getDate() - i;
+                const dayDiv = createCalendarDay(year, month - 1, day, true);
+                grid.appendChild(dayDiv);
+            }
+            
+            // 当月の日付
+            const today = new Date();
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dayDiv = createCalendarDay(year, month, day, false);
+                
+                // 今日の日付をハイライト
+                if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                    dayDiv.classList.add('today');
+                }
+                
+                grid.appendChild(dayDiv);
+            }
+            
+            // 次月の日付を埋める
+            const remainingDays = 42 - (firstDayOfWeek + lastDay.getDate());
+            for (let day = 1; day <= remainingDays; day++) {
+                const dayDiv = createCalendarDay(year, month + 1, day, true);
+                grid.appendChild(dayDiv);
+            }
+        }
+
+        // カレンダーの日付要素を作成
+        function createCalendarDay(year, month, day, isOtherMonth) {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'calendar-day';
+            if (isOtherMonth) {
+                dayDiv.classList.add('other-month');
+            }
+            
+            const date = new Date(year, month, day);
+            const dateStr = formatDateForKey(date);
+            
+            // その日の活動をチェック
+            const dayLogs = app.logs.filter(log => {
+                const logDate = new Date(log.date);
+                return formatDateForKey(logDate) === dateStr;
+            });
+            
+            const dayImprovements = app.improvements.filter(imp => {
+                const impDate = new Date(imp.createdAt);
+                return formatDateForKey(impDate) === dateStr;
+            });
+            
+            if (dayLogs.length > 0 || dayImprovements.length > 0) {
+                dayDiv.classList.add('has-activity');
+            }
+            
+            // 日付番号
+            const numberDiv = document.createElement('div');
+            numberDiv.className = 'calendar-day-number';
+            numberDiv.textContent = day;
+            dayDiv.appendChild(numberDiv);
+            
+            // アクティビティインジケーター
+            if (dayLogs.length > 0 || dayImprovements.length > 0) {
+                const indicatorDiv = document.createElement('div');
+                indicatorDiv.className = 'calendar-day-indicator';
+                
+                // 最大3つのドットを表示
+                const dotCount = Math.min(3, dayLogs.length + dayImprovements.length);
+                for (let i = 0; i < dotCount; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'activity-dot';
+                    indicatorDiv.appendChild(dot);
+                }
+                
+                dayDiv.appendChild(indicatorDiv);
+            }
+            
+            // クリックイベント
+            dayDiv.onclick = () => selectCalendarDate(date);
+            
+            return dayDiv;
+        }
+
+        // 日付をキー用の文字列に変換
+        function formatDateForKey(date) {
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        // カレンダーの日付を選択
+        function selectCalendarDate(date) {
+            // 以前の選択を解除
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            // 新しい選択を追加
+            event.currentTarget.classList.add('selected');
+            calendarState.selectedDate = date;
+            
+            // 詳細を表示
+            showDayDetail(date);
+        }
+
+        // 日付の詳細を表示
+        function showDayDetail(date) {
+            const detailDiv = document.getElementById('dayDetail');
+            const dateStr = formatDateForKey(date);
+            
+            // その日のログを取得
+            const dayLogs = app.logs.filter(log => {
+                const logDate = new Date(log.date);
+                return formatDateForKey(logDate) === dateStr;
+            });
+            
+            // その日の改善点を取得
+            const dayImprovements = app.improvements.filter(imp => {
+                const impDate = new Date(imp.createdAt);
+                return formatDateForKey(impDate) === dateStr;
+            });
+            
+            let html = `
+                <div class="day-detail">
+                    <div class="day-detail-header">
+                        <div class="day-detail-date">${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日</div>
+                        <button class="btn btn-secondary" onclick="closeDayDetail()">閉じる</button>
+                    </div>
+            `;
+            
+            // ログセクション
+            if (dayLogs.length > 0) {
+                html += `
+                    <div class="day-detail-section">
+                        <div class="day-detail-section-title">
+                            <span>📝</span>
+                            <span>活動記録 (${dayLogs.length}件)</span>
+                        </div>
+                `;
+                
+                dayLogs.forEach(log => {
+                    const project = app.projects.find(p => p.id === log.projectId);
+                    if (project) {
+                        html += `
+                            <div class="day-detail-item">
+                                <div class="day-detail-project">${project.name}</div>
+                        `;
+                        
+                        if (log.checkpoints) {
+                            const checkedCount = log.checkpoints.filter(c => c).length;
+                            html += `<div>チェック項目: ${checkedCount}/${log.checkpoints.length} 完了</div>`;
+                        }
+                        
+                        if (log.counts) {
+                            log.counts.forEach((count, index) => {
+                                if (count > 0 && project.countItems[index]) {
+                                    html += `<div>${project.countItems[index]}: ${count}回</div>`;
+                                }
+                            });
+                        }
+                        
+                        if (log.milestones) {
+                            const achievedCount = log.milestones.filter(m => m).length;
+                            html += `<div>マイルストーン: ${achievedCount}/${log.milestones.length} 達成</div>`;
+                        }
+                        
+                        html += `</div>`;
+                    }
+                });
+                
+                html += `</div>`;
+            }
+            
+            // 改善点セクション
+            if (dayImprovements.length > 0) {
+                html += `
+                    <div class="day-detail-section">
+                        <div class="day-detail-section-title">
+                            <span>💡</span>
+                            <span>改善点・適応 (${dayImprovements.length}件)</span>
+                        </div>
+                `;
+                
+                dayImprovements.forEach(imp => {
+                    const project = app.projects.find(p => p.id === imp.projectId);
+                    html += `
+                        <div class="day-detail-item">
+                            ${project ? `<div class="day-detail-project">${project.name}</div>` : ''}
+                            <div>${imp.content}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            }
+            
+            // AIコメントセクション
+            const dailyComment = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]')
+                .find(comment => comment.date === dateStr);
+            
+            if (dailyComment) {
+                html += `
+                    <div class="day-detail-section">
+                        <div class="day-detail-section-title">
+                            <span>🤖</span>
+                            <span>AIコメント</span>
+                        </div>
+                        <div class="day-detail-item">
+                            ${dailyComment.content}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (dayLogs.length === 0 && dayImprovements.length === 0 && !dailyComment) {
+                html += `
+                    <div style="text-align: center; color: var(--gray); padding: 2rem;">
+                        この日の記録はありません
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+            
+            detailDiv.innerHTML = html;
+            detailDiv.style.display = 'block';
+            
+            // スクロール位置を調整
+            detailDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // 日付詳細を閉じる
+        function closeDayDetail() {
+            document.getElementById('dayDetail').style.display = 'none';
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+        }
+
+        // 月を変更
+        function changeMonth(delta) {
+            calendarState.currentMonth += delta;
+            
+            if (calendarState.currentMonth < 0) {
+                calendarState.currentMonth = 11;
+                calendarState.currentYear--;
+            } else if (calendarState.currentMonth > 11) {
+                calendarState.currentMonth = 0;
+                calendarState.currentYear++;
+            }
+            
+            renderCalendar();
+        }
+
+        // 今日に移動
+        function goToToday() {
+            const today = new Date();
+            calendarState.currentYear = today.getFullYear();
+            calendarState.currentMonth = today.getMonth();
+            renderCalendar();
         }
 
         // 日付フォーマット
