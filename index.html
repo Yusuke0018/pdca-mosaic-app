@@ -3450,9 +3450,17 @@ self.addEventListener('activate', event => {
         // プロジェクト進捗の計算
         function calculateProjectProgress(project) {
             if (project.trackingType === 'daily') {
-                const logs = app.logs.filter(log => log.projectId === project.id);
-                const completedDays = logs.filter(log => log.completed).length;
-                return Math.round((completedDays / project.duration) * 100);
+        const logs = app.logs.filter(log => log.projectId === project.id);
+        const totalCheckpoints = project.checkpoints.length * project.duration;
+        let completedCheckpoints = 0;
+        
+        logs.forEach(log => {
+            if (log.checkpoints) {
+                completedCheckpoints += Object.values(log.checkpoints).filter(v => v === true).length;
+            }
+        });
+        
+        return totalCheckpoints > 0 ? Math.round((completedCheckpoints / totalCheckpoints) * 100) : 0;
             } else if (project.trackingType === 'count') {
                 // カウント型の進捗（仮：100回を目標として計算）
                 const totalCount = project.countItems.reduce((sum, _, index) => {
