@@ -3584,6 +3584,10 @@ self.addEventListener('activate', event => {
 
         // 週次レポートの生成
         async function generateWeeklyReport() {
+                console.log('API Key status:', app.apiKey ? 'Set' : 'Not set');
+                console.log('API Key length:', app.apiKey ? app.apiKey.length : 0);
+                console.log('API Key starts with sk-:', app.apiKey ? app.apiKey.startsWith('sk-') : false);
+
             if (!app.apiKey) {
                 alert('週次レポートを生成するには、設定からOpenAI APIキーを登録してください。');
                 showSettings();
@@ -3693,7 +3697,10 @@ ${weeklyImprovements.map(imp => {
                 
             } catch (error) {
                 console.error('レポート生成エラー:', error);
-                alert(`レポートの生成に失敗しました: ${error.message}`);
+                console.error('AI API Error Details:', error);
+                alert(`レポートの生成に失敗しました: ${error.message}
+
+詳細はコンソールログを確認してください。`);
             } finally {
                 button.disabled = false;
                 button.textContent = 'レポートを生成';
@@ -3814,7 +3821,8 @@ ${todayImprovement.content}` : ''}
                 showToast('デイリーコメントを生成しました', 'success');
                 
             } catch (error) {
-                console.error('コメント生成エラー:', error);
+                console.error('AI Comment Generation Error - Full details:', error);
+                console.error('Error stack:', error.stack);
                 alert(`コメントの生成に失敗しました: ${error.message}`);
             } finally {
                 button.disabled = false;
