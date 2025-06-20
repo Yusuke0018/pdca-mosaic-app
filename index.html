@@ -1875,14 +1875,22 @@ self.addEventListener('activate', event => {
 
         // Service Worker を登録
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register(swUrl)
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
+            window.addEventListener('"'"'load'"'"', () => {
+                try {
+                    const blob = new Blob([serviceWorkerCode], { type: '"'"'application/javascript'"'"' });
+                    const swUrl = URL.createObjectURL(blob);
+                    
+                    navigator.serviceWorker.register(swUrl)
+                        .then(registration => {
+                            console.log('"'"'ServiceWorker registration successful'"'"', registration);
+                        })
+                        .catch(err => {
+                            console.error('"'"'ServiceWorker registration failed:'"'"', err);
+                        });
+                } catch (error) {
+                    console.error('"'"'Error creating Service Worker:'"'"', error);
+                }
+            });
             });
         }
 
