@@ -4785,4 +4785,32 @@ ${quarterlyImprovements.slice(-10).map(imp => {
         }
     </script>
 </body>
+    const CACHE = 'pdca-mosaic-v1';
+const FILES = ['./', './index.html'];
+
+/* アプリをしまう箱を作る */
+self.addEventListener('install', e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)));
+});
+
+/* オンラインなら新しいもの、オフラインならしまったものを出す */
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    fetch(e.request)
+      .then(r => {
+        caches.open(CACHE).then(c => c.put(e.request, r.clone()));
+        return r;
+      })
+      .catch(() => caches.match(e.request)),
+  );
+});
+
+/* 古い箱を捨てる */
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.map(k => k !== CACHE && caches.delete(k))),
+    ),
+  );
+});
 </html>
