@@ -3654,7 +3654,7 @@ ${weeklyImprovements.map(imp => {
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'gpt-4',
+                        model: "gpt-o3",
                         messages: [
                             { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの分析とアドバイスを行います。' },
                             { role: 'user', content: prompt }
@@ -3761,7 +3761,7 @@ ${todayImprovement.content}` : ''}
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'gpt-4',
+                        model: "gpt-o3",
                         messages: [
                             { role: 'system', content: 'あなたは優しくて励まし上手なコーチです。簡潔で温かいメッセージを送ります。' },
                             { role: 'user', content: prompt }
@@ -3940,7 +3940,7 @@ ${monthlyImprovements.slice(-5).map(imp => `- ${new Date(imp.date).getDate()}日
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'gpt-4',
+                        model: "gpt-o3",
                         messages: [
                             { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの月次分析と戦略的アドバイスを行います。' },
                             { role: 'user', content: prompt }
@@ -4142,7 +4142,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'gpt-4',
+                        model: "gpt-o3",
                         messages: [
                             { role: 'system', content: 'あなたは成長戦略の専門家です。PDCAサイクルを使った長期的な自己改善の分析と戦略立案を行います。' },
                             { role: 'user', content: prompt }
