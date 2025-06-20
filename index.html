@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PDCA Mosaic - あなたの人生をデザインする</title>
+
+    <!-- ▼▼▼ ホーム画面アイコンとPWA設定 ▼▼▼ -->
+    <meta name="application-name" content="PDCA Mosaic">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PDCA Mosaic">
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- アイコンの定義 (SVGを直接埋め込み) -->
+    <link rel="icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e%3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e%3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e">
+
+    <!-- Web App Manifest (JSONを直接埋め込み) -->
+    <link rel="manifest" href="data:application/manifest+json,{&quot;name&quot;:&quot;PDCA Mosaic - あなたの人生をデザインする&quot;,&quot;short_name&quot;:&quot;PDCA Mosaic&quot;,&quot;start_url&quot;:&quot;.&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#f3f4f6&quot;,&quot;theme_color&quot;:&quot;#6366f1&quot;,&quot;description&quot;:&quot;あなたのPDCAサイクルを管理し、人生をデザインするためのウェブアプリです。&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e %3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e %3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e&quot;,&quot;sizes&quot;:&quot;192x192&quot;,&quot;type&quot;:&quot;image/svg+xml&quot;,&quot;purpose&quot;:&quot;any maskable&quot;},{&quot;src&quot;:&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e %3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e %3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/svg+xml&quot;,&quot;purpose&quot;:&quot;any maskable&quot;}]}">
+    <!-- ▲▲▲ ホーム画面アイコンとPWA設定 ▲▲▲ -->
+
     <style>
         * {
             margin: 0;
@@ -3100,7 +3116,7 @@
             sessionStorage.setItem(tempKey, achieved ? 'true' : 'false');
             
             // UIの更新
-            const label = document.querySelector(`label[for="milestone_${projectId}_${milestoneIndex}"]`);
+            const label = document.querySelector(`label[for="milestone_${project.id}_${milestoneIndex}"]`);
             if (label) {
                 if (achieved) {
                     label.classList.add('milestone-achieved');
