@@ -4790,6 +4790,46 @@ ${quarterlyImprovements.slice(-10).map(imp => {
       navigator.serviceWorker.register('./sw.js');
     });
   }
+</script><!-- ▼▼ ChatGPT 呼び出し専用スクリプト ▼▼ -->
+<script>
+async function openAIChat(messages){
+  const apiKey = localStorage.getItem('pdca_api_key');
+  if(!apiKey){
+    alert('⚠️「設定→OpenAI APIキー」にキーを保存してください');
+    return '';
+  }
+  const res = await fetch('https://api.openai.com/v1/chat/completions',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':'Bearer '+apiKey
+    },
+    body:JSON.stringify({
+      model:'gpt-3.5-turbo',
+      messages,
+      temperature:0.7
+    })
+  });
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content || '';
+}
+
+/* analyzeProjectProgress がまだ改造されていなくても、
+   例として “AI アドバイス” ボタンを作ってみる ↓ */
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn=document.createElement('button');
+  btn.textContent='AI にアドバイスを聞く';
+  btn.style.cssText='position:fixed;bottom:150px;right:20px;z-index:9999;';
+  btn.onclick=async()=>{
+    const msg=prompt('相談内容を入力してください');
+    if(!msg)return;
+    const ans=await openAIChat([{role:'user',content:msg}]);
+    alert(ans);
+  };
+  document.body.appendChild(btn);
+});
 </script>
+<!-- ▲▲ ChatGPT 呼び出し専用スクリプト ▲▲ -->
+
 </body>
 </html>
