@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PDCA Mosaic - あなたの人生をデザインする</title>
 
-    <!-- ▼▼▼ PWA設定 ▼▼▼ -->
+    <!-- ▼▼▼ ホーム画面アイコンとPWA設定 ▼▼▼ -->
     <meta name="application-name" content="PDCA Mosaic">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="PDCA Mosaic">
     <meta name="theme-color" content="#6366f1">
 
-    <!-- アイコンの定義 (PNG形式に変更) -->
-    <link rel="icon" type="image/png" href="https://placehold.co/32x32/6366f1/FFFFFF?text=◈">
-    <link rel="apple-touch-icon" href="https://placehold.co/180x180/6366f1/FFFFFF?text=◈">
+    <!-- アイコンの定義 (SVGを直接埋め込み) -->
+    <link rel="icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e%3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e%3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e%3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e">
 
-    <!-- Web App Manifest (JavaScriptで動的に設定) -->
-    <link rel="manifest" id="manifestLink">
-    <!-- ▲▲▲ PWA設定 ▲▲▲ -->
+    <!-- Web App Manifest (JSONを直接埋め込み) -->
+    <link rel="manifest" href="data:application/manifest+json,{&quot;name&quot;:&quot;PDCA Mosaic - あなたの人生をデザインする&quot;,&quot;short_name&quot;:&quot;PDCA Mosaic&quot;,&quot;start_url&quot;:&quot;.&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#f3f4f6&quot;,&quot;theme_color&quot;:&quot;#6366f1&quot;,&quot;description&quot;:&quot;あなたのPDCAサイクルを管理し、人生をデザインするためのウェブアプリです。&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e %3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e %3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e&quot;,&quot;sizes&quot;:&quot;192x192&quot;,&quot;type&quot;:&quot;image/svg+xml&quot;,&quot;purpose&quot;:&quot;any maskable&quot;},{&quot;src&quot;:&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3e%3cfeGaussianBlur in='SourceAlpha' stdDeviation='2'/%3e%3cfeOffset dx='2' dy='2' result='offsetblur'/%3e%3cfeComponentTransfer%3e%3cfeFuncA type='linear' slope='0.5'/%3e%3c/feComponentTransfer%3e%3cfeMerge%3e %3cfeMergeNode/%3e%3cfeMergeNode in='SourceGraphic'/%3e %3c/feMerge%3e%3c/filter%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle' filter='url(%23shadow)'%3e◈%3c/text%3e%3c/svg%3e&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/svg+xml&quot;,&quot;purpose&quot;:&quot;any maskable&quot;}]}">
+    <!-- ▲▲▲ ホーム画面アイコンとPWA設定 ▲▲▲ -->
 
     <style>
         * {
@@ -949,7 +949,6 @@
         .analysis-content {
             font-size: 0.875rem;
             line-height: 1.6;
-            white-space: pre-wrap; /* 改行を反映させる */
         }
 
         /* カウント項目追加 */
@@ -1351,19 +1350,19 @@
     <!-- Navigation Tabs -->
     <nav class="nav-tabs">
         <div class="nav-primary">
-            <button class="nav-tab active" onclick="showSection('dashboard', this)">
+            <button class="nav-tab active" onclick="showSection('dashboard')">
                 <span class="nav-icon">📊</span>
                 <span class="nav-text">ダッシュボード</span>
             </button>
-            <button class="nav-tab" onclick="showSection('play', this)">
+            <button class="nav-tab" onclick="showSection('play')">
                 <span class="nav-icon">💡</span>
                 <span class="nav-text">アイデア</span>
             </button>
-            <button class="nav-tab" onclick="showSection('daily', this)">
+            <button class="nav-tab" onclick="showSection('daily')">
                 <span class="nav-icon">💬</span>
                 <span class="nav-text">デイリー</span>
             </button>
-            <button class="nav-tab" onclick="showSection('calendar', this)">
+            <button class="nav-tab" onclick="showSection('calendar')">
                 <span class="nav-icon">📅</span>
                 <span class="nav-text">カレンダー</span>
             </button>
@@ -1373,20 +1372,20 @@
                 <span class="menu-icon">⋯</span>
             </button>
             <div class="nav-dropdown">
-                <button class="dropdown-item" onclick="showSection('weekly', this)">
+                <button class="dropdown-item" onclick="showSection('weekly')">
                     <span class="dropdown-icon">📈</span>週次レポート
                 </button>
-                <button class="dropdown-item" onclick="showSection('monthly', this)">
+                <button class="dropdown-item" onclick="showSection('monthly')">
                     <span class="dropdown-icon">📊</span>月次インサイト
                 </button>
-                <button class="dropdown-item" onclick="showSection('quarterly', this)">
+                <button class="dropdown-item" onclick="showSection('quarterly')">
                     <span class="dropdown-icon">🎯</span>3ヶ月インサイト
                 </button>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item" onclick="showSection('completed', this)">
+                <button class="dropdown-item" onclick="showSection('completed')">
                     <span class="dropdown-icon">✅</span>完了済み
                 </button>
-                <button class="dropdown-item" onclick="showSection('trash', this)">
+                <button class="dropdown-item" onclick="showSection('trash')">
                     <span class="dropdown-icon">🗑️</span>ゴミ箱
                 </button>
             </div>
@@ -1405,10 +1404,10 @@
                        placeholder="プロジェクトを検索..."
                        onkeyup="filterProjects()">
                 <div class="filter-tags">
-                    <button class="filter-tag active" onclick="setFilter('all', this)">すべて</button>
-                    <button class="filter-tag" onclick="setFilter('Design', this)">Design</button>
-                    <button class="filter-tag" onclick="setFilter('Check', this)">Check</button>
-                    <button class="filter-tag" onclick="setFilter('Adapt', this)">Adapt</button>
+                    <button class="filter-tag active" onclick="setFilter('all')">すべて</button>
+                    <button class="filter-tag" onclick="setFilter('Design')">Design</button>
+                    <button class="filter-tag" onclick="setFilter('Check')">Check</button>
+                    <button class="filter-tag" onclick="setFilter('Adapt')">Adapt</button>
                 </div>
             </div>
 
@@ -1469,7 +1468,7 @@
                 <div class="empty-state">
                     <div class="empty-icon">📊</div>
                     <div class="empty-text">レポートはまだありません</div>
-                    <button class="btn btn-primary" onclick="generateWeeklyReport(event)">レポートを生成</button>
+                    <button class="btn btn-primary" onclick="generateWeeklyReport()">レポートを生成</button>
                 </div>
             </div>
         </section>
@@ -1481,7 +1480,7 @@
                 <div class="empty-state">
                     <div class="empty-icon">💬</div>
                     <div class="empty-text">今日のコメントはまだありません</div>
-                    <button class="btn btn-primary" onclick="generateDailyComment(event)">今日のコメントを生成</button>
+                    <button class="btn btn-primary" onclick="generateDailyComment()">今日のコメントを生成</button>
                 </div>
             </div>
         </section>
@@ -1493,7 +1492,7 @@
                 <div class="empty-state">
                     <div class="empty-icon">📈</div>
                     <div class="empty-text">今月のインサイトはまだありません</div>
-                    <button class="btn btn-primary" onclick="generateMonthlyInsight(event)">今月のインサイトを生成</button>
+                    <button class="btn btn-primary" onclick="generateMonthlyInsight()">今月のインサイトを生成</button>
                 </div>
             </div>
         </section>
@@ -1505,7 +1504,7 @@
                 <div class="empty-state">
                     <div class="empty-icon">🎯</div>
                     <div class="empty-text">3ヶ月のインサイトはまだありません</div>
-                    <button class="btn btn-primary" onclick="generateQuarterlyInsight(event)">3ヶ月のインサイトを生成</button>
+                    <button class="btn btn-primary" onclick="generateQuarterlyInsight()">3ヶ月のインサイトを生成</button>
                 </div>
             </div>
         </section>
@@ -1537,11 +1536,11 @@
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <div class="bottom-nav-content">
-            <button class="nav-item active" onclick="showSection('dashboard', this)">
+            <button class="nav-item active" onclick="showSection('dashboard')">
                 <span class="nav-icon">🏠</span>
                 <span class="nav-label">ホーム</span>
             </button>
-            <button class="nav-item" onclick="showSection('play', this)">
+            <button class="nav-item" onclick="showSection('play')">
                 <span class="nav-icon">💡</span>
                 <span class="nav-label">アイデア</span>
             </button>
@@ -1549,15 +1548,13 @@
                 <span class="nav-icon">📝</span>
                 <span class="nav-label">記録</span>
             </button>
-            <button class="nav-item" onclick="showSection('calendar', this)">
+            <button class="nav-item" onclick="showSection('calendar')">
                 <span class="nav-icon">📅</span>
                 <span class="nav-label">カレンダー</span>
             </button>
         </div>
     </nav>
-    
-    <!-- Modals -->
-    <!-- (Modal HTML is unchanged from the original) -->
+
     <!-- Add Idea Modal -->
     <div class="modal" id="addModal">
         <div class="modal-content">
@@ -1684,7 +1681,7 @@
             </div>
             <div class="modal-body">
                 <div class="settings-item" onclick="showAPIKeyModal()">
-                    <div class="settings-label">Gemini APIキー</div>
+                    <div class="settings-label">OpenAI APIキー</div>
                     <div class="settings-description">AI分析機能を使用するために必要です</div>
                 </div>
                 
@@ -1715,14 +1712,14 @@
     <div class="modal" id="apiKeyModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Gemini APIキー設定</h3>
+                <h3 class="modal-title">OpenAI APIキー設定</h3>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label class="form-label">APIキー</label>
-                    <input type="password" class="form-control" id="apiKey" placeholder="APIキーを入力...">
+                    <input type="password" class="form-control" id="apiKey" placeholder="sk-...">
                     <small style="color: var(--gray); display: block; margin-top: 0.5rem;">
-                        APIキーは暗号化せず、ブラウザのローカルストレージに保存されます。
+                        APIキーは暗号化してローカルに保存されます
                     </small>
                 </div>
             </div>
@@ -1758,8 +1755,6 @@
     </div>
 
     <script>
-        // --- アプリケーションのコードはここから ---
-
         // アプリケーションの状態管理
         const app = {
             ideas: [],
@@ -1768,7 +1763,6 @@
             improvements: [],
             currentSection: 'dashboard',
             currentProjectId: null,
-            currentIdeaId: null,
             apiKey: null,
             searchQuery: '',
             filterPhase: 'all'
@@ -1780,125 +1774,21 @@
             PROJECTS: 'pdca_projects',
             LOGS: 'pdca_logs',
             IMPROVEMENTS: 'pdca_improvements',
-            API_KEY: 'pdca_gemini_api_key', // キー名を変更
+            API_KEY: 'pdca_api_key',
             LAST_CHECK_DATE: 'pdca_last_check',
             NOTIFICATION_SETTINGS: 'pdca_notifications'
         };
 
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
-            // PWA関連の初期化
-            setupPWA();
-            
-            // アプリケーションデータの読み込みと描画
             loadData();
             renderDashboard();
             setupEventListeners();
             checkDailyReminder();
             requestNotificationPermission();
-
             // 複数タブ同期
             window.addEventListener('storage', handleStorageChange);
         });
-
-        // --- PWA対応のためのコード ---
-        function setupPWA() {
-            // 1. マニフェストを動的に生成・設定
-            const manifest = {
-                "name": "PDCA Mosaic - あなたの人生をデザインする",
-                "short_name": "PDCA Mosaic",
-                "start_url": ".",
-                "display": "standalone",
-                "background_color": "#f3f4f6",
-                "theme_color": "#6366f1",
-                "description": "あなたのPDCAサイクルを管理し、人生をデザインするためのウェブアプリです。",
-                "icons": [
-                    {
-                        "src": "https://placehold.co/192x192/6366f1/FFFFFF?text=◈",
-                        "sizes": "192x192",
-                        "type": "image/png",
-                        "purpose": "any maskable"
-                    },
-                    {
-                        "src": "https://placehold.co/512x512/6366f1/FFFFFF?text=◈",
-                        "sizes": "512x512",
-                        "type": "image/png",
-                        "purpose": "any maskable"
-                    }
-                ]
-            };
-            const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
-            const manifestUrl = URL.createObjectURL(manifestBlob);
-            document.getElementById('manifestLink').setAttribute('href', manifestUrl);
-
-            // 2. Service Workerを動的に生成・登録
-            const swCode = `
-                const CACHE_NAME = 'pdca-mosaic-cache-v2';
-                // キャッシュするリソース。必要に応じて追加してください。
-                const urlsToCache = [
-                    './', 
-                ];
-
-                // install イベント: キャッシュを開いてリソースを追加する
-                self.addEventListener('install', event => {
-                    self.skipWaiting(); // 新しいSWをすぐに有効化
-                    event.waitUntil(
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                console.log('Opened cache');
-                                // 重要なリソースをキャッシュする
-                                return cache.addAll(urlsToCache);
-                            })
-                    );
-                });
-
-                // activate イベント: 古いキャッシュを削除する
-                self.addEventListener('activate', event => {
-                    const cacheWhitelist = [CACHE_NAME];
-                    event.waitUntil(
-                        caches.keys().then(cacheNames => {
-                            return Promise.all(
-                                cacheNames.map(cacheName => {
-                                    if (cacheWhitelist.indexOf(cacheName) === -1) {
-                                        return caches.delete(cacheName);
-                                    }
-                                })
-                            );
-                        })
-                    );
-                });
-
-                // fetch イベント: キャッシュ優先でリソースを返す
-                self.addEventListener('fetch', event => {
-                    event.respondWith(
-                        caches.match(event.request)
-                            .then(response => {
-                                // キャッシュにあればそれを返す
-                                if (response) {
-                                    return response;
-                                }
-                                // キャッシュになければネットワークから取得
-                                return fetch(event.request);
-                            })
-                    );
-                });
-            `;
-            const swBlob = new Blob([swCode], { type: 'application/javascript' });
-            const swUrl = URL.createObjectURL(swBlob);
-
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register(swUrl)
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('ServiceWorker registration failed: ', error);
-                    });
-            }
-        }
-
-
-        // --- 以下、既存のアプリケーションロジック ---
 
         // ナビゲーションメニューの切り替え
         function toggleNavMenu() {
@@ -1908,8 +1798,8 @@
             // 外側クリックで閉じる
             if (dropdown.classList.contains('active')) {
                 setTimeout(() => {
-                    document.addEventListener('click', closeNavMenu, { once: true });
-                }, 0);
+                    document.addEventListener('click', closeNavMenu);
+                }, 100);
             }
         }
         
@@ -1917,8 +1807,9 @@
             const dropdown = document.querySelector('.nav-dropdown');
             const menuBtn = document.querySelector('.nav-menu-btn');
             
-            if (dropdown && !dropdown.contains(e.target) && !menuBtn.contains(e.target)) {
+            if (!dropdown.contains(e.target) && !menuBtn.contains(e.target)) {
                 dropdown.classList.remove('active');
+                document.removeEventListener('click', closeNavMenu);
             }
         }
         
@@ -1928,24 +1819,17 @@
             let touchEndX = 0;
             let touchStartY = 0;
             let touchEndY = 0;
-            const mainContent = document.querySelector('body'); // bodyでイベントを拾う
-            const sections = ['dashboard', 'play', 'daily', 'calendar']; // スワイプ対象の主要セクション
+            const mainContent = document.querySelector('.main-content');
+            const sections = ['dashboard', 'play', 'calendar', 'daily', 'weekly', 'monthly', 'quarterly', 'completed', 'trash'];
             
             // タッチ開始
             mainContent.addEventListener('touchstart', function(e) {
-                // モーダル表示中や入力フィールドフォーカス中はスワイプを無効化
-                if (document.querySelector('.modal.active') || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-                    return;
-                }
                 touchStartX = e.changedTouches[0].screenX;
                 touchStartY = e.changedTouches[0].screenY;
             }, { passive: true });
             
             // タッチ終了
             mainContent.addEventListener('touchend', function(e) {
-                if (document.querySelector('.modal.active') || document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
-                    return;
-                }
                 touchEndX = e.changedTouches[0].screenX;
                 touchEndY = e.changedTouches[0].screenY;
                 handleSwipe();
@@ -1955,8 +1839,8 @@
                 const swipeDistanceX = touchEndX - touchStartX;
                 const swipeDistanceY = Math.abs(touchEndY - touchStartY);
                 
-                // 縦スクロールの場合は無視
-                if (swipeDistanceY > Math.abs(swipeDistanceX) || swipeDistanceY > 50) {
+                // 縦スクロールの場合は無視（横スワイプより縦の移動が大きい場合）
+                if (swipeDistanceY > Math.abs(swipeDistanceX)) {
                     return;
                 }
                 
@@ -1966,24 +1850,46 @@
                 }
                 
                 const currentIndex = sections.indexOf(app.currentSection);
-                if (currentIndex === -1) return; // スワイプ対象外のセクションの場合は何もしない
-
                 let newIndex = currentIndex;
                 
                 if (swipeDistanceX > 0 && currentIndex > 0) {
-                    // 右スワイプ
+                    // 右スワイプ（前のセクションへ）
                     newIndex = currentIndex - 1;
                 } else if (swipeDistanceX < 0 && currentIndex < sections.length - 1) {
-                    // 左スワイプ
+                    // 左スワイプ（次のセクションへ）
                     newIndex = currentIndex + 1;
                 }
                 
                 if (newIndex !== currentIndex) {
+                    // セクションを切り替え
                     const newSection = sections[newIndex];
-                    const tabButton = document.querySelector(`.nav-tab[onclick*="'${newSection}'"]`);
+                    
+                    // 対応するタブボタンを見つけてクリック
+                    const tabButton = document.querySelector(`.nav-tab[onclick="showSection('${newSection}')"]`);
                     if (tabButton) {
-                        showSection(newSection, tabButton); // showSectionを直接呼び出す
+                        tabButton.click();
                     }
+                    
+                    // スワイプのフィードバック（画面の端に小さなアニメーション）
+                    const indicator = document.createElement('div');
+                    indicator.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        ${swipeDistanceX > 0 ? 'left: 10px;' : 'right: 10px;'}
+                        transform: translateY(-50%);
+                        width: 40px;
+                        height: 40px;
+                        background: var(--primary);
+                        border-radius: 50%;
+                        opacity: 0.3;
+                        pointer-events: none;
+                        animation: swipeIndicator 0.3s ease-out;
+                    `;
+                    document.body.appendChild(indicator);
+                    
+                    setTimeout(() => {
+                        indicator.remove();
+                    }, 300);
                 }
             }
         }
@@ -1994,7 +1900,7 @@
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === modal) {
-                        closeModal(modal.id);
+                        modal.classList.remove('active');
                     }
                 });
             });
@@ -2008,25 +1914,29 @@
             if (e.key && e.key.startsWith('pdca_')) {
                 loadData();
                 renderCurrentSection();
-                showToast('データが別タブで更新されました', 'success');
+                showToast('データが更新されました', 'success');
             }
         }
 
         // 現在のセクションを再描画
         function renderCurrentSection() {
-            const sectionFuncMap = {
-                'dashboard': renderDashboard,
-                'play': renderIdeas,
-                'completed': renderCompletedProjects,
-                'trash': renderTrashProjects,
-                'weekly': renderWeeklyReport,
-                'daily': renderDailyComment,
-                'monthly': renderMonthlyInsight,
-                'quarterly': renderQuarterlyInsight,
-                'calendar': renderCalendar
-            };
-            const renderFunc = sectionFuncMap[app.currentSection];
-            if(renderFunc) renderFunc();
+            if (app.currentSection === 'dashboard') {
+                renderDashboard();
+            } else if (app.currentSection === 'play') {
+                renderIdeas();
+            } else if (app.currentSection === 'completed') {
+                renderCompletedProjects();
+            } else if (app.currentSection === 'trash') {
+                renderTrashProjects();
+            } else if (app.currentSection === 'weekly') {
+                renderWeeklyReport();
+            } else if (app.currentSection === 'daily') {
+                renderDailyComment();
+            } else if (app.currentSection === 'monthly') {
+                renderMonthlyInsight();
+            } else if (app.currentSection === 'quarterly') {
+                renderQuarterlyInsight();
+            }
         }
 
         // トースト通知
@@ -2038,14 +1948,6 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 3000);
-        }
-        
-        // カスタム確認ダイアログ
-        function showCustomConfirm(message, onConfirm) {
-            // 簡単な実装例。よりリッチなUIにする場合はモーダルを作成します。
-            if (window.confirm(message)) {
-                onConfirm();
-            }
         }
 
         // データの読み込み
@@ -2081,23 +1983,23 @@
             renderDashboard();
         }
 
-        function setFilter(phase, element) {
+        function setFilter(phase) {
             app.filterPhase = phase;
             
             // フィルタータグの更新
             document.querySelectorAll('.filter-tag').forEach(tag => {
                 tag.classList.remove('active');
             });
-            element.classList.add('active');
+            event.target.classList.add('active');
             
             renderDashboard();
         }
-        
+
         // セクションの表示切り替え
-        function showSection(sectionName, element) {
+        function showSection(sectionName) {
             // ドロップダウンメニューを閉じる
             const dropdown = document.querySelector('.nav-dropdown');
-            if (dropdown && dropdown.classList.contains('active')) {
+            if (dropdown) {
                 dropdown.classList.remove('active');
             }
             
@@ -2107,377 +2009,61 @@
             });
             document.getElementById(sectionName).classList.add('active');
             
-            // トップナビゲーションタブの更新
+            // ナビゲーションタブの更新
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
-
-            // メインのタブ（ドロップダウン以外）をクリックした場合
-            const mainTab = document.querySelector(`.nav-primary .nav-tab[onclick*="'${sectionName}'"]`);
-            if (mainTab) {
-                mainTab.classList.add('active');
-            } else if (element && element.classList.contains('dropdown-item')) {
-                 // ドロップダウン内の項目がクリックされた場合、特定のタブをアクティブに見せるなどの処理も可能
-            }
+            event.target.classList.add('active');
             
             // ボトムナビゲーションの更新
-            const bottomNavItems = document.querySelectorAll('.bottom-nav .nav-item');
-            bottomNavItems.forEach(item => item.classList.remove('active'));
-
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 対応するボトムナビゲーションアイテムをアクティブに
             const navMap = {
                 'dashboard': 0,
                 'play': 1,
-                'calendar': 3
+                'weekly': 3,
+                'completed': -1,
+                'trash': -1
             };
-            const navIndex = navMap[sectionName];
-            if (navIndex !== undefined) {
-                 bottomNavItems[navIndex].classList.add('active');
+            if (navMap[sectionName] !== undefined && navMap[sectionName] !== -1) {
+                document.querySelectorAll('.bottom-nav .nav-item')[navMap[sectionName]].classList.add('active');
             }
-
+            
             app.currentSection = sectionName;
-            renderCurrentSection();
-        }
-
-        // --- Gemini API 呼び出し関数 ---
-        async function callGeminiAPI(prompt, systemInstruction) {
-            if (!app.apiKey) {
-                showToast('APIキーが設定されていません。', 'error');
-                showSettings();
-                return null;
-            }
-
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${app.apiKey}`;
             
-            const payload = {
-                contents: [{
-                    role: "user",
-                    parts: [{ text: prompt }]
-                }],
-                systemInstruction: {
-                    parts: [{ text: systemInstruction }]
-                },
-                generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 800
-                }
-            };
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error("API Error:", errorData);
-                    throw new Error(errorData.error?.message || `APIリクエストに失敗しました (${response.status})`);
-                }
-
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    return result.candidates[0].content.parts[0].text;
-                } else {
-                    console.error("Unexpected API response structure:", result);
-                    throw new Error("APIから予期しない形式の応答がありました。");
-                }
-            } catch (error) {
-                console.error("Gemini API call failed:", error);
-                showToast(`AI分析エラー: ${error.message}`, 'error');
-                return null;
-            }
-        }
-
-
-        // 週次レポートの生成
-        async function generateWeeklyReport(event) {
-            const button = event.target;
-            button.disabled = true;
-            button.textContent = '生成中...';
-            
-            try {
-                const weekAgo = new Date();
-                weekAgo.setDate(weekAgo.getDate() - 7);
-                
-                const weeklyLogs = app.logs.filter(log => new Date(log.date) >= weekAgo);
-                const activeProjects = app.projects.filter(p => !p.completed && !p.deleted);
-                
-                const projectSummaries = activeProjects.map(project => {
-                    const projectLogs = weeklyLogs.filter(log => log.projectId === project.id);
-                    return {
-                        name: project.name,
-                        phase: project.phase,
-                        progress: calculateProjectProgress(project),
-                        logsCount: projectLogs.length,
-                    };
-                });
-
-                const startOfWeek = new Date();
-                startOfWeek.setDate(startOfWeek.getDate() - 7);
-                const weeklyImprovements = app.improvements.filter(imp => new Date(imp.createdAt) >= startOfWeek);
-
-                const prompt = `
-以下のPDCAプロジェクトの週次進捗データを分析し、日本語でインサイトとアドバイスを提供してください：
-${projectSummaries.map(p => `- ${p.name} (${p.phase}フェーズ): 進捗${p.progress}%, 今週の記録${p.logsCount}回`).join('\n')}
-${weeklyImprovements.length > 0 ? `今週の改善点: ${weeklyImprovements.map(imp => imp.content).join(', ')}` : ''}
-
-分析の観点:
-1. 全体的な進捗評価
-2. 順調な点と課題点
-3. 来週への具体的なアクションプラン
-4. モチベーション維持のためのメッセージ`;
-
-                const systemInstruction = 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの週次分析とアドバイスを行います。';
-                const reportContent = await callGeminiAPI(prompt, systemInstruction);
-
-                if (reportContent) {
-                    const report = { date: new Date().toISOString(), content: reportContent };
-                    localStorage.setItem('pdca_last_report', JSON.stringify(report));
-                    renderWeeklyReport();
-                    showToast('週次レポートを生成しました', 'success');
-                }
-            } finally {
-                button.disabled = false;
-                button.textContent = 'レポートを生成';
-            }
-        }
-        
-        // 週次レポートの描画
-        function renderWeeklyReport() {
-            const reportDiv = document.getElementById('weeklyReport');
-            const lastReport = localStorage.getItem('pdca_last_report');
-            
-            if (lastReport) {
-                const report = JSON.parse(lastReport);
-                reportDiv.innerHTML = `
-                    <div class="analysis-card">
-                        <div class="analysis-title">週次インサイト</div>
-                        <div class="analysis-content">${report.content}</div>
-                        <div style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">
-                            生成日: ${formatDate(new Date(report.date))}
-                        </div>
-                    </div>
-                    <button class="btn btn-primary" onclick="generateWeeklyReport(event)">新しいレポートを生成</button>
-                    <button class="btn btn-secondary" style="margin-left: 0.5rem;" onclick="downloadReport('weekly')">
-                        レポートをダウンロード
-                    </button>
-                `;
-            } else {
-                 reportDiv.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">📊</div>
-                        <div class="empty-text">レポートはまだありません</div>
-                        <button class="btn btn-primary" onclick="generateWeeklyReport(event)">レポートを生成</button>
-                    </div>
-                 `;
-            }
-        }
-
-        // 以下、他のAI生成関数も同様に callGeminiAPI を使うように修正
-        async function generateDailyComment(event) {
-            const button = event.target;
-            button.disabled = true;
-            button.textContent = '生成中...';
-            try {
-                 const prompt = `ユーザーは今日の活動を振り返っています。今日の活動内容とプロジェクト全体の状況を考慮し、励ましと明日へのヒントになる短いコメント（150字以内）を生成してください。`;
-                 const systemInstruction = 'あなたは優しくて励まし上手なコーチです。簡潔で温かいメッセージを送ります。';
-                 const commentContent = await callGeminiAPI(prompt, systemInstruction);
-                 
-                 if (commentContent) {
-                    const dailyComment = { date: new Date().toISOString(), content: commentContent };
-                    let savedComments = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]');
-                    savedComments.push(dailyComment);
-                    localStorage.setItem('pdca_daily_comments', JSON.stringify(savedComments));
-                    renderDailyComment();
-                    showToast('デイリーコメントを生成しました', 'success');
-                 }
-            } finally {
-                 button.disabled = false;
-                 button.textContent = '今日のコメントを生成';
-            }
-        }
-        
-        async function generateMonthlyInsight(event) {
-             const button = event.target;
-            button.disabled = true;
-            button.textContent = '生成中...';
-            try {
-                 const prompt = `過去1ヶ月の全プロジェクトの進捗、ログ、改善点を総合的に分析し、月次の振り返りと来月への戦略的アドバイス（300字程度）を生成してください。`;
-                 const systemInstruction = 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの月次分析と戦略的アドバイスを行います。';
-                 const insightContent = await callGeminiAPI(prompt, systemInstruction);
-                 
-                 if (insightContent) {
-                    const monthlyInsight = { date: new Date().toISOString(), content: insightContent };
-                    let savedInsights = JSON.parse(localStorage.getItem('pdca_monthly_insights') || '[]');
-                    savedInsights.push(monthlyInsight);
-                    localStorage.setItem('pdca_monthly_insights', JSON.stringify(savedInsights));
-                    renderMonthlyInsight();
-                    showToast('月次インサイトを生成しました', 'success');
-                 }
-            } finally {
-                 button.disabled = false;
-                 button.textContent = '今月のインサイトを生成';
-            }
-        }
-        
-        async function generateQuarterlyInsight(event) {
-             const button = event.target;
-            button.disabled = true;
-            button.textContent = '生成中...';
-            try {
-                 const prompt = `過去3ヶ月間の全プロジェクトの進捗、ログ、改善点を総合的に分析し、長期的な傾向、成功パターン、課題を特定してください。そして、次の3ヶ月に向けた戦略的な提言（400字程度）を生成してください。`;
-                 const systemInstruction = 'あなたは成長戦略の専門家です。PDCAサイクルを使った長期的な自己改善の分析と戦略立案を行います。';
-                 const insightContent = await callGeminiAPI(prompt, systemInstruction);
-                 
-                 if (insightContent) {
-                    const quarterlyInsight = { date: new Date().toISOString(), content: insightContent };
-                    let savedInsights = JSON.parse(localStorage.getItem('pdca_quarterly_insights') || '[]');
-                    savedInsights.push(quarterlyInsight);
-                    localStorage.setItem('pdca_quarterly_insights', JSON.stringify(savedInsights));
-                    renderQuarterlyInsight();
-                    showToast('3ヶ月インサイトを生成しました', 'success');
-                 }
-            } finally {
-                 button.disabled = false;
-                 button.textContent = '3ヶ月のインサイトを生成';
-            }
-        }
-
-
-        // --- これより下はUI操作やデータ処理の関数群 (大部分は変更なし) ---
-        // (元のコードの関数をここにペースト。ただし、alertやconfirmはshowCustomConfirmに置き換える)
-        // ... (元のコードの他の関数をここにコピー)
-        // ... (省略) ...
-        // 修正が必要な関数のみ以下に記載
-
-        function permanentlyDelete(event, projectId) {
-            event.stopPropagation();
-            showCustomConfirm('このプロジェクトを完全に削除しますか？この操作は取り消せません。', () => {
-                app.projects = app.projects.filter(p => p.id !== projectId);
-                app.logs = app.logs.filter(log => log.projectId !== projectId);
-                saveData();
-                renderTrashProjects();
-                showToast('プロジェクトを完全に削除しました', 'success');
-            });
-        }
-
-        function emptyTrash() {
-            showCustomConfirm('ゴミ箱内のすべてのプロジェクトを完全に削除しますか？この操作は取り消せません。', () => {
-                const deletedProjectIds = app.projects
-                    .filter(p => p.deleted)
-                    .map(p => p.id);
-                
-                app.projects = app.projects.filter(p => !p.deleted);
-                app.logs = app.logs.filter(log => !deletedProjectIds.includes(log.projectId));
-                
-                saveData();
-                renderTrashProjects();
-                showToast('ゴミ箱を空にしました', 'success');
-            });
-        }
-        
-        function createProject() {
-            const name = document.getElementById('projectName').value.trim();
-            const goal = document.getElementById('projectGoal').value.trim();
-            const duration = parseInt(document.getElementById('projectDuration').value);
-            const trackingType = document.getElementById('trackingType').value;
-            
-            if (!name || !goal) {
-                showToast('プロジェクト名とゴールを入力してください', 'error');
-                return;
-            }
-            
-            const project = {
-                id: Date.now().toString(),
-                name: name,
-                goal: goal,
-                duration: duration,
-                trackingType: trackingType,
-                phase: 'Design',
-                startDate: new Date().toISOString(),
-                createdAt: new Date().toISOString(),
-                cycleCount: 1,
-                completed: false,
-                deleted: false
-            };
-            
-            if (trackingType === 'daily') {
-                const checkpoints = Array.from(document.querySelectorAll('#checkpoints input'))
-                    .map(input => input.value.trim())
-                    .filter(value => value);
-                if (checkpoints.length === 0) {
-                    showToast('少なくとも1つのチェックポイントを入力してください', 'error'); return;
-                }
-                project.checkpoints = checkpoints;
-            } else if (trackingType === 'count') {
-                const countItems = Array.from(document.querySelectorAll('#countItems input'))
-                    .map(input => input.value.trim())
-                    .filter(value => value);
-                if (countItems.length === 0) {
-                    showToast('少なくとも1つのカウント項目を入力してください', 'error'); return;
-                }
-                project.countItems = countItems;
-            } else if (trackingType === 'milestone') {
-                const milestones = Array.from(document.querySelectorAll('#milestones input'))
-                    .map(input => input.value.trim())
-                    .filter(value => value);
-                if (milestones.length === 0) {
-                    showToast('少なくとも1つのマイルストーンを入力してください', 'error'); return;
-                }
-                project.milestones = milestones;
-            }
-            
-            app.projects.push(project);
-            
-            if (app.currentIdeaId) {
-                app.ideas = app.ideas.filter(i => i.id !== app.currentIdeaId);
-                app.currentIdeaId = null;
-            }
-            
-            saveData();
-            closeModal('designModal');
-            showSection('dashboard', document.querySelector('.nav-tab'));
-            showToast('プロジェクトを作成しました', 'success');
-        }
-
-        function completeProject(projectId) {
-            const project = app.projects.find(p => p.id === projectId);
-            if (!project) return;
-            
-            showCustomConfirm('このプロジェクトを完了しますか？', () => {
-                project.completed = true;
-                project.completedAt = new Date().toISOString();
-                saveData();
+            // セクション固有の処理
+            if (sectionName === 'dashboard') {
                 renderDashboard();
-                showToast('プロジェクトを完了しました！', 'success');
-            });
+            } else if (sectionName === 'play') {
+                renderIdeas();
+            } else if (sectionName === 'completed') {
+                renderCompletedProjects();
+            } else if (sectionName === 'trash') {
+                renderTrashProjects();
+            } else if (sectionName === 'weekly') {
+                renderWeeklyReport();
+            } else if (sectionName === 'daily') {
+                renderDailyComment();
+            } else if (sectionName === 'monthly') {
+                renderMonthlyInsight();
+            } else if (sectionName === 'quarterly') {
+                renderQuarterlyInsight();
+            } else if (sectionName === 'calendar') {
+                renderCalendar();
+            }
         }
-        
-        function deleteImprovement(improvementId) {
-            showCustomConfirm('この改善点メモを削除しますか？', () => {
-                app.improvements = app.improvements.filter(imp => imp.id !== improvementId);
-                saveData();
-                renderImprovementsList(app.currentProjectId);
-                showToast('改善点を削除しました', 'success');
-            });
-        }
-        
-        // --- 多くの関数は変更なしのため省略 ---
-        // (元のコードから必要な関数をコピー＆ペーストしてください)
-        // 例: renderDashboard, renderIdeas, showDailyLog, saveData, etc.
-        // ...
-        // 上記コード内で既に定義されている関数は不要です。
-        // ここには元のコードにしかなく、上記で未定義のヘルパー関数などを追加します。
+
+        // ダッシュボードの描画
         function renderDashboard() {
             const grid = document.getElementById('projectGrid');
             const emptyState = document.getElementById('emptyState');
             
             let activeProjects = app.projects.filter(p => !p.completed && !p.deleted);
             
+            // 検索フィルター
             if (app.searchQuery) {
                 activeProjects = activeProjects.filter(p => 
                     p.name.toLowerCase().includes(app.searchQuery) ||
@@ -2485,6 +2071,7 @@ ${weeklyImprovements.length > 0 ? `今週の改善点: ${weeklyImprovements.map(
                 );
             }
             
+            // フェーズフィルター
             if (app.filterPhase !== 'all') {
                 activeProjects = activeProjects.filter(p => p.phase === app.filterPhase);
             }
@@ -2505,6 +2092,7 @@ ${weeklyImprovements.length > 0 ? `今週の改善点: ${weeklyImprovements.map(
                     'Adapt': '#ef4444'
                 };
                 
+                // チェックポイントごとの達成率を計算
                 const checkpointStats = calculateCheckpointStats(project);
                 
                 return `
@@ -2558,86 +2146,2399 @@ ${weeklyImprovements.length > 0 ? `今週の改善点: ${weeklyImprovements.map(
                 `;
             }).join('');
         }
+
+        // ゴミ箱へ移動
+        function moveToTrash(event, projectId) {
+            event.stopPropagation();
+            
+            const project = app.projects.find(p => p.id === projectId);
+            if (project) {
+                project.deleted = true;
+                project.deletedAt = new Date().toISOString();
+                saveData();
+                renderDashboard();
+                showToast('プロジェクトをゴミ箱に移動しました', 'success');
+            }
+        }
+
+        // ゴミ箱から復元
+        function restoreFromTrash(event, projectId) {
+            event.stopPropagation();
+            
+            const project = app.projects.find(p => p.id === projectId);
+            if (project) {
+                delete project.deleted;
+                delete project.deletedAt;
+                saveData();
+                renderTrashProjects();
+                showToast('プロジェクトを復元しました', 'success');
+            }
+        }
+
+        // ゴミ箱セクションの描画
+        function renderTrashProjects() {
+            const grid = document.getElementById('trashGrid');
+            const emptyState = document.getElementById('trashEmpty');
+            
+            const deletedProjects = app.projects.filter(p => p.deleted);
+            
+            if (deletedProjects.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            grid.innerHTML = deletedProjects.map(project => {
+                const deletedDate = new Date(project.deletedAt);
+                
+                return `
+                    <div class="project-card" style="opacity: 0.7;">
+                        <div class="project-header">
+                            <div>
+                                <div class="project-title">${project.name}</div>
+                                <div style="font-size: 0.875rem; color: var(--gray);">
+                                    削除日: ${formatDate(deletedDate)}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"
+                                    onclick="restoreFromTrash(event, '${project.id}')">
+                                復元する
+                            </button>
+                            <button class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.875rem;"
+                                    onclick="permanentlyDelete(event, '${project.id}')">
+                                完全に削除
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 完全削除
+        function permanentlyDelete(event, projectId) {
+            event.stopPropagation();
+            
+            if (confirm('このプロジェクトを完全に削除しますか？この操作は取り消せません。')) {
+                app.projects = app.projects.filter(p => p.id !== projectId);
+                app.logs = app.logs.filter(log => log.projectId !== projectId);
+                saveData();
+                renderTrashProjects();
+                showToast('プロジェクトを完全に削除しました', 'success');
+            }
+        }
+
+        // ゴミ箱を空にする
+        function emptyTrash() {
+            if (confirm('ゴミ箱内のすべてのプロジェクトを完全に削除しますか？この操作は取り消せません。')) {
+                const deletedProjectIds = app.projects
+                    .filter(p => p.deleted)
+                    .map(p => p.id);
+                
+                app.projects = app.projects.filter(p => !p.deleted);
+                app.logs = app.logs.filter(log => !deletedProjectIds.includes(log.projectId));
+                
+                saveData();
+                renderTrashProjects();
+                showToast('ゴミ箱を空にしました', 'success');
+            }
+        }
+
+        // カウンターセクションの描画
+        function renderCounterSection(project) {
+            if (!project.countItems) return '';
+            
+            return `
+                <div class="counter-section">
+                    ${project.countItems.map((item, index) => {
+                        const count = getProjectCountForItem(project.id, index);
+                        return `
+                            <div class="counter-item">
+                                <span class="counter-label">${item}</span>
+                                <div class="counter-controls">
+                                    <button class="counter-btn" onclick="incrementCount(event, '${project.id}', ${index}, -1)">−</button>
+                                    <span class="counter-value" onclick="editCount(event, '${project.id}', ${index})" id="count_${project.id}_${index}">${count}</span>
+                                    <button class="counter-btn" onclick="incrementCount(event, '${project.id}', ${index}, 1)">+</button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        // マイルストーン進捗の描画
+        function renderMilestoneProgress(project) {
+            if (!project.milestones) return '';
+            
+            const achievedCount = getMilestoneAchievedCount(project);
+            return `
+                <div style="margin-top: 1rem;">
+                    <div style="font-size: 0.875rem; color: var(--gray);">
+                        達成済み: ${achievedCount} / ${project.milestones.length}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 完了プロジェクトの描画
+        function renderCompletedProjects() {
+            const grid = document.getElementById('completedGrid');
+            const emptyState = document.getElementById('completedEmpty');
+            
+            const completedProjects = app.projects.filter(p => p.completed && !p.deleted);
+            
+            if (completedProjects.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            grid.innerHTML = completedProjects.map(project => {
+                const completedDate = project.completedAt ? new Date(project.completedAt) : null;
+                
+                return `
+                    <div class="project-card completed" onclick="showProjectDetail('${project.id}')">
+                        <div class="project-header">
+                            <div>
+                                <div class="project-title">
+                                    ${project.name}
+                                    <span class="completed-badge">完了</span>
+                                </div>
+                                <div style="font-size: 0.875rem; color: var(--gray);">
+                                    ${completedDate ? `完了日: ${formatDate(completedDate)}` : ''}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">${project.duration}</div>
+                                <div class="stat-label">実施日数</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">${project.cycleCount || 1}</div>
+                                <div class="stat-label">サイクル数</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1rem;">
+                            <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"
+                                    onclick="reactivateProject(event, '${project.id}')">
+                                再開する
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // フェーズごとのアクション表示
+        function renderPhaseActions(project) {
+            const actions = {
+                'Play': [
+                    { icon: '💡', text: 'アイデアを具体化', action: 'moveToDesign' }
+                ],
+                'Design': [
+                    { icon: '▶️', text: '実行開始', action: 'moveToCheck' },
+                    { icon: '◀️', text: 'アイデアに戻す', action: 'moveToPlay' }
+                ],
+                'Check': [
+                    { icon: '📝', text: '今日の記録', action: 'showDailyLog' },
+                    { icon: '📊', text: '進捗を分析', action: 'analyzeProgress' },
+                    { icon: '🔄', text: '改善フェーズへ', action: 'moveToAdapt' },
+                    { icon: '◀️', text: '設計に戻る', action: 'moveToDesign' }
+                ],
+                'Adapt': [
+                    { icon: '📝', text: '改善点メモ', action: 'showImprovements' },
+                    { icon: '✅', text: 'プロジェクト完了', action: 'completeProject' },
+                    { icon: '🔄', text: '再設計する', action: 'moveToDesign' },
+                    { icon: '▶️', text: '実行に戻る', action: 'moveToCheck' }
+                ]
+            };
+
+            const phaseActions = actions[project.phase] || [];
+            if (phaseActions.length === 0) return '';
+
+            return `
+                <div class="phase-actions">
+                    ${phaseActions.map(action => `
+                        <div class="phase-action" onclick="handlePhaseAction(event, '${project.id}', '${action.action}')">
+                            <span class="phase-action-icon">${action.icon}</span>
+                            <span>${action.text}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // フェーズアクションのハンドラー
+        function handlePhaseAction(event, projectId, action) {
+            event.stopPropagation();
+            
+            switch (action) {
+                case 'moveToPlay':
+                    moveToPhase(projectId, 'Play');
+                    break;
+                case 'moveToDesign':
+                    moveToPhase(projectId, 'Design');
+                    break;
+                case 'showDailyLog':
+                    showDailyLog(projectId);
+                    break;
+                case 'moveToCheck':
+                    moveToPhase(projectId, 'Check');
+                    break;
+                case 'analyzeProgress':
+                    analyzeProjectProgress(projectId);
+                    break;
+                case 'moveToAdapt':
+                    moveToPhase(projectId, 'Adapt');
+                    break;
+                case 'showImprovements':
+                    showImprovementModal(projectId);
+                    break;
+                case 'completeProject':
+                    completeProject(projectId);
+                    break;
+                case 'restartCycle':
+                    restartProjectCycle(projectId);
+                    break;
+            }
+        }
+
+        // カウントの増減
+        function incrementCount(event, projectId, itemIndex, delta) {
+            event.stopPropagation();
+            
+            const log = {
+                id: Date.now().toString(),
+                projectId: projectId,
+                date: new Date().toISOString(),
+                type: 'count',
+                itemIndex: itemIndex,
+                value: delta
+            };
+            
+            app.logs.push(log);
+            saveData();
+            
+            // カウント表示を更新
+            const countElement = document.getElementById(`count_${projectId}_${itemIndex}`);
+            if (countElement) {
+                const newCount = getProjectCountForItem(projectId, itemIndex);
+                countElement.textContent = newCount;
+            }
+            
+            showToast(`カウントを更新しました: ${delta > 0 ? '+' : ''}${delta}`, 'success');
+        }
+
+        // カウントの直接編集
+        function editCount(event, projectId, itemIndex) {
+            event.stopPropagation();
+            
+            const countElement = event.target;
+            const currentCount = getProjectCountForItem(projectId, itemIndex);
+            
+            // inputに置き換え
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'counter-input';
+            input.value = currentCount;
+            input.onclick = (e) => e.stopPropagation();
+            
+            input.onblur = () => {
+                const newValue = parseInt(input.value) || 0;
+                const delta = newValue - currentCount;
+                
+                if (delta !== 0) {
+                    const log = {
+                        id: Date.now().toString(),
+                        projectId: projectId,
+                        date: new Date().toISOString(),
+                        type: 'count',
+                        itemIndex: itemIndex,
+                        value: delta
+                    };
+                    
+                    app.logs.push(log);
+                    saveData();
+                    showToast('カウントを更新しました', 'success');
+                }
+                
+                // 元の表示に戻す
+                countElement.textContent = newValue;
+                countElement.style.display = '';
+                input.remove();
+            };
+            
+            input.onkeypress = (e) => {
+                if (e.key === 'Enter') {
+                    input.blur();
+                }
+            };
+            
+            countElement.style.display = 'none';
+            countElement.parentElement.insertBefore(input, countElement.nextSibling);
+            input.focus();
+            input.select();
+        }
+
+        // 特定項目のカウント取得
+        function getProjectCountForItem(projectId, itemIndex) {
+            return app.logs.filter(log => 
+                log.projectId === projectId && 
+                log.type === 'count' &&
+                log.itemIndex === itemIndex
+            ).reduce((sum, log) => sum + (log.value || 0), 0);
+        }
+
+        // マイルストーン達成数の取得
+        function getMilestoneAchievedCount(project) {
+            const milestoneLogs = app.logs.filter(log =>
+                log.projectId === project.id &&
+                log.type === 'milestone'
+            );
+            
+            const achievedMilestones = new Set();
+            milestoneLogs.forEach(log => {
+                if (log.achieved) {
+                    achievedMilestones.add(log.milestoneIndex);
+                }
+            });
+            
+            return achievedMilestones.size;
+        }
+
+        // チェックポイントごとの統計を計算
+        function calculateCheckpointStats(project) {
+            if (project.trackingType !== 'daily' || !project.checkpoints) return [];
+            
+            const projectLogs = app.logs.filter(log => log.projectId === project.id);
+            
+            return project.checkpoints.map((checkpoint, index) => {
+                const completedCount = projectLogs.filter(log => 
+                    log.checkpoints && log.checkpoints[index] === true
+                ).length;
+                
+                const totalDays = Math.min(
+                    Math.floor((new Date() - new Date(project.startDate)) / (1000 * 60 * 60 * 24)) + 1,
+                    project.duration
+                );
+                
+                const rate = totalDays > 0 ? Math.round((completedCount / totalDays) * 100) : 0;
+                
+                return {
+                    name: checkpoint,
+                    completedCount,
+                    totalDays,
+                    rate
+                };
+            });
+        }
+
+        // プロジェクト進捗の分析
+        function analyzeProjectProgress(projectId) {
+            const project = app.projects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            const stats = calculateCheckpointStats(project);
+            const overallProgress = calculateProjectProgress(project);
+            
+            let analysis = `📊 ${project.name} の進捗分析\n\n`;
+            analysis += `総合進捗: ${overallProgress}%\n`;
+            analysis += `経過日数: ${Math.floor((new Date() - new Date(project.startDate)) / (1000 * 60 * 60 * 24)) + 1}日\n\n`;
+            
+            if (stats.length > 0) {
+                analysis += `項目別達成率:\n`;
+                stats.forEach(stat => {
+                    analysis += `• ${stat.name}: ${stat.rate}% (${stat.completedCount}/${stat.totalDays}日)\n`;
+                });
+                
+                // 最も達成率が高い項目と低い項目を特定
+                const bestItem = stats.reduce((best, current) => 
+                    current.rate > best.rate ? current : best
+                );
+                const worstItem = stats.reduce((worst, current) => 
+                    current.rate < worst.rate ? current : worst
+                );
+                
+                analysis += `\n💪 最も順調: ${bestItem.name} (${bestItem.rate}%)\n`;
+                analysis += `⚠️ 要改善: ${worstItem.name} (${worstItem.rate}%)\n`;
+            }
+            
+            alert(analysis);
+        }
+
+        // プロジェクトの削除
+        function deleteProject(event, projectId) {
+            event.stopPropagation();
+            
+            if (confirm('このプロジェクトを削除しますか？')) {
+                moveToTrash(event, projectId);
+            }
+        }
+
+        // プロジェクトのカウント取得
+        function getProjectCount(project) {
+            return app.logs.filter(log => 
+                log.projectId === project.id && 
+                log.type === 'count'
+            ).reduce((sum, log) => sum + (log.value || 1), 0);
+        }
+
+        // モーダル表示
+        function showAddModal() {
+            document.getElementById('addModal').classList.add('active');
+            document.getElementById('ideaContent').value = '';
+        }
+
+        function showProjectDetail(projectId) {
+            const project = app.projects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            const modal = document.getElementById('projectModal');
+            const title = document.getElementById('projectModalTitle');
+            const body = document.getElementById('projectModalBody');
+            
+            title.textContent = project.name;
+            
+            // プロジェクトの詳細表示
+            const logs = app.logs.filter(log => log.projectId === projectId);
+            const completedDays = logs.filter(log => log.completed).length;
+            const checkpointStats = calculateCheckpointStats(project);
+            
+            body.innerHTML = `
+                <div class="form-group">
+                    <label class="form-label">ゴール</label>
+                    <div style="padding: 1rem; background: var(--light-gray); border-radius: var(--radius);">
+                        ${project.goal}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">現在のフェーズ: ${project.phase}</label>
+                    <div style="padding: 1rem; background: var(--light-gray); border-radius: var(--radius);">
+                        ${getPhaseDescription(project.phase)}
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">進捗状況</label>
+                    <div class="project-stats" style="margin-top: 0;">
+                        <div class="stat-item">
+                            <div class="stat-value">${completedDays}</div>
+                            <div class="stat-label">実行日数</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${project.duration}</div>
+                            <div class="stat-label">目標日数</div>
+                        </div>
+                    </div>
+                </div>
+                
+                ${project.trackingType === 'daily' && checkpointStats.length > 0 ? `
+                    <div class="form-group">
+                        <label class="form-label">チェックポイント別達成率</label>
+                        ${checkpointStats.map(stat => `
+                            <div class="checkpoint-item">
+                                <span class="checkpoint-name">${stat.name}</span>
+                                <span class="checkpoint-rate">${stat.rate}% (${stat.completedCount}/${stat.totalDays}日)</span>
+                                <div class="mini-progress">
+                                    <div class="mini-progress-fill" style="width: ${stat.rate}%"></div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                ${project.trackingType === 'count' && project.countItems ? `
+                    <div class="form-group">
+                        <label class="form-label">カウント進捗</label>
+                        ${project.countItems.map((item, index) => `
+                            <div style="padding: 0.5rem; background: var(--light-gray); border-radius: var(--radius); margin-bottom: 0.5rem;">
+                                ${item}: ${getProjectCountForItem(project.id, index)}
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                
+                ${project.trackingType === 'milestone' && project.milestones ? `
+                    <div class="form-group">
+                        <label class="form-label">マイルストーン</label>
+                        ${project.milestones.map((milestone, index) => {
+                            const isAchieved = isMilestoneAchieved(project.id, index);
+                            return `
+                                <div class="milestone-item">
+                                    <span class="${isAchieved ? 'milestone-achieved' : ''}">${milestone}</span>
+                                    ${isAchieved ? '✅' : '⭕'}
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                ` : ''}
+            `;
+            
+            modal.classList.add('active');
+        }
+
+        function showSettings() {
+            const modal = document.getElementById('settingsModal');
+            updateNotificationStatus();
+            modal.classList.add('active');
+        }
+
+        function showAPIKeyModal() {
+            closeModal('settingsModal');
+            const modal = document.getElementById('apiKeyModal');
+            const apiKeyInput = document.getElementById('apiKey');
+            apiKeyInput.value = app.apiKey || '';
+            modal.classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // 改善点メモモーダルの表示
+        function showImprovementModal(projectId) {
+            app.currentProjectId = projectId;
+            const modal = document.getElementById('improvementModal');
+            const project = app.projects.find(p => p.id === projectId);
+            
+            if (!project) return;
+            
+            // プロジェクト名をタイトルに表示
+            const modalTitle = modal.querySelector('.modal-title');
+            modalTitle.textContent = `改善点メモ - ${project.name}`;
+            
+            // 改善点リストを表示
+            renderImprovementsList(projectId);
+            
+            // テキストエリアをクリア
+            document.getElementById('newImprovement').value = '';
+            
+            modal.classList.add('active');
+        }
+
+        // 改善点メモの追加
+        function addImprovementMemo() {
+            const content = document.getElementById('newImprovement').value.trim();
+            if (!content) return;
+            
+            const improvement = {
+                id: Date.now().toString(),
+                projectId: app.currentProjectId,
+                content: content,
+                createdAt: new Date().toISOString(),
+                type: 'memo' // 'daily'と区別するため
+            };
+            
+            app.improvements.push(improvement);
+            saveData();
+            
+            document.getElementById('newImprovement').value = '';
+            renderImprovementsList(app.currentProjectId);
+            
+            showToast('改善点を追加しました', 'success');
+        }
+
+        // 改善点リストの表示
+        function renderImprovementsList(projectId) {
+            const listDiv = document.getElementById('improvementsList');
+            const projectImprovements = app.improvements
+                .filter(imp => imp.projectId === projectId)
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            if (projectImprovements.length === 0) {
+                listDiv.innerHTML = '<div style="text-align: center; color: var(--gray); padding: 2rem;">まだ改善点メモがありません</div>';
+                return;
+            }
+            
+            listDiv.innerHTML = `
+                <h4 style="margin-bottom: 1rem;">改善点履歴</h4>
+                ${projectImprovements.map(imp => {
+                    const date = new Date(imp.createdAt);
+                    const dateStr = `${date.getMonth() + 1}/${date.getDate()} ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}`;
+                    
+                    return `
+                        <div style="background: var(--light-gray); padding: 1rem; border-radius: var(--radius); margin-bottom: 0.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                <div style="flex: 1;">
+                                    <div style="font-size: 0.75rem; color: var(--gray); margin-bottom: 0.25rem;">${dateStr}</div>
+                                    <div style="white-space: pre-wrap;">${imp.content}</div>
+                                </div>
+                                <button onclick="deleteImprovement('${imp.id}')" style="background: none; border: none; color: var(--danger); cursor: pointer; padding: 0.25rem;">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+        }
+
+        // 改善点の削除
+        function deleteImprovement(improvementId) {
+            if (confirm('この改善点メモを削除しますか？')) {
+                app.improvements = app.improvements.filter(imp => imp.id !== improvementId);
+                saveData();
+                renderImprovementsList(app.currentProjectId);
+                showToast('改善点を削除しました', 'success');
+            }
+        }
+
+        // アイデアの追加
+        function addIdea() {
+            const content = document.getElementById('ideaContent').value.trim();
+            
+            if (!content) return;
+            
+            const idea = {
+                id: Date.now().toString(),
+                content: content,
+                createdAt: new Date().toISOString()
+            };
+            
+            app.ideas.push(idea);
+            saveData();
+            
+            closeModal('addModal');
+            renderIdeas();
+            
+            showToast('アイデアを追加しました', 'success');
+        }
+
+        // アイデアリストの描画
+        function renderIdeas() {
+            const list = document.getElementById('inboxList');
+            const emptyState = document.getElementById('inboxEmpty');
+            
+            if (app.ideas.length === 0) {
+                list.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            list.innerHTML = app.ideas.map(idea => `
+                <div class="inbox-item">
+                    <div class="inbox-content">
+                        <div>${idea.content}</div>
+                        <div class="inbox-date">${formatDate(new Date(idea.createdAt))}</div>
+                    </div>
+                    <button class="inbox-action" onclick="startDesign('${idea.id}')">
+                        プロジェクト化
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // プロジェクト設計開始
+        function startDesign(ideaId) {
+            const idea = app.ideas.find(i => i.id === ideaId);
+            if (!idea) return;
+            
+            // アイデアを一時保存
+            app.currentIdeaId = ideaId;
+            
+            // デザインモーダルを開く
+            const modal = document.getElementById('designModal');
+            document.getElementById('projectName').value = idea.content;
+            document.getElementById('projectGoal').value = '';
+            document.getElementById('projectDuration').value = '30';
+            document.getElementById('trackingType').value = 'daily';
+            updateTrackingUI();
+            
+            modal.classList.add('active');
+        }
+
+        // トラッキングUIの更新
+        function updateTrackingUI() {
+            const trackingType = document.getElementById('trackingType').value;
+            
+            document.getElementById('dailyCheckGroup').style.display = 
+                trackingType === 'daily' ? 'block' : 'none';
+            document.getElementById('countGroup').style.display = 
+                trackingType === 'count' ? 'block' : 'none';
+            document.getElementById('milestoneGroup').style.display = 
+                trackingType === 'milestone' ? 'block' : 'none';
+        }
+
+        // チェックポイント追加
+        function addCheckpoint() {
+            const container = document.getElementById('checkpoints');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control';
+            input.style.marginBottom = '0.5rem';
+            input.placeholder = '例: ストレッチを5分実施';
+            container.appendChild(input);
+        }
+
+        // カウント項目追加
+        function addCountItem() {
+            const container = document.getElementById('countItems');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control';
+            input.style.marginBottom = '0.5rem';
+            input.placeholder = '例: 腹筋の回数';
+            container.appendChild(input);
+        }
+
+        // マイルストーン追加
+        function addMilestone() {
+            const container = document.getElementById('milestones');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'form-control';
+            input.style.marginBottom = '0.5rem';
+            input.placeholder = '例: 100回連続で腹筋ができる';
+            container.appendChild(input);
+        }
+
+        // プロジェクトの作成
+        function createProject() {
+            const name = document.getElementById('projectName').value.trim();
+            const goal = document.getElementById('projectGoal').value.trim();
+            const duration = parseInt(document.getElementById('projectDuration').value);
+            const trackingType = document.getElementById('trackingType').value;
+            
+            if (!name || !goal) {
+                alert('プロジェクト名とゴールを入力してください');
+                return;
+            }
+            
+            const project = {
+                id: Date.now().toString(),
+                name: name,
+                goal: goal,
+                duration: duration,
+                trackingType: trackingType,
+                phase: 'Design',
+                startDate: new Date().toISOString(),
+                createdAt: new Date().toISOString(),
+                cycleCount: 1
+            };
+            
+            // トラッキングタイプに応じて項目を追加
+            if (trackingType === 'daily') {
+                const checkpoints = Array.from(document.querySelectorAll('#checkpoints input'))
+                    .map(input => input.value.trim())
+                    .filter(value => value);
+                
+                if (checkpoints.length === 0) {
+                    alert('少なくとも1つのチェックポイントを入力してください');
+                    return;
+                }
+                
+                project.checkpoints = checkpoints;
+            } else if (trackingType === 'count') {
+                const countItems = Array.from(document.querySelectorAll('#countItems input'))
+                    .map(input => input.value.trim())
+                    .filter(value => value);
+                
+                if (countItems.length === 0) {
+                    alert('少なくとも1つのカウント項目を入力してください');
+                    return;
+                }
+                
+                project.countItems = countItems;
+            } else if (trackingType === 'milestone') {
+                const milestones = Array.from(document.querySelectorAll('#milestones input'))
+                    .map(input => input.value.trim())
+                    .filter(value => value);
+                
+                if (milestones.length === 0) {
+                    alert('少なくとも1つのマイルストーンを入力してください');
+                    return;
+                }
+                
+                project.milestones = milestones;
+            }
+            
+            // プロジェクトを追加
+            app.projects.push(project);
+            
+            // 元のアイデアを削除
+            if (app.currentIdeaId) {
+                app.ideas = app.ideas.filter(i => i.id !== app.currentIdeaId);
+                app.currentIdeaId = null;
+            }
+            
+            saveData();
+            closeModal('designModal');
+            showSection('dashboard');
+            
+            showToast('プロジェクトを作成しました', 'success');
+        }
+
+        // 日次ログの表示
+        function showDailyLog(projectId) {
+            // 特定のプロジェクトのログを表示
+            if (projectId) {
+                app.currentProjectId = projectId;
+            } else {
+                // リマインダーから来た場合は、チェックフェーズの全プロジェクトを表示
+                app.currentProjectId = null;
+            }
+            
+            const modal = document.getElementById('logModal');
+            const body = document.getElementById('logModalBody');
+            
+            const today = new Date().toDateString();
+            const projects = app.currentProjectId 
+                ? app.projects.filter(p => p.id === app.currentProjectId)
+                : app.projects.filter(p => p.phase === 'Check' && !p.completed && !p.deleted);
+            
+            const dailyProjects = projects.filter(p => p.trackingType === 'daily');
+            const countProjects = projects.filter(p => p.trackingType === 'count');
+            const milestoneProjects = projects.filter(p => p.trackingType === 'milestone');
+            
+            let html = '';
+            
+            // 改善点・適応事項の入力フィールド
+            html += `
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 1rem;">今日の改善点・適応事項</h4>
+                    <textarea 
+                        id="dailyImprovements" 
+                        class="form-control" 
+                        rows="3" 
+                        placeholder="今日実施した改善点や、新しく適応したことを記入してください。&#10;例：作業時間を朝に変更した、新しいツールを導入した、など"
+                        style="width: 100%; resize: vertical;"
+                    >${getTodayImprovements()}</textarea>
+                </div>
+            `;
+            
+            // 毎日チェックするプロジェクト
+            if (dailyProjects.length > 0) {
+                html += '<h4 style="margin-bottom: 1rem;">今日のチェック項目</h4>';
+                dailyProjects.forEach(project => {
+                    const todayLog = app.logs.find(log => 
+                        log.projectId === project.id && 
+                        new Date(log.date).toDateString() === today
+                    );
+                    
+                    html += `
+                        <div style="margin-bottom: 1.5rem;">
+                            <h5 style="margin-bottom: 0.5rem;">${project.name}</h5>
+                            ${project.checkpoints.map((checkpoint, index) => `
+                                <div class="checkbox-group">
+                                    <input type="checkbox" 
+                                           id="check_${project.id}_${index}"
+                                           ${todayLog && todayLog.checkpoints && todayLog.checkpoints[index] ? 'checked' : ''}>
+                                    <label for="check_${project.id}_${index}" class="checkbox-label">
+                                        ${checkpoint}
+                                    </label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                });
+            }
+            
+            // カウントするプロジェクト
+            if (countProjects.length > 0) {
+                html += '<h4 style="margin-top: 2rem; margin-bottom: 1rem;">カウント項目</h4>';
+                countProjects.forEach(project => {
+                    html += `
+                        <div style="margin-bottom: 1.5rem;">
+                            <h5 style="margin-bottom: 0.5rem;">${project.name}</h5>
+                            ${project.countItems.map((item, index) => {
+                                const count = getProjectCountForItem(project.id, index);
+                                return `
+                                    <div class="counter-item">
+                                        <span class="counter-label">${item}</span>
+                                        <div class="counter-controls">
+                                            <button class="counter-btn" onclick="incrementCount(event, '${project.id}', ${index}, -1)">−</button>
+                                            <span class="counter-value" id="modal_count_${project.id}_${index}">${count}</span>
+                                            <button class="counter-btn" onclick="incrementCount(event, '${project.id}', ${index}, 1)">+</button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                });
+            }
+            
+            // マイルストーンプロジェクト
+            if (milestoneProjects.length > 0) {
+                html += '<h4 style="margin-top: 2rem; margin-bottom: 1rem;">マイルストーン達成</h4>';
+                milestoneProjects.forEach(project => {
+                    html += `
+                        <div style="margin-bottom: 1.5rem;">
+                            <h5 style="margin-bottom: 0.5rem;">${project.name}</h5>
+                            ${project.milestones.map((milestone, index) => {
+                                const achieved = isMilestoneAchieved(project.id, index);
+                                const tempKey = `milestone_${project.id}_${index}`;
+                                const tempAchieved = sessionStorage.getItem(tempKey) === 'true';
+                                
+                                return `
+                                    <div class="milestone-item">
+                                        <input type="checkbox" 
+                                               class="milestone-checkbox"
+                                               id="milestone_${project.id}_${index}"
+                                               ${achieved || tempAchieved ? 'checked' : ''}
+                                               onchange="toggleMilestone('${project.id}', ${index}, this.checked)">
+                                        <label for="milestone_${project.id}_${index}" 
+                                               class="milestone-text ${achieved || tempAchieved ? 'milestone-achieved' : ''}">
+                                            ${milestone}
+                                        </label>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                });
+            }
+            
+            if (html === '') {
+                html = '<p style="text-align: center; color: var(--gray);">記録するプロジェクトがありません</p>';
+            }
+            
+            body.innerHTML = html;
+            modal.classList.add('active');
+            
+            // リマインダーバナーを非表示
+            document.getElementById('reminderBanner').classList.remove('show');
+        }
+
+        // マイルストーンの切り替え
+        function toggleMilestone(projectId, milestoneIndex, achieved) {
+            const tempKey = `milestone_${projectId}_${milestoneIndex}`;
+            sessionStorage.setItem(tempKey, achieved ? 'true' : 'false');
+            
+            // UIの更新
+            const label = document.querySelector(`label[for="milestone_${project.id}_${milestoneIndex}"]`);
+            if (label) {
+                if (achieved) {
+                    label.classList.add('milestone-achieved');
+                } else {
+                    label.classList.remove('milestone-achieved');
+                }
+            }
+        }
+
+        // マイルストーンが達成されているか確認
+        function isMilestoneAchieved(projectId, milestoneIndex) {
+            const latestLog = app.logs
+                .filter(log => 
+                    log.projectId === projectId && 
+                    log.type === 'milestone' &&
+                    log.milestoneIndex === milestoneIndex
+                )
+                .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+            
+            return latestLog && latestLog.achieved;
+        }
+
+        // 今日の改善点を取得
+        function getTodayImprovements() {
+            const today = new Date().toDateString();
+            const todayImprovement = app.improvements?.find(imp => 
+                new Date(imp.date).toDateString() === today
+            );
+            return todayImprovement?.content || '';
+        }
+        
+        // 日次ログの保存
+        function saveDailyLog() {
+            const today = new Date();
+            
+            // 改善点・適応事項を保存
+            const improvementsText = document.getElementById('dailyImprovements')?.value;
+            if (improvementsText && improvementsText.trim()) {
+                if (!app.improvements) {
+                    app.improvements = [];
+                }
+                
+                const todayIndex = app.improvements.findIndex(imp => 
+                    new Date(imp.date).toDateString() === today.toDateString()
+                );
+                
+                const improvement = {
+                    id: todayIndex >= 0 ? app.improvements[todayIndex].id : Date.now().toString(),
+                    date: today.toISOString(),
+                    content: improvementsText.trim()
+                };
+                
+                if (todayIndex >= 0) {
+                    app.improvements[todayIndex] = improvement;
+                } else {
+                    app.improvements.push(improvement);
+                }
+                
+                localStorage.setItem('pdca_improvements', JSON.stringify(app.improvements));
+            }
+            
+            // 毎日チェックするプロジェクトの処理
+            const dailyProjects = app.currentProjectId 
+                ? app.projects.filter(p => p.id === app.currentProjectId && p.trackingType === 'daily')
+                : app.projects.filter(p => p.phase === 'Check' && p.trackingType === 'daily' && !p.completed && !p.deleted);
+            
+            dailyProjects.forEach(project => {
+                const checkpoints = {};
+                let hasChecked = false;
+                
+                project.checkpoints.forEach((_, index) => {
+                    const checkbox = document.getElementById(`check_${project.id}_${index}`);
+                    if (checkbox) {
+                        checkpoints[index] = checkbox.checked;
+                        if (checkbox.checked) hasChecked = true;
+                    }
+                });
+                
+                if (hasChecked) {
+                    // 今日のログがあるか確認
+                    const existingLogIndex = app.logs.findIndex(log => 
+                        log.projectId === project.id && 
+                        new Date(log.date).toDateString() === today.toDateString()
+                    );
+                    
+                    const log = {
+                        id: existingLogIndex >= 0 ? app.logs[existingLogIndex].id : Date.now().toString(),
+                        projectId: project.id,
+                        date: today.toISOString(),
+                        checkpoints: checkpoints,
+                        completed: Object.values(checkpoints).every(v => v === true)
+                    };
+                    
+                    if (existingLogIndex >= 0) {
+                        app.logs[existingLogIndex] = log;
+                    } else {
+                        app.logs.push(log);
+                    }
+                }
+            });
+            
+            // マイルストーンの処理
+            const milestoneProjects = app.currentProjectId 
+                ? app.projects.filter(p => p.id === app.currentProjectId && p.trackingType === 'milestone')
+                : app.projects.filter(p => p.phase === 'Check' && p.trackingType === 'milestone' && !p.completed && !p.deleted);
+            
+            milestoneProjects.forEach(project => {
+                project.milestones.forEach((_, index) => {
+                    const tempKey = `milestone_${project.id}_${index}`;
+                    const tempValue = sessionStorage.getItem(tempKey);
+                    
+                    if (tempValue !== null) {
+                        const achieved = tempValue === 'true';
+                        const existingAchieved = isMilestoneAchieved(project.id, index);
+                        
+                        if (achieved !== existingAchieved) {
+                            const log = {
+                                id: Date.now().toString() + '_' + index,
+                                projectId: project.id,
+                                date: today.toISOString(),
+                                type: 'milestone',
+                                milestoneIndex: index,
+                                achieved: achieved
+                            };
+                            app.logs.push(log);
+                        }
+                        
+                        sessionStorage.removeItem(tempKey);
+                    }
+                });
+            });
+            
+            // 最終チェック日を更新
+            localStorage.setItem(STORAGE_KEYS.LAST_CHECK_DATE, today.toDateString());
+            
+            saveData();
+            closeModal('logModal');
+            renderDashboard();
+            
+            showToast('記録を保存しました', 'success');
+        }
+
+        // プロジェクト進捗の計算
         function calculateProjectProgress(project) {
             if (project.trackingType === 'daily') {
                 const logs = app.logs.filter(log => log.projectId === project.id);
-                if (logs.length === 0) return 0;
-                
-                const totalChecks = project.checkpoints.length * project.duration;
-                let completedChecks = 0;
-                logs.forEach(log => {
-                    if(log.checkpoints) {
-                        completedChecks += Object.values(log.checkpoints).filter(Boolean).length;
-                    }
-                });
-
-                return totalChecks > 0 ? Math.round((completedChecks / totalChecks) * 100) : 0;
+                const completedDays = logs.filter(log => log.completed).length;
+                return Math.round((completedDays / project.duration) * 100);
             } else if (project.trackingType === 'count') {
-                const totalCount = (project.countItems || []).reduce((sum, _, index) => {
+                // カウント型の進捗（仮：100回を目標として計算）
+                const totalCount = project.countItems.reduce((sum, _, index) => {
                     return sum + getProjectCountForItem(project.id, index);
                 }, 0);
-                const target = (project.countItems?.length || 1) * 100; // 仮の目標値
-                return Math.min(100, Math.round((totalCount / target) * 100));
+                const targetCount = project.countItems.length * 100; // 各項目100回を目標
+                return Math.min(100, Math.round((totalCount / targetCount) * 100));
             } else if (project.trackingType === 'milestone') {
                 const achieved = getMilestoneAchievedCount(project);
-                const total = (project.milestones || []).length;
-                return total > 0 ? Math.round((achieved / total) * 100) : 0;
+                const total = project.milestones.length;
+                return Math.round((achieved / total) * 100);
             }
             return 0;
         }
 
-        // --- 元のコードにある、その他の多数の関数もここに必要です ---
-        // (関数をすべてここに含めると長くなりすぎるため、主要な修正点のみを提示しています)
-        // ... (renderIdeas, showDailyLog, saveAPIKeyなどの関数を元のコードからコピー)
-        // 以下の関数は元のコードからコピー＆ペーストしてください
-        function moveToTrash(event, projectId) { event.stopPropagation(); const project = app.projects.find(p => p.id === projectId); if (project) { project.deleted = true; project.deletedAt = new Date().toISOString(); saveData(); renderDashboard(); showToast('プロジェクトをゴミ箱に移動しました', 'success'); } }
-        function restoreFromTrash(event, projectId) { event.stopPropagation(); const project = app.projects.find(p => p.id === projectId); if (project) { delete project.deleted; delete project.deletedAt; saveData(); renderTrashProjects(); showToast('プロジェクトを復元しました', 'success'); } }
-        function renderTrashProjects() { const grid = document.getElementById('trashGrid'); const emptyState = document.getElementById('trashEmpty'); const deletedProjects = app.projects.filter(p => p.deleted); if (deletedProjects.length === 0) { grid.innerHTML = ''; emptyState.style.display = 'block'; return; } emptyState.style.display = 'none'; grid.innerHTML = deletedProjects.map(project => ` <div class="project-card" style="opacity: 0.7;"> <div class="project-header"> <div> <div class="project-title">${project.name}</div> <div style="font-size: 0.875rem; color: var(--gray);"> 削除日: ${formatDate(new Date(project.deletedAt))} </div> </div> </div> <div style="margin-top: 1rem; display: flex; gap: 0.5rem;"> <button class="btn btn-primary" onclick="restoreFromTrash(event, '${project.id}')"> 復元する </button> <button class="btn btn-danger" onclick="permanentlyDelete(event, '${project.id}')"> 完全に削除 </button> </div> </div> `).join(''); }
-        function renderCounterSection(project) { if (!project.countItems) return ''; return ` <div class="counter-section"> ${project.countItems.map((item, index) => { const count = getProjectCountForItem(project.id, index); return ` <div class="counter-item"> <span class="counter-label">${item}</span> <div class="counter-controls"> <button class="counter-btn" onclick="incrementCount(event, '${project.id}', ${index}, -1)">−</button> <span class="counter-value" onclick="editCount(event, '${project.id}', ${index})" id="count_${project.id}_${index}">${count}</span> <button class="counter-btn" onclick="incrementCount(event, '${project.id}', ${index}, 1)">+</button> </div> </div> `; }).join('')} </div> `; }
-        function renderMilestoneProgress(project) { if (!project.milestones) return ''; const achievedCount = getMilestoneAchievedCount(project); return ` <div style="margin-top: 1rem;"> <div style="font-size: 0.875rem; color: var(--gray);"> 達成済み: ${achievedCount} / ${project.milestones.length} </div> </div> `; }
-        function renderCompletedProjects() { const grid = document.getElementById('completedGrid'); const emptyState = document.getElementById('completedEmpty'); const completedProjects = app.projects.filter(p => p.completed && !p.deleted); if (completedProjects.length === 0) { grid.innerHTML = ''; emptyState.style.display = 'block'; return; } emptyState.style.display = 'none'; grid.innerHTML = completedProjects.map(project => ` <div class="project-card completed" onclick="showProjectDetail('${project.id}')"> <div class="project-header"> <div> <div class="project-title"> ${project.name} <span class="completed-badge">完了</span> </div> <div style="font-size: 0.875rem; color: var(--gray);"> ${project.completedAt ? `完了日: ${formatDate(new Date(project.completedAt))}` : ''} </div> </div> </div> <div class="project-stats"> <div class="stat-item"> <div class="stat-value">${project.duration}</div> <div class="stat-label">実施日数</div> </div> <div class="stat-item"> <div class="stat-value">${project.cycleCount || 1}</div> <div class="stat-label">サイクル数</div> </div> </div> <div style="margin-top: 1rem;"> <button class="btn btn-primary" onclick="reactivateProject(event, '${project.id}')"> 再開する </button> </div> </div> `).join(''); }
-        function renderPhaseActions(project) { const actions = { 'Play': [{ icon: '💡', text: 'アイデアを具体化', action: 'moveToDesign' }], 'Design': [{ icon: '▶️', text: '実行開始', action: 'moveToCheck' }, { icon: '◀️', text: 'アイデアに戻す', action: 'moveToPlay' }], 'Check': [{ icon: '📝', text: '今日の記録', action: 'showDailyLog' }, { icon: '📊', text: '進捗を分析', action: 'analyzeProgress' }, { icon: '🔄', text: '改善フェーズへ', action: 'moveToAdapt' }, { icon: '◀️', text: '設計に戻る', action: 'moveToDesign' }], 'Adapt': [{ icon: '📝', text: '改善点メモ', action: 'showImprovements' }, { icon: '✅', text: 'プロジェクト完了', action: 'completeProject' }, { icon: '🔄', text: '再設計する', action: 'moveToDesign' }, { icon: '▶️', text: '実行に戻る', action: 'moveToCheck' }] }; const phaseActions = actions[project.phase] || []; if (phaseActions.length === 0) return ''; return ` <div class="phase-actions"> ${phaseActions.map(action => ` <div class="phase-action" onclick="handlePhaseAction(event, '${project.id}', '${action.action}')"> <span class="phase-action-icon">${action.icon}</span> <span>${action.text}</span> </div> `).join('')} </div> `; }
-        function handlePhaseAction(event, projectId, action) { event.stopPropagation(); const actions = { 'moveToPlay': () => moveToPhase(projectId, 'Play'), 'moveToDesign': () => moveToPhase(projectId, 'Design'), 'showDailyLog': () => showDailyLog(projectId), 'moveToCheck': () => moveToPhase(projectId, 'Check'), 'analyzeProgress': () => analyzeProjectProgress(projectId), 'moveToAdapt': () => moveToPhase(projectId, 'Adapt'), 'showImprovements': () => showImprovementModal(projectId), 'completeProject': () => completeProject(projectId), 'restartCycle': () => restartProjectCycle(projectId) }; if (actions[action]) actions[action](); }
-        function incrementCount(event, projectId, itemIndex, delta) { event.stopPropagation(); const log = { id: Date.now().toString(), projectId: projectId, date: new Date().toISOString(), type: 'count', itemIndex: itemIndex, value: delta }; app.logs.push(log); saveData(); const countElement = document.getElementById(`count_${projectId}_${itemIndex}`); if (countElement) countElement.textContent = getProjectCountForItem(projectId, itemIndex); showToast(`カウントを更新しました: ${delta > 0 ? '+' : ''}${delta}`, 'success'); }
-        function editCount(event, projectId, itemIndex) { event.stopPropagation(); const countElement = event.target; const currentCount = getProjectCountForItem(projectId, itemIndex); const input = document.createElement('input'); input.type = 'number'; input.className = 'counter-input'; input.value = currentCount; input.onclick = (e) => e.stopPropagation(); input.onblur = () => { const newValue = parseInt(input.value) || 0; const delta = newValue - currentCount; if (delta !== 0) { const log = { id: Date.now().toString(), projectId: projectId, date: new Date().toISOString(), type: 'count', itemIndex: itemIndex, value: delta }; app.logs.push(log); saveData(); showToast('カウントを更新しました', 'success'); } countElement.textContent = newValue; countElement.style.display = ''; input.remove(); }; input.onkeypress = (e) => { if (e.key === 'Enter') input.blur(); }; countElement.style.display = 'none'; countElement.parentElement.insertBefore(input, countElement.nextSibling); input.focus(); input.select(); }
-        function getProjectCountForItem(projectId, itemIndex) { return app.logs.filter(log => log.projectId === projectId && log.type === 'count' && log.itemIndex === itemIndex).reduce((sum, log) => sum + (log.value || 0), 0); }
-        function getMilestoneAchievedCount(project) { const achievedMilestones = new Set(); app.logs.filter(log => log.projectId === project.id && log.type === 'milestone' && log.achieved).forEach(log => achievedMilestones.add(log.milestoneIndex)); return achievedMilestones.size; }
-        function calculateCheckpointStats(project) { if (project.trackingType !== 'daily' || !project.checkpoints) return []; const projectLogs = app.logs.filter(log => log.projectId === project.id); return project.checkpoints.map((checkpoint, index) => { const completedCount = projectLogs.filter(log => log.checkpoints && log.checkpoints[index] === true).length; const totalDays = Math.min(Math.floor((new Date() - new Date(project.startDate)) / (1000 * 60 * 60 * 24)) + 1, project.duration); const rate = totalDays > 0 ? Math.round((completedCount / totalDays) * 100) : 0; return { name: checkpoint, completedCount, totalDays, rate }; }); }
-        function analyzeProjectProgress(projectId) { const project = app.projects.find(p => p.id === projectId); if (!project) return; const stats = calculateCheckpointStats(project); const overallProgress = calculateProjectProgress(project); let analysis = `📊 ${project.name} の進捗分析\n\n総合進捗: ${overallProgress}%\n経過日数: ${Math.floor((new Date() - new Date(project.startDate)) / (1000 * 60 * 60 * 24)) + 1}日\n\n`; if (stats.length > 0) { analysis += `項目別達成率:\n${stats.map(stat => `• ${stat.name}: ${stat.rate}%`).join('\n')}`; } alert(analysis); }
-        function showAddModal() { document.getElementById('addModal').classList.add('active'); document.getElementById('ideaContent').value = ''; }
-        function showProjectDetail(projectId) { const project = app.projects.find(p => p.id === projectId); if (!project) return; const modal = document.getElementById('projectModal'); document.getElementById('projectModalTitle').textContent = project.name; document.getElementById('projectModalBody').innerHTML = `<div>...詳細表示...</div>`; modal.classList.add('active'); }
-        function showSettings() { updateNotificationStatus(); document.getElementById('settingsModal').classList.add('active'); }
-        function showAPIKeyModal() { closeModal('settingsModal'); const modal = document.getElementById('apiKeyModal'); document.getElementById('apiKey').value = app.apiKey || ''; modal.classList.add('active'); }
-        function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
-        function addIdea() { const content = document.getElementById('ideaContent').value.trim(); if (!content) return; const idea = { id: Date.now().toString(), content: content, createdAt: new Date().toISOString() }; app.ideas.push(idea); saveData(); closeModal('addModal'); renderIdeas(); showToast('アイデアを追加しました', 'success'); }
-        function renderIdeas() { const list = document.getElementById('inboxList'); const emptyState = document.getElementById('inboxEmpty'); if (app.ideas.length === 0) { list.innerHTML = ''; emptyState.style.display = 'block'; return; } emptyState.style.display = 'none'; list.innerHTML = app.ideas.map(idea => ` <div class="inbox-item"> <div class="inbox-content"> <div>${idea.content}</div> <div class="inbox-date">${formatDate(new Date(idea.createdAt))}</div> </div> <button class="inbox-action" onclick="startDesign('${idea.id}')"> プロジェクト化 </button> </div> `).join(''); }
-        function startDesign(ideaId) { const idea = app.ideas.find(i => i.id === ideaId); if (!idea) return; app.currentIdeaId = ideaId; const modal = document.getElementById('designModal'); document.getElementById('projectName').value = idea.content; document.getElementById('projectGoal').value = ''; document.getElementById('projectDuration').value = '30'; document.getElementById('trackingType').value = 'daily'; updateTrackingUI(); modal.classList.add('active'); }
-        function updateTrackingUI() { const type = document.getElementById('trackingType').value; document.getElementById('dailyCheckGroup').style.display = type === 'daily' ? 'block' : 'none'; document.getElementById('countGroup').style.display = type === 'count' ? 'block' : 'none'; document.getElementById('milestoneGroup').style.display = type === 'milestone' ? 'block' : 'none'; }
-        function addCheckpoint() { const container = document.getElementById('checkpoints'); const input = document.createElement('input'); input.type = 'text'; input.className = 'form-control'; input.style.marginBottom = '0.5rem'; container.appendChild(input); }
-        function addCountItem() { const container = document.getElementById('countItems'); const input = document.createElement('input'); input.type = 'text'; input.className = 'form-control'; input.style.marginBottom = '0.5rem'; container.appendChild(input); }
-        function addMilestone() { const container = document.getElementById('milestones'); const input = document.createElement('input'); input.type = 'text'; input.className = 'form-control'; input.style.marginBottom = '0.5rem'; container.appendChild(input); }
-        function getProjectDaysLeft(project) { const endDate = new Date(project.startDate); endDate.setDate(endDate.getDate() + project.duration); const daysLeft = Math.ceil((endDate - new Date()) / (1000 * 60 * 60 * 24)); return Math.max(0, daysLeft); }
-        function moveToPhase(projectId, newPhase) { const project = app.projects.find(p => p.id === projectId); if (!project) return; project.phase = newPhase; saveData(); renderDashboard(); showToast(`${newPhase}フェーズに移動しました`, 'success'); }
-        function reactivateProject(event, projectId) { event.stopPropagation(); const project = app.projects.find(p => p.id === projectId); if (!project) return; project.completed = false; project.phase = 'Design'; delete project.completedAt; saveData(); showSection('dashboard', document.querySelector('.nav-tab')); showToast('プロジェクトを再開しました', 'success'); }
-        function checkDailyReminder() { const today = new Date().toDateString(); if (localStorage.getItem(STORAGE_KEYS.LAST_CHECK_DATE) !== today) { const hasActiveProjects = app.projects.some(p => p.phase === 'Check' && !p.completed && !p.deleted); if (hasActiveProjects) document.getElementById('reminderBanner').classList.add('show'); if (localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS) === 'enabled') sendNotification(); } }
-        function requestNotificationPermission() { if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission(); }
-        function sendNotification() { if ('Notification' in window && Notification.permission === 'granted') { new Notification('PDCA Mosaic', { body: '今日のタスクをチェックしましょう！', icon: 'https://placehold.co/192x192/6366f1/FFFFFF?text=◈' }); } }
-        function toggleNotifications() { const currentStatus = localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS); if (currentStatus !== 'enabled') { if ('Notification' in window) { Notification.requestPermission().then(permission => { if (permission === 'granted') { localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled'); updateNotificationStatus(); } }); } } else { localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'disabled'); updateNotificationStatus(); } }
-        function updateNotificationStatus() { const status = localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS); document.getElementById('notificationStatus').textContent = status === 'enabled' ? '通知がオンです' : '通知をオンにする'; }
-        function saveAPIKey() { const apiKey = document.getElementById('apiKey').value.trim(); if (!apiKey) { showToast('APIキーを入力してください', 'error'); return; } app.apiKey = apiKey; localStorage.setItem(STORAGE_KEYS.API_KEY, apiKey); closeModal('apiKeyModal'); showToast('APIキーを保存しました', 'success'); }
-        function exportData() { const data = { ideas: app.ideas, projects: app.projects, logs: app.logs, improvements: app.improvements }; const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = `pdca-mosaic-backup.json`; a.click(); URL.revokeObjectURL(url); showToast('データをエクスポートしました', 'success'); }
-        function importData() { document.getElementById('importFile').click(); }
-        function handleImport(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = (e) => { try { const data = JSON.parse(e.target.result); showCustomConfirm('現在のデータは上書きされます。インポートしますか？', () => { app.ideas = data.ideas || []; app.projects = data.projects || []; app.logs = data.logs || []; app.improvements = data.improvements || []; saveData(); renderDashboard(); showToast('データをインポートしました', 'success'); }); } catch (err) { showToast('ファイルの読み込みに失敗しました', 'error'); } }; reader.readAsText(file); }
-        const calendarState = { currentYear: new Date().getFullYear(), currentMonth: new Date().getMonth() }; function renderCalendar() { const {currentYear, currentMonth} = calendarState; document.getElementById('calendarTitle').textContent = `${currentYear}年${currentMonth + 1}月`; const grid = document.getElementById('calendarGrid'); grid.innerHTML = ''; ['日','月','火','水','木','金','土'].forEach(d => grid.innerHTML += `<div class="calendar-weekday">${d}</div>`); const firstDay = new Date(currentYear, currentMonth, 1); const lastDay = new Date(currentYear, currentMonth + 1, 0); for (let i = firstDay.getDay(); i > 0; i--) { const d = new Date(currentYear, currentMonth, 1-i); grid.appendChild(createCalendarDay(d, true)); } for (let i = 1; i <= lastDay.getDate(); i++) { const d = new Date(currentYear, currentMonth, i); grid.appendChild(createCalendarDay(d, false)); } for (let i = 1; grid.children.length < 49; i++) { const d = new Date(currentYear, currentMonth + 1, i); grid.appendChild(createCalendarDay(d, true)); } }
-        function createCalendarDay(date, isOtherMonth) { const dayDiv = document.createElement('div'); dayDiv.className = 'calendar-day'; if(isOtherMonth) dayDiv.classList.add('other-month'); dayDiv.textContent = date.getDate(); const dateStr = formatDateForKey(date); if (app.logs.some(l => formatDateForKey(new Date(l.date)) === dateStr) || app.improvements.some(i => formatDateForKey(new Date(i.createdAt)) === dateStr)) dayDiv.classList.add('has-activity'); if (formatDateForKey(new Date()) === dateStr) dayDiv.classList.add('today'); dayDiv.onclick = () => showDayDetail(date); return dayDiv; }
-        function changeMonth(delta) { calendarState.currentMonth += delta; if (calendarState.currentMonth < 0) { calendarState.currentMonth = 11; calendarState.currentYear--; } else if (calendarState.currentMonth > 11) { calendarState.currentMonth = 0; calendarState.currentYear++; } renderCalendar(); }
-        function goToToday() { calendarState.currentYear = new Date().getFullYear(); calendarState.currentMonth = new Date().getMonth(); renderCalendar(); }
-        function formatDate(date) { return date.toLocaleDateString('ja-JP'); }
-        function formatDateForKey(date) { return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; }
-        function showDayDetail(date) { const detailDiv = document.getElementById('dayDetail'); const dateStr = formatDateForKey(date); const dayLogs = app.logs.filter(l => formatDateForKey(new Date(l.date)) === dateStr); let html = `<div class="day-detail"><div class="day-detail-header"><div class="day-detail-date">${formatDate(date)}</div><button onclick="closeDayDetail()">X</button></div>`; if(dayLogs.length > 0) { html += `<h4>活動記録</h4>`; dayLogs.forEach(log => { const p = app.projects.find(pr => pr.id === log.projectId); html += `<div class="day-detail-item">${p?.name || '不明なプロジェクト'}: 記録あり</div>`; }); } else { html += `<p>この日の記録はありません。</p>`; } html += `</div>`; detailDiv.innerHTML = html; detailDiv.style.display = 'block'; }
-        function closeDayDetail() { document.getElementById('dayDetail').style.display = 'none'; }
-        // その他の必要な関数もここに...
-        
+        // プロジェクトの残り日数を取得
+        function getProjectDaysLeft(project) {
+            const startDate = new Date(project.startDate);
+            const endDate = new Date(startDate);
+            endDate.setDate(endDate.getDate() + project.duration);
+            
+            const today = new Date();
+            const daysLeft = Math.ceil((endDate - today) / (1000 * 60 * 60 * 24));
+            
+            return Math.max(0, daysLeft);
+        }
+
+        // フェーズの説明を取得
+        function getPhaseDescription(phase) {
+            const descriptions = {
+                'Play': 'アイデアを自由に考え、可能性を探る段階',
+                'Design': 'アイデアを具体的な計画に落とし込む段階',
+                'Check': '計画を実行し、進捗を確認する段階',
+                'Adapt': '結果を評価し、改善点を見つける段階'
+            };
+            return descriptions[phase] || '';
+        }
+
+        // フェーズ移動
+        function moveToPhase(projectId, newPhase) {
+            const project = app.projects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            project.phase = newPhase;
+            saveData();
+            renderDashboard();
+            
+            showToast(`${newPhase}フェーズに移動しました`, 'success');
+        }
+
+        // プロジェクトの完了
+        function completeProject(projectId) {
+            const project = app.projects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            if (confirm('このプロジェクトを完了しますか？')) {
+                project.completed = true;
+                project.completedAt = new Date().toISOString();
+                saveData();
+                renderDashboard();
+                
+                showToast('プロジェクトを完了しました！', 'success');
+            }
+        }
+
+        // プロジェクトの再開
+        function reactivateProject(event, projectId) {
+            event.stopPropagation();
+            
+            const project = app.projects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            project.completed = false;
+            project.phase = 'Design';
+            delete project.completedAt;
+            
+            saveData();
+            showSection('dashboard');
+            
+            showToast('プロジェクトを再開しました', 'success');
+        }
+
+        // プロジェクトサイクルの再開
+        function restartProjectCycle(projectId) {
+            const project = app.projects.find(p => p.id === projectId);
+            if (!project) return;
+            
+            // サイクルカウントを増やす
+            project.cycleCount = (project.cycleCount || 1) + 1;
+            project.phase = 'Design';
+            project.startDate = new Date().toISOString();
+            
+            saveData();
+            renderDashboard();
+            
+            showToast('新しいサイクルを開始しました', 'success');
+        }
+
+        // 週次レポートの描画
+        function renderWeeklyReport() {
+            const reportDiv = document.getElementById('weeklyReport');
+            const lastReport = localStorage.getItem('pdca_last_report');
+            
+            if (lastReport) {
+                const report = JSON.parse(lastReport);
+                reportDiv.innerHTML = `
+                    <div class="analysis-card">
+                        <div class="analysis-title">週次インサイト</div>
+                        <div class="analysis-content">${report.content.replace(/\n/g, '<br>')}</div>
+                        <div style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">
+                            生成日: ${formatDate(new Date(report.date))}
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="generateWeeklyReport()">新しいレポートを生成</button>
+                    <button class="btn btn-secondary" style="margin-left: 0.5rem;" onclick="downloadReport()">
+                        レポートをダウンロード
+                    </button>
+                `;
+            }
+        }
+
+        // 週次レポートの生成
+        async function generateWeeklyReport() {
+            if (!app.apiKey) {
+                alert('週次レポートを生成するには、設定からOpenAI APIキーを登録してください。');
+                showSettings();
+                return;
+            }
+            
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = '生成中...';
+            
+            try {
+                // 週次データの集計
+                const weekAgo = new Date();
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                
+                const weeklyLogs = app.logs.filter(log => 
+                    new Date(log.date) >= weekAgo
+                );
+                
+                const activeProjects = app.projects.filter(p => !p.completed && !p.deleted);
+                
+                // プロジェクトごとの進捗サマリー
+                const projectSummaries = activeProjects.map(project => {
+                    const projectLogs = weeklyLogs.filter(log => log.projectId === project.id);
+                    const progress = calculateProjectProgress(project);
+                    
+                    return {
+                        name: project.name,
+                        phase: project.phase,
+                        progress: progress,
+                        logsCount: projectLogs.length,
+                        trackingType: project.trackingType
+                    };
+                });
+                
+                // 今週の改善点を取得
+                const weeklyImprovements = app.improvements.filter(imp => {
+                    const impDate = new Date(imp.createdAt);
+                    return impDate >= startOfWeek && impDate <= now;
+                });
+
+                // OpenAI APIへのリクエスト
+                const prompt = `
+以下のPDCAプロジェクトの週次進捗データを分析し、日本語でインサイトとアドバイスを提供してください：
+
+${projectSummaries.map(p => `
+- ${p.name} (${p.phase}フェーズ)
+  進捗: ${p.progress}%
+  今週の記録: ${p.logsCount}回
+  タイプ: ${p.trackingType}
+`).join('\n')}
+
+${weeklyImprovements.length > 0 ? `
+今週実施した改善・適応（${weeklyImprovements.length}件）:
+${weeklyImprovements.map(imp => {
+    const project = app.projects.find(p => p.id === imp.projectId);
+    return `- ${project ? project.name : '全般'}: ${imp.content}`;
+}).join('\n')}
+` : ''}
+
+以下の観点で分析してください：
+1. 全体的な進捗状況の評価
+2. ${weeklyImprovements.length > 0 ? '実施した改善の効果と今後の展開' : '最も順調なプロジェクトと改善が必要なプロジェクト'}
+3. 来週に向けての具体的なアドバイス
+4. モチベーション維持のための励ましのメッセージ
+`;
+
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${app.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'o3',
+                        messages: [
+                            { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの分析とアドバイスを行います。' },
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 800
+                    })
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error?.message || 'APIエラーが発生しました');
+                }
+                
+                const data = await response.json();
+                const report = {
+                    date: new Date().toISOString(),
+                    content: data.choices[0].message.content
+                };
+                
+                // レポートを保存
+                localStorage.setItem('pdca_last_report', JSON.stringify(report));
+                
+                // レポートを表示
+                renderWeeklyReport();
+                
+                showToast('週次レポートを生成しました', 'success');
+                
+            } catch (error) {
+                console.error('レポート生成エラー:', error);
+                alert(`レポートの生成に失敗しました: ${error.message}`);
+            } finally {
+                button.disabled = false;
+                button.textContent = 'レポートを生成';
+            }
+        }
+
+        // デイリーコメントの生成
+        async function generateDailyComment() {
+            if (!app.apiKey) {
+                alert('デイリーコメントを生成するには、設定からOpenAI APIキーを登録してください。');
+                showSettings();
+                return;
+            }
+            
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = '生成中...';
+            
+            try {
+                // 今日のデータを取得
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                const todayLogs = app.logs.filter(log => {
+                    const logDate = new Date(log.date);
+                    logDate.setHours(0, 0, 0, 0);
+                    return logDate.getTime() === today.getTime();
+                });
+                
+                const activeProjects = app.projects.filter(p => !p.completed && !p.deleted);
+                
+                // 本日の活動サマリー
+                const todaySummary = activeProjects.map(project => {
+                    const projectLogs = todayLogs.filter(log => log.projectId === project.id);
+                    return {
+                        name: project.name,
+                        phase: project.phase,
+                        logsCount: projectLogs.length,
+                        activities: projectLogs.map(log => log.content).join(', ')
+                    };
+                }).filter(p => p.logsCount > 0);
+
+                // 今日の改善点を取得
+                const todayImprovement = app.improvements?.find(imp => {
+                    const impDate = new Date(imp.date);
+                    impDate.setHours(0, 0, 0, 0);
+                    return impDate.getTime() === today.getTime();
+                });
+
+                const prompt = `以下は今日のPDCAプロジェクトの活動記録です。
+
+${todaySummary.length > 0 ? 
+`本日の活動:
+${todaySummary.map(p => `- ${p.name} (${p.phase}フェーズ): ${p.activities}`).join('\n')}` :
+'本日はまだ活動記録がありません。'}
+
+${todayImprovement ? 
+`本日の改善点・適応事項:
+${todayImprovement.content}` : ''}
+
+アクティブなプロジェクト数: ${activeProjects.length}
+
+以下の観点から、励ましと建設的なアドバイスを含む短いデイリーコメントを日本語で生成してください（150文字程度）:
+1. 本日の活動への評価
+2. ${todayImprovement ? '改善点の効果についての評価' : '明日に向けての改善提案'}
+3. 明日に向けての具体的なアドバイス
+4. モチベーションを高める一言`;
+
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${app.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'o3',
+                        messages: [
+                            { role: 'system', content: 'あなたは優しくて励まし上手なコーチです。簡潔で温かいメッセージを送ります。' },
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: 0.8,
+                        max_tokens: 200
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const comment = data.choices[0].message.content;
+                
+                // コメントを保存
+                const dailyComment = {
+                    date: new Date().toISOString(),
+                    content: comment
+                };
+                
+                // 今日のコメントを保存（1日1つ）
+                const savedComments = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]');
+                const todayIndex = savedComments.findIndex(c => {
+                    const commentDate = new Date(c.date);
+                    commentDate.setHours(0, 0, 0, 0);
+                    return commentDate.getTime() === today.getTime();
+                });
+                
+                if (todayIndex >= 0) {
+                    savedComments[todayIndex] = dailyComment;
+                } else {
+                    savedComments.push(dailyComment);
+                }
+                
+                localStorage.setItem('pdca_daily_comments', JSON.stringify(savedComments));
+                
+                // コメントを表示
+                renderDailyComment();
+                
+                showToast('デイリーコメントを生成しました', 'success');
+                
+            } catch (error) {
+                console.error('コメント生成エラー:', error);
+                alert(`コメントの生成に失敗しました: ${error.message}`);
+            } finally {
+                button.disabled = false;
+                button.textContent = '今日のコメントを生成';
+            }
+        }
+
+        // デイリーコメントの表示
+        function renderDailyComment() {
+            const dailyCommentDiv = document.getElementById('dailyComment');
+            const savedComments = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]');
+            
+            if (savedComments.length === 0) {
+                dailyCommentDiv.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">💬</div>
+                        <div class="empty-text">今日のコメントはまだありません</div>
+                        <button class="btn btn-primary" onclick="generateDailyComment()">今日のコメントを生成</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 最新のコメントから表示
+            const sortedComments = savedComments.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            dailyCommentDiv.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <button class="btn btn-primary" onclick="generateDailyComment()">今日のコメントを生成</button>
+                </div>
+                ${sortedComments.map(comment => {
+                    const commentDate = new Date(comment.date);
+                    const isToday = (() => {
+                        const d = new Date(comment.date);
+                        d.setHours(0, 0, 0, 0);
+                        return d.getTime() === today.getTime();
+                    })();
+                    
+                    return `
+                        <div class="card" style="margin-bottom: 1rem; ${isToday ? 'border: 2px solid var(--primary);' : ''}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <div style="font-weight: bold; color: var(--text-secondary);">
+                                    ${formatDate(commentDate)} ${isToday ? '(今日)' : ''}
+                                </div>
+                            </div>
+                            <div style="font-size: 1.1rem; line-height: 1.6;">
+                                ${comment.content}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+        }
+
+        // 月次インサイトの生成
+        async function generateMonthlyInsight() {
+            if (!app.apiKey) {
+                alert('月次インサイトを生成するには、設定からOpenAI APIキーを登録してください。');
+                showSettings();
+                return;
+            }
+            
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = '生成中...';
+            
+            try {
+                // 今月のデータを取得
+                const now = new Date();
+                const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+                
+                const monthlyLogs = app.logs.filter(log => 
+                    new Date(log.date) >= monthStart
+                );
+                
+                const monthlyProjects = app.projects.filter(p => 
+                    new Date(p.createdAt) >= monthStart || monthlyLogs.some(log => log.projectId === p.id)
+                );
+                
+                // プロジェクトごとの統計
+                const projectStats = monthlyProjects.map(project => {
+                    const projectLogs = monthlyLogs.filter(log => log.projectId === project.id);
+                    const progress = calculateProjectProgress(project);
+                    
+                    return {
+                        name: project.name,
+                        phase: project.phase,
+                        progress: progress,
+                        logsCount: projectLogs.length,
+                        completed: project.completed,
+                        createdThisMonth: new Date(project.createdAt) >= monthStart
+                    };
+                });
+
+                const completedCount = projectStats.filter(p => p.completed).length;
+                const activeCount = projectStats.filter(p => !p.completed).length;
+                const totalLogs = monthlyLogs.length;
+                
+                // 今月の改善点を取得
+                const monthlyImprovements = app.improvements?.filter(imp => 
+                    new Date(imp.date) >= monthStart
+                ) || [];
+
+                const prompt = `以下は今月のPDCAプロジェクトの統計データです。
+
+今月の活動:
+- 総ログ数: ${totalLogs}
+- アクティブプロジェクト: ${activeCount}
+- 完了プロジェクト: ${completedCount}
+- 新規開始プロジェクト: ${projectStats.filter(p => p.createdThisMonth).length}
+
+プロジェクト詳細:
+${projectStats.map(p => `- ${p.name} (${p.phase}フェーズ): ログ数${p.logsCount}回, 進捗${p.progress}%${p.completed ? ' [完了]' : ''}`).join('\n')}
+
+${monthlyImprovements.length > 0 ? 
+`今月実施した改善点・適応事項 (${monthlyImprovements.length}件):
+${monthlyImprovements.slice(-5).map(imp => `- ${new Date(imp.date).getDate()}日: ${imp.content}`).join('\n')}` : ''}
+
+以下の観点から、今月の振り返りと来月への戦略的アドバイスを含む月次インサイトを日本語で生成してください（300文字程度）:
+1. 今月の成果と改善点の分析
+2. ${monthlyImprovements.length > 0 ? '実施した改善・適応の効果評価' : 'PDCAサイクルの実施状況の評価'}
+3. 来月の重点課題の提案
+4. 生産性向上のための具体的なアドバイス`;
+
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${app.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'o3',
+                        messages: [
+                            { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの月次分析と戦略的アドバイスを行います。' },
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 400
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const insight = data.choices[0].message.content;
+                
+                // インサイトを保存
+                const monthlyInsight = {
+                    date: new Date().toISOString(),
+                    month: `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`,
+                    content: insight,
+                    stats: {
+                        totalLogs,
+                        activeCount,
+                        completedCount
+                    }
+                };
+                
+                const savedInsights = JSON.parse(localStorage.getItem('pdca_monthly_insights') || '[]');
+                const existingIndex = savedInsights.findIndex(i => i.month === monthlyInsight.month);
+                
+                if (existingIndex >= 0) {
+                    savedInsights[existingIndex] = monthlyInsight;
+                } else {
+                    savedInsights.push(monthlyInsight);
+                }
+                
+                localStorage.setItem('pdca_monthly_insights', JSON.stringify(savedInsights));
+                
+                // インサイトを表示
+                renderMonthlyInsight();
+                
+                showToast('月次インサイトを生成しました', 'success');
+                
+            } catch (error) {
+                console.error('インサイト生成エラー:', error);
+                alert(`インサイトの生成に失敗しました: ${error.message}`);
+            } finally {
+                button.disabled = false;
+                button.textContent = '今月のインサイトを生成';
+            }
+        }
+
+        // 月次インサイトの表示
+        function renderMonthlyInsight() {
+            const monthlyInsightDiv = document.getElementById('monthlyInsight');
+            const savedInsights = JSON.parse(localStorage.getItem('pdca_monthly_insights') || '[]');
+            
+            if (savedInsights.length === 0) {
+                monthlyInsightDiv.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📈</div>
+                        <div class="empty-text">今月のインサイトはまだありません</div>
+                        <button class="btn btn-primary" onclick="generateMonthlyInsight()">今月のインサイトを生成</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const sortedInsights = savedInsights.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const currentMonth = `${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, '0')}`;
+            
+            monthlyInsightDiv.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <button class="btn btn-primary" onclick="generateMonthlyInsight()">今月のインサイトを生成</button>
+                </div>
+                ${sortedInsights.map(insight => {
+                    const isCurrentMonth = insight.month === currentMonth;
+                    const [year, month] = insight.month.split('-');
+                    
+                    return `
+                        <div class="card" style="margin-bottom: 1rem; ${isCurrentMonth ? 'border: 2px solid var(--primary);' : ''}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <div style="font-weight: bold; font-size: 1.2rem;">
+                                    ${year}年${parseInt(month)}月 ${isCurrentMonth ? '(今月)' : ''}
+                                </div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    ログ: ${insight.stats.totalLogs} | アクティブ: ${insight.stats.activeCount} | 完了: ${insight.stats.completedCount}
+                                </div>
+                            </div>
+                            <div style="font-size: 1.1rem; line-height: 1.8; white-space: pre-wrap;">
+                                ${insight.content}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+        }
+
+        // 3ヶ月インサイトの生成
+        async function generateQuarterlyInsight() {
+            if (!app.apiKey) {
+                alert('3ヶ月インサイトを生成するには、設定からOpenAI APIキーを登録してください。');
+                showSettings();
+                return;
+            }
+            
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = '生成中...';
+            
+            try {
+                // 3ヶ月前からのデータを取得
+                const now = new Date();
+                const threeMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 2, 1);
+                
+                const quarterlyLogs = app.logs.filter(log => 
+                    new Date(log.date) >= threeMonthsAgo
+                );
+                
+                const quarterlyProjects = app.projects.filter(p => 
+                    new Date(p.createdAt) >= threeMonthsAgo || quarterlyLogs.some(log => log.projectId === p.id)
+                );
+                
+                // 月ごとの統計
+                const monthlyStats = [];
+                for (let i = 2; i >= 0; i--) {
+                    const monthDate = new Date(now.getFullYear(), now.getMonth() - i, 1);
+                    const nextMonth = new Date(now.getFullYear(), now.getMonth() - i + 1, 1);
+                    
+                    const monthLogs = quarterlyLogs.filter(log => {
+                        const logDate = new Date(log.date);
+                        return logDate >= monthDate && logDate < nextMonth;
+                    });
+                    
+                    monthlyStats.push({
+                        month: `${monthDate.getFullYear()}年${monthDate.getMonth() + 1}月`,
+                        logsCount: monthLogs.length,
+                        activeProjects: new Set(monthLogs.map(log => log.projectId)).size
+                    });
+                }
+                
+                // プロジェクトの成長分析
+                const projectGrowth = quarterlyProjects.map(project => {
+                    const projectLogs = quarterlyLogs.filter(log => log.projectId === project.id);
+                    const firstLog = projectLogs.sort((a, b) => new Date(a.date) - new Date(b.date))[0];
+                    const lastLog = projectLogs.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+                    
+                    return {
+                        name: project.name,
+                        totalLogs: projectLogs.length,
+                        durationDays: firstLog && lastLog ? 
+                            Math.ceil((new Date(lastLog.date) - new Date(firstLog.date)) / (1000 * 60 * 60 * 24)) : 0,
+                        completed: project.completed,
+                        phase: project.phase
+                    };
+                });
+
+                const completedCount = projectGrowth.filter(p => p.completed).length;
+                const totalProjects = quarterlyProjects.length;
+                const completionRate = totalProjects > 0 ? Math.round((completedCount / totalProjects) * 100) : 0;
+                
+                // 3ヶ月間の改善点を取得
+                const quarterlyImprovements = app.improvements?.filter(imp => 
+                    new Date(imp.date) >= threeMonthsAgo
+                ) || [];
+
+                const prompt = `以下は過去3ヶ月のPDCAプロジェクトの統計データです。
+
+月別活動推移:
+${monthlyStats.map(s => `- ${s.month}: ログ数${s.logsCount}回, アクティブプロジェクト${s.activeProjects}個`).join('\n')}
+
+プロジェクト分析:
+- 総プロジェクト数: ${totalProjects}
+- 完了プロジェクト: ${completedCount} (完了率: ${completionRate}%)
+- 総ログ数: ${quarterlyLogs.length}
+
+主要プロジェクト:
+${projectGrowth.slice(0, 5).map(p => `- ${p.name}: ${p.totalLogs}ログ, ${p.durationDays}日間${p.completed ? ' [完了]' : ` [${p.phase}]`}`).join('\n')}
+
+${quarterlyImprovements.length > 0 ? 
+`3ヶ月間の主な改善・適応 (${quarterlyImprovements.length}件実施):
+${quarterlyImprovements.slice(-10).map(imp => {
+    const date = new Date(imp.date);
+    return `- ${date.getMonth() + 1}/${date.getDate()}: ${imp.content}`;
+}).join('\n')}` : ''}
+
+以下の観点から、3ヶ月間の成長分析と今後の戦略を含む総合インサイトを日本語で生成してください（400文字程度）:
+1. 3ヶ月間の成長トレンドと達成度の評価
+2. ${quarterlyImprovements.length > 0 ? '実施した改善・適応の累積効果' : 'PDCAサイクルの習慣化の度合い'}
+3. 成功パターンと改善が必要なパターンの特定
+4. 次の3ヶ月に向けた戦略的提言
+5. 長期的な成長のための具体的アクション`;
+
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${app.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: 'o3',
+                        messages: [
+                            { role: 'system', content: 'あなたは成長戦略の専門家です。PDCAサイクルを使った長期的な自己改善の分析と戦略立案を行います。' },
+                            { role: 'user', content: prompt }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 500
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const insight = data.choices[0].message.content;
+                
+                // インサイトを保存
+                const quarterlyInsight = {
+                    date: new Date().toISOString(),
+                    quarter: `${now.getFullYear()}-Q${Math.ceil((now.getMonth() + 1) / 3)}`,
+                    content: insight,
+                    stats: {
+                        totalProjects,
+                        completedCount,
+                        completionRate,
+                        totalLogs: quarterlyLogs.length
+                    }
+                };
+                
+                const savedInsights = JSON.parse(localStorage.getItem('pdca_quarterly_insights') || '[]');
+                savedInsights.push(quarterlyInsight);
+                
+                // 最新の10件のみ保持
+                if (savedInsights.length > 10) {
+                    savedInsights.shift();
+                }
+                
+                localStorage.setItem('pdca_quarterly_insights', JSON.stringify(savedInsights));
+                
+                // インサイトを表示
+                renderQuarterlyInsight();
+                
+                showToast('3ヶ月インサイトを生成しました', 'success');
+                
+            } catch (error) {
+                console.error('インサイト生成エラー:', error);
+                alert(`インサイトの生成に失敗しました: ${error.message}`);
+            } finally {
+                button.disabled = false;
+                button.textContent = '3ヶ月のインサイトを生成';
+            }
+        }
+
+        // 3ヶ月インサイトの表示
+        function renderQuarterlyInsight() {
+            const quarterlyInsightDiv = document.getElementById('quarterlyInsight');
+            const savedInsights = JSON.parse(localStorage.getItem('pdca_quarterly_insights') || '[]');
+            
+            if (savedInsights.length === 0) {
+                quarterlyInsightDiv.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🎯</div>
+                        <div class="empty-text">3ヶ月のインサイトはまだありません</div>
+                        <button class="btn btn-primary" onclick="generateQuarterlyInsight()">3ヶ月のインサイトを生成</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            const sortedInsights = savedInsights.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            quarterlyInsightDiv.innerHTML = `
+                <div style="margin-bottom: 1rem;">
+                    <button class="btn btn-primary" onclick="generateQuarterlyInsight()">3ヶ月のインサイトを生成</button>
+                </div>
+                ${sortedInsights.map((insight, index) => {
+                    const date = new Date(insight.date);
+                    
+                    return `
+                        <div class="card" style="margin-bottom: 1rem; ${index === 0 ? 'border: 2px solid var(--primary);' : ''}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <div style="font-weight: bold; font-size: 1.2rem;">
+                                    ${formatDate(date)} 生成 ${index === 0 ? '(最新)' : ''}
+                                </div>
+                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                    プロジェクト: ${insight.stats.totalProjects} | 完了: ${insight.stats.completedCount} (${insight.stats.completionRate}%) | ログ: ${insight.stats.totalLogs}
+                                </div>
+                            </div>
+                            <div style="font-size: 1.1rem; line-height: 1.8; white-space: pre-wrap;">
+                                ${insight.content}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            `;
+        }
+
+        // レポートのダウンロード
+        function downloadReport() {
+            const lastReport = localStorage.getItem('pdca_last_report');
+            if (!lastReport) return;
+            
+            const report = JSON.parse(lastReport);
+            const content = `PDCA Mosaic 週次レポート\n生成日: ${formatDate(new Date(report.date))}\n\n${report.content}`;
+            
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `weekly-report-${formatDate(new Date(), 'file')}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // 毎日のリマインダーチェック
+        function checkDailyReminder() {
+            const today = new Date().toDateString();
+            const lastCheckDate = localStorage.getItem(STORAGE_KEYS.LAST_CHECK_DATE);
+            
+            // 今日まだチェックしていない場合
+            if (lastCheckDate !== today) {
+                const hasActiveProjects = app.projects.some(p => 
+                    p.phase === 'Check' && p.trackingType === 'daily' && !p.completed && !p.deleted
+                );
+                
+                if (hasActiveProjects) {
+                    // 未完了のタスクがあるかチェック
+                    const todayLogs = app.logs.filter(log => 
+                        new Date(log.date).toDateString() === today
+                    );
+                    
+                    const hasUncompletedTasks = app.projects.some(project => {
+                        if (project.phase !== 'Check' || project.trackingType !== 'daily' || project.completed || project.deleted) return false;
+                        
+                        const todayLog = todayLogs.find(log => log.projectId === project.id);
+                        return !todayLog || !todayLog.completed;
+                    });
+                    
+                    if (hasUncompletedTasks) {
+                        document.getElementById('reminderBanner').classList.add('show');
+                        
+                        // ブラウザ通知を送信
+                        if (localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS) === 'enabled') {
+                            sendNotification();
+                        }
+                    }
+                }
+            }
+        }
+
+        // 通知権限のリクエスト
+        function requestNotificationPermission() {
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        }
+
+        // ブラウザ通知の送信
+        function sendNotification() {
+            if ('Notification' in window && Notification.permission === 'granted') {
+                const notification = new Notification('PDCA Mosaic - 今日のタスク', {
+                    body: '今日のタスクをチェックしましょう！',
+                    icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%236366f1"/><text x="50" y="65" font-size="50" text-anchor="middle" fill="white">◈</text></svg>',
+                    badge: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%236366f1"/></svg>',
+                    requireInteraction: true
+                });
+                
+                notification.onclick = function() {
+                    window.focus();
+                    showDailyLog();
+                    notification.close();
+                };
+            }
+        }
+
+        // 通知設定の切り替え
+        function toggleNotifications() {
+            const currentStatus = localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS);
+            const newStatus = currentStatus === 'enabled' ? 'disabled' : 'enabled';
+            
+            if (newStatus === 'enabled' && 'Notification' in window) {
+                if (Notification.permission === 'default') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled');
+                            updateNotificationStatus();
+                        }
+                    });
+                } else if (Notification.permission === 'granted') {
+                    localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled');
+                    updateNotificationStatus();
+                } else {
+                    alert('ブラウザの設定で通知を許可してください');
+                }
+            } else {
+                localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'disabled');
+                updateNotificationStatus();
+            }
+        }
+
+        // 通知ステータスの表示更新
+        function updateNotificationStatus() {
+            const status = localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS);
+            const statusElement = document.getElementById('notificationStatus');
+            if (statusElement) {
+                statusElement.textContent = status === 'enabled' ? '通知がオンです' : '通知をオンにする';
+            }
+        }
+
+        // APIキーの保存
+        function saveAPIKey() {
+            const apiKey = document.getElementById('apiKey').value.trim();
+            
+            if (!apiKey) {
+                alert('APIキーを入力してください');
+                return;
+            }
+            
+            app.apiKey = apiKey;
+            localStorage.setItem(STORAGE_KEYS.API_KEY, apiKey);
+            
+            closeModal('apiKeyModal');
+            showToast('APIキーを保存しました', 'success');
+        }
+
+        // データのエクスポート
+        function exportData() {
+            const data = {
+                ideas: app.ideas,
+                projects: app.projects,
+                logs: app.logs,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `pdca-mosaic-backup-${formatDate(new Date(), 'file')}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast('データをエクスポートしました', 'success');
+        }
+
+        // データのインポート
+        function importData() {
+            document.getElementById('importFile').click();
+        }
+
+        // インポートハンドラー
+        function handleImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (!data.ideas || !data.projects || !data.logs) {
+                        throw new Error('無効なデータ形式です');
+                    }
+                    
+                    if (confirm('現在のデータは上書きされます。インポートを続行しますか？')) {
+                        app.ideas = data.ideas;
+                        app.projects = data.projects;
+                        app.logs = data.logs;
+                        
+                        saveData();
+                        renderDashboard();
+                        
+                        showToast('データをインポートしました', 'success');
+                    }
+                } catch (error) {
+                    alert('データのインポートに失敗しました: ' + error.message);
+                }
+            };
+            
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        // カレンダー関連の状態
+        const calendarState = {
+            currentYear: new Date().getFullYear(),
+            currentMonth: new Date().getMonth(),
+            selectedDate: null
+        };
+
+        // カレンダーの描画
+        function renderCalendar() {
+            const year = calendarState.currentYear;
+            const month = calendarState.currentMonth;
+            
+            // タイトルの更新
+            document.getElementById('calendarTitle').textContent = `${year}年${month + 1}月`;
+            
+            // カレンダーグリッドの生成
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+            
+            // 曜日ヘッダー
+            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+            weekdays.forEach(day => {
+                const weekdayDiv = document.createElement('div');
+                weekdayDiv.className = 'calendar-weekday';
+                weekdayDiv.textContent = day;
+                grid.appendChild(weekdayDiv);
+            });
+            
+            // 月の最初の日と最後の日を取得
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const prevLastDay = new Date(year, month, 0);
+            
+            // 前月の日付を埋める
+            const firstDayOfWeek = firstDay.getDay();
+            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+                const day = prevLastDay.getDate() - i;
+                const dayDiv = createCalendarDay(year, month - 1, day, true);
+                grid.appendChild(dayDiv);
+            }
+            
+            // 当月の日付
+            const today = new Date();
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dayDiv = createCalendarDay(year, month, day, false);
+                
+                // 今日の日付をハイライト
+                if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                    dayDiv.classList.add('today');
+                }
+                
+                grid.appendChild(dayDiv);
+            }
+            
+            // 次月の日付を埋める
+            const remainingDays = 42 - (firstDayOfWeek + lastDay.getDate());
+            for (let day = 1; day <= remainingDays; day++) {
+                const dayDiv = createCalendarDay(year, month + 1, day, true);
+                grid.appendChild(dayDiv);
+            }
+        }
+
+        // カレンダーの日付要素を作成
+        function createCalendarDay(year, month, day, isOtherMonth) {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'calendar-day';
+            if (isOtherMonth) {
+                dayDiv.classList.add('other-month');
+            }
+            
+            const date = new Date(year, month, day);
+            const dateStr = formatDateForKey(date);
+            
+            // その日の活動をチェック
+            const dayLogs = app.logs.filter(log => {
+                const logDate = new Date(log.date);
+                return formatDateForKey(logDate) === dateStr;
+            });
+            
+            const dayImprovements = app.improvements.filter(imp => {
+                const impDate = new Date(imp.createdAt);
+                return formatDateForKey(impDate) === dateStr;
+            });
+            
+            if (dayLogs.length > 0 || dayImprovements.length > 0) {
+                dayDiv.classList.add('has-activity');
+            }
+            
+            // 日付番号
+            const numberDiv = document.createElement('div');
+            numberDiv.className = 'calendar-day-number';
+            numberDiv.textContent = day;
+            dayDiv.appendChild(numberDiv);
+            
+            // アクティビティインジケーター
+            if (dayLogs.length > 0 || dayImprovements.length > 0) {
+                const indicatorDiv = document.createElement('div');
+                indicatorDiv.className = 'calendar-day-indicator';
+                
+                // 最大3つのドットを表示
+                const dotCount = Math.min(3, dayLogs.length + dayImprovements.length);
+                for (let i = 0; i < dotCount; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'activity-dot';
+                    indicatorDiv.appendChild(dot);
+                }
+                
+                dayDiv.appendChild(indicatorDiv);
+            }
+            
+            // クリックイベント
+            dayDiv.onclick = () => selectCalendarDate(date);
+            
+            return dayDiv;
+        }
+
+        // 日付をキー用の文字列に変換
+        function formatDateForKey(date) {
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        // カレンダーの日付を選択
+        function selectCalendarDate(date) {
+            // 以前の選択を解除
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            // 新しい選択を追加
+            event.currentTarget.classList.add('selected');
+            calendarState.selectedDate = date;
+            
+            // 詳細を表示
+            showDayDetail(date);
+        }
+
+        // 日付の詳細を表示
+        function showDayDetail(date) {
+            const detailDiv = document.getElementById('dayDetail');
+            const dateStr = formatDateForKey(date);
+            
+            // その日のログを取得
+            const dayLogs = app.logs.filter(log => {
+                const logDate = new Date(log.date);
+                return formatDateForKey(logDate) === dateStr;
+            });
+            
+            // その日の改善点を取得
+            const dayImprovements = app.improvements.filter(imp => {
+                const impDate = new Date(imp.createdAt);
+                return formatDateForKey(impDate) === dateStr;
+            });
+            
+            let html = `
+                <div class="day-detail">
+                    <div class="day-detail-header">
+                        <div class="day-detail-date">${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日</div>
+                        <button class="btn btn-secondary" onclick="closeDayDetail()">閉じる</button>
+                    </div>
+            `;
+            
+            // ログセクション
+            if (dayLogs.length > 0) {
+                html += `
+                    <div class="day-detail-section">
+                        <div class="day-detail-section-title">
+                            <span>📝</span>
+                            <span>活動記録 (${dayLogs.length}件)</span>
+                        </div>
+                `;
+                
+                dayLogs.forEach(log => {
+                    const project = app.projects.find(p => p.id === log.projectId);
+                    if (project) {
+                        html += `
+                            <div class="day-detail-item">
+                                <div class="day-detail-project">${project.name}</div>
+                        `;
+                        
+                        if (log.checkpoints) {
+                            const checkedCount = log.checkpoints.filter(c => c).length;
+                            html += `<div>チェック項目: ${checkedCount}/${log.checkpoints.length} 完了</div>`;
+                        }
+                        
+                        if (log.counts) {
+                            log.counts.forEach((count, index) => {
+                                if (count > 0 && project.countItems[index]) {
+                                    html += `<div>${project.countItems[index]}: ${count}回</div>`;
+                                }
+                            });
+                        }
+                        
+                        if (log.milestones) {
+                            const achievedCount = log.milestones.filter(m => m).length;
+                            html += `<div>マイルストーン: ${achievedCount}/${log.milestones.length} 達成</div>`;
+                        }
+                        
+                        html += `</div>`;
+                    }
+                });
+                
+                html += `</div>`;
+            }
+            
+            // 改善点セクション
+            if (dayImprovements.length > 0) {
+                html += `
+                    <div class="day-detail-section">
+                        <div class="day-detail-section-title">
+                            <span>💡</span>
+                            <span>改善点・適応 (${dayImprovements.length}件)</span>
+                        </div>
+                `;
+                
+                dayImprovements.forEach(imp => {
+                    const project = app.projects.find(p => p.id === imp.projectId);
+                    html += `
+                        <div class="day-detail-item">
+                            ${project ? `<div class="day-detail-project">${project.name}</div>` : ''}
+                            <div>${imp.content}</div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            }
+            
+            // AIコメントセクション
+            const dailyComment = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]')
+                .find(comment => comment.date === dateStr);
+            
+            if (dailyComment) {
+                html += `
+                    <div class="day-detail-section">
+                        <div class="day-detail-section-title">
+                            <span>🤖</span>
+                            <span>AIコメント</span>
+                        </div>
+                        <div class="day-detail-item">
+                            ${dailyComment.content}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (dayLogs.length === 0 && dayImprovements.length === 0 && !dailyComment) {
+                html += `
+                    <div style="text-align: center; color: var(--gray); padding: 2rem;">
+                        この日の記録はありません
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+            
+            detailDiv.innerHTML = html;
+            detailDiv.style.display = 'block';
+            
+            // スクロール位置を調整
+            detailDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // 日付詳細を閉じる
+        function closeDayDetail() {
+            document.getElementById('dayDetail').style.display = 'none';
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+        }
+
+        // 月を変更
+        function changeMonth(delta) {
+            calendarState.currentMonth += delta;
+            
+            if (calendarState.currentMonth < 0) {
+                calendarState.currentMonth = 11;
+                calendarState.currentYear--;
+            } else if (calendarState.currentMonth > 11) {
+                calendarState.currentMonth = 0;
+                calendarState.currentYear++;
+            }
+            
+            renderCalendar();
+        }
+
+        // 今日に移動
+        function goToToday() {
+            const today = new Date();
+            calendarState.currentYear = today.getFullYear();
+            calendarState.currentMonth = today.getMonth();
+            renderCalendar();
+        }
+
+        // 日付フォーマット
+        function formatDate(date, format = 'display') {
+            if (format === 'file') {
+                return date.toISOString().split('T')[0];
+            }
+            
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            
+            return `${year}/${month}/${day}`;
+        }
     </script>
 </body>
 </html>
