@@ -53,6 +53,59 @@
             overflow-x: hidden;
         }
 
+        /* PWAインストールプロンプト */
+        .install-prompt {
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: none;
+            z-index: 2000;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+        }
+
+        .install-prompt.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        .install-prompt-text {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .install-prompt-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .install-prompt-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .install-prompt-button-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .install-prompt-button-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
         /* アニメーション */
         @keyframes slideUp {
             from { transform: translateY(100%); opacity: 0; }
@@ -1328,6 +1381,21 @@
     <!-- Toast Container -->
     <div id="toast" class="toast"></div>
 
+    <!-- PWA Install Prompt -->
+    <div id="installPrompt" class="install-prompt">
+        <div class="install-prompt-text">
+            アプリとしてインストールできます！
+        </div>
+        <div class="install-prompt-buttons">
+            <button class="install-prompt-button install-prompt-button-primary" onclick="installPWA()">
+                インストール
+            </button>
+            <button class="install-prompt-button install-prompt-button-secondary" onclick="dismissInstallPrompt()">
+                後で
+            </button>
+        </div>
+    </div>
+
     <!-- Daily Reminder Banner -->
     <div id="reminderBanner" class="reminder-banner" onclick="showDailyLog()">
         <div class="reminder-text">🔔 今日のタスクをチェックしましょう！</div>
@@ -1754,6 +1822,131 @@
         </div>
     </div>
 
+    <!-- Service Worker Registration Script -->
+    <script>
+        // Service Worker のコード（Base64エンコード）
+        const serviceWorkerCode = `
+// Service Worker - v1
+const CACHE_NAME = 'pdca-mosaic-v1';
+const urlsToCache = [
+    '/',
+    '/index.html'
+];
+
+// インストール時にキャッシュ
+self.addEventListener('install', event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => cache.addAll(urlsToCache))
+    );
+});
+
+// フェッチ時にキャッシュから返す
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => response || fetch(event.request))
+    );
+});
+
+// 古いキャッシュの削除
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cacheName => {
+                    if (cacheName !== CACHE_NAME) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
+`;
+
+        // Service Worker を Blob URL として作成
+        const blob = new Blob([serviceWorkerCode], { type: 'application/javascript' });
+        const swUrl = URL.createObjectURL(blob);
+
+        // PWA インストール関連の変数
+        let deferredPrompt = null;
+        let hasShownInstallPrompt = false;
+
+        // Service Worker を登録
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register(swUrl)
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // PWA インストールプロンプトの処理
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // 一度しか表示しない（セッション中）
+            if (!hasShownInstallPrompt) {
+                showInstallPrompt();
+                hasShownInstallPrompt = true;
+            }
+        });
+
+        function showInstallPrompt() {
+            const prompt = document.getElementById('installPrompt');
+            if (prompt) {
+                prompt.classList.add('show');
+                
+                // 10秒後に自動的に非表示
+                setTimeout(() => {
+                    if (prompt.classList.contains('show')) {
+                        dismissInstallPrompt();
+                    }
+                }, 10000);
+            }
+        }
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('PWA installed');
+                        showToast('アプリをインストールしました！', 'success');
+                    }
+                    deferredPrompt = null;
+                    dismissInstallPrompt();
+                });
+            }
+        }
+
+        function dismissInstallPrompt() {
+            const prompt = document.getElementById('installPrompt');
+            if (prompt) {
+                prompt.classList.remove('show');
+            }
+        }
+
+        // インストール済みかチェック
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('PWA was installed');
+            dismissInstallPrompt();
+        });
+
+        // スタンドアロンモードで起動しているかチェック
+        if (window.matchMedia('(display-mode: standalone)').matches || 
+            window.navigator.standalone === true) {
+            console.log('Running as PWA');
+        }
+    </script>
+
+    <!-- Original Application Script -->
     <script>
         // アプリケーションの状態管理
         const app = {
@@ -3116,7 +3309,7 @@
             sessionStorage.setItem(tempKey, achieved ? 'true' : 'false');
             
             // UIの更新
-            const label = document.querySelector(`label[for="milestone_${project.id}_${milestoneIndex}"]`);
+            const label = document.querySelector(`label[for="milestone_${projectId}_${milestoneIndex}"]`);
             if (label) {
                 if (achieved) {
                     label.classList.add('milestone-achieved');
@@ -3424,6 +3617,10 @@
                 });
                 
                 // 今週の改善点を取得
+                const now = new Date();
+                const startOfWeek = new Date(now);
+                startOfWeek.setDate(now.getDate() - now.getDay());
+                
                 const weeklyImprovements = app.improvements.filter(imp => {
                     const impDate = new Date(imp.createdAt);
                     return impDate >= startOfWeek && impDate <= now;
@@ -3462,7 +3659,7 @@ ${weeklyImprovements.map(imp => {
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'o3',
+                        model: 'gpt-4',
                         messages: [
                             { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの分析とアドバイスを行います。' },
                             { role: 'user', content: prompt }
@@ -3569,7 +3766,7 @@ ${todayImprovement.content}` : ''}
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'o3',
+                        model: 'gpt-4',
                         messages: [
                             { role: 'system', content: 'あなたは優しくて励まし上手なコーチです。簡潔で温かいメッセージを送ります。' },
                             { role: 'user', content: prompt }
@@ -3656,9 +3853,9 @@ ${todayImprovement.content}` : ''}
                     })();
                     
                     return `
-                        <div class="card" style="margin-bottom: 1rem; ${isToday ? 'border: 2px solid var(--primary);' : ''}">
+                        <div class="analysis-card" style="margin-bottom: 1rem; ${isToday ? 'border: 2px solid var(--primary);' : ''}">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                <div style="font-weight: bold; color: var(--text-secondary);">
+                                <div style="font-weight: bold; color: var(--white); opacity: 0.9;">
                                     ${formatDate(commentDate)} ${isToday ? '(今日)' : ''}
                                 </div>
                             </div>
@@ -3748,7 +3945,7 @@ ${monthlyImprovements.slice(-5).map(imp => `- ${new Date(imp.date).getDate()}日
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'o3',
+                        model: 'gpt-4',
                         messages: [
                             { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの月次分析と戦略的アドバイスを行います。' },
                             { role: 'user', content: prompt }
@@ -3830,12 +4027,12 @@ ${monthlyImprovements.slice(-5).map(imp => `- ${new Date(imp.date).getDate()}日
                     const [year, month] = insight.month.split('-');
                     
                     return `
-                        <div class="card" style="margin-bottom: 1rem; ${isCurrentMonth ? 'border: 2px solid var(--primary);' : ''}">
+                        <div class="analysis-card" style="margin-bottom: 1rem; ${isCurrentMonth ? 'border: 2px solid var(--primary);' : ''}">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                                 <div style="font-weight: bold; font-size: 1.2rem;">
                                     ${year}年${parseInt(month)}月 ${isCurrentMonth ? '(今月)' : ''}
                                 </div>
-                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                <div style="opacity: 0.9; font-size: 0.9rem;">
                                     ログ: ${insight.stats.totalLogs} | アクティブ: ${insight.stats.activeCount} | 完了: ${insight.stats.completedCount}
                                 </div>
                             </div>
@@ -3950,7 +4147,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: 'o3',
+                        model: 'gpt-4',
                         messages: [
                             { role: 'system', content: 'あなたは成長戦略の専門家です。PDCAサイクルを使った長期的な自己改善の分析と戦略立案を行います。' },
                             { role: 'user', content: prompt }
@@ -4030,12 +4227,12 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                     const date = new Date(insight.date);
                     
                     return `
-                        <div class="card" style="margin-bottom: 1rem; ${index === 0 ? 'border: 2px solid var(--primary);' : ''}">
+                        <div class="analysis-card" style="margin-bottom: 1rem; ${index === 0 ? 'border: 2px solid var(--primary);' : ''}">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                                 <div style="font-weight: bold; font-size: 1.2rem;">
                                     ${formatDate(date)} 生成 ${index === 0 ? '(最新)' : ''}
                                 </div>
-                                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                                <div style="opacity: 0.9; font-size: 0.9rem;">
                                     プロジェクト: ${insight.stats.totalProjects} | 完了: ${insight.stats.completedCount} (${insight.stats.completionRate}%) | ログ: ${insight.stats.totalLogs}
                                 </div>
                             </div>
@@ -4182,6 +4379,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                 ideas: app.ideas,
                 projects: app.projects,
                 logs: app.logs,
+                improvements: app.improvements,
                 exportDate: new Date().toISOString()
             };
             
@@ -4219,6 +4417,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                         app.ideas = data.ideas;
                         app.projects = data.projects;
                         app.logs = data.logs;
+                        app.improvements = data.improvements || [];
                         
                         saveData();
                         renderDashboard();
@@ -4314,7 +4513,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             });
             
             const dayImprovements = app.improvements.filter(imp => {
-                const impDate = new Date(imp.createdAt);
+                const impDate = new Date(imp.createdAt || imp.date);
                 return formatDateForKey(impDate) === dateStr;
             });
             
@@ -4383,7 +4582,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             
             // その日の改善点を取得
             const dayImprovements = app.improvements.filter(imp => {
-                const impDate = new Date(imp.createdAt);
+                const impDate = new Date(imp.createdAt || imp.date);
                 return formatDateForKey(impDate) === dateStr;
             });
             
@@ -4414,21 +4613,16 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                         `;
                         
                         if (log.checkpoints) {
-                            const checkedCount = log.checkpoints.filter(c => c).length;
-                            html += `<div>チェック項目: ${checkedCount}/${log.checkpoints.length} 完了</div>`;
+                            const checkedCount = Object.values(log.checkpoints).filter(c => c).length;
+                            html += `<div>チェック項目: ${checkedCount}/${Object.keys(log.checkpoints).length} 完了</div>`;
                         }
                         
-                        if (log.counts) {
-                            log.counts.forEach((count, index) => {
-                                if (count > 0 && project.countItems[index]) {
-                                    html += `<div>${project.countItems[index]}: ${count}回</div>`;
-                                }
-                            });
+                        if (log.type === 'count') {
+                            html += `<div>カウント: +${log.value}</div>`;
                         }
                         
-                        if (log.milestones) {
-                            const achievedCount = log.milestones.filter(m => m).length;
-                            html += `<div>マイルストーン: ${achievedCount}/${log.milestones.length} 達成</div>`;
+                        if (log.type === 'milestone') {
+                            html += `<div>マイルストーン: ${log.achieved ? '達成' : '未達成'}</div>`;
                         }
                         
                         html += `</div>`;
@@ -4462,10 +4656,13 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             }
             
             // AIコメントセクション
-            const dailyComment = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]')
-                .find(comment => comment.date === dateStr);
+            const dailyComments = JSON.parse(localStorage.getItem('pdca_daily_comments') || '[]');
+            const dayComment = dailyComments.find(comment => {
+                const commentDate = new Date(comment.date);
+                return formatDateForKey(commentDate) === dateStr;
+            });
             
-            if (dailyComment) {
+            if (dayComment) {
                 html += `
                     <div class="day-detail-section">
                         <div class="day-detail-section-title">
@@ -4473,13 +4670,13 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                             <span>AIコメント</span>
                         </div>
                         <div class="day-detail-item">
-                            ${dailyComment.content}
+                            ${dayComment.content}
                         </div>
                     </div>
                 `;
             }
             
-            if (dayLogs.length === 0 && dayImprovements.length === 0 && !dailyComment) {
+            if (dayLogs.length === 0 && dayImprovements.length === 0 && !dayComment) {
                 html += `
                     <div style="text-align: center; color: var(--gray); padding: 2rem;">
                         この日の記録はありません
