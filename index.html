@@ -3659,29 +3659,19 @@ ${weeklyImprovements.map(imp => {
 4. モチベーション維持のための励ましのメッセージ
 `;
 
-                const response = await fetch('https://api.openai.com/v1/responses', {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: "o3",
-                        input: [
-                            { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの分析とアドバイスを行います。' },
-                            { role: 'user', content: prompt }
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            { role: "system", content: "あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの分析とアドバイスを行います。" },
+                            { role: "user", content: prompt }
                         ],
-                        text: {
-                            format: {
-                                type: "text"
-                            }
-                        },
-                        reasoning: {
-                            effort: "medium",
-                            summary: "auto"
-                        },
-                        tools: [],
-                        store: true
+                        temperature: 0.7
                     })
                 });
                 
@@ -3778,29 +3768,19 @@ ${todayImprovement.content}` : ''}
 3. 明日に向けての具体的なアドバイス
 4. モチベーションを高める一言`;
 
-                const response = await fetch('https://api.openai.com/v1/responses', {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: "o3",
-                        input: [
-                            { role: 'system', content: 'あなたは優しくて励まし上手なコーチです。簡潔で温かいメッセージを送ります。' },
-                            { role: 'user', content: prompt }
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            { role: "system", content: "あなたは優しくて励まし上手なコーチです。簡潔で温かいメッセージを送ります。" },
+                            { role: "user", content: prompt }
                         ],
-                        text: {
-                            format: {
-                                type: "text"
-                            }
-                        },
-                        reasoning: {
-                            effort: "medium",
-                            summary: "auto"
-                        },
-                        tools: [],
-                        store: true
+                        temperature: 0.7
                     })
                 });
 
@@ -3967,29 +3947,19 @@ ${monthlyImprovements.slice(-5).map(imp => `- ${new Date(imp.date).getDate()}日
 3. 来月の重点課題の提案
 4. 生産性向上のための具体的なアドバイス`;
 
-                const response = await fetch('https://api.openai.com/v1/responses', {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: "o3",
-                        input: [
-                            { role: 'system', content: 'あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの月次分析と戦略的アドバイスを行います。' },
-                            { role: 'user', content: prompt }
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            { role: "system", content: "あなたは生産性向上の専門家です。PDCAサイクルを使った自己改善プロジェクトの月次分析と戦略的アドバイスを行います。" },
+                            { role: "user", content: prompt }
                         ],
-                        text: {
-                            format: {
-                                type: "text"
-                            }
-                        },
-                        reasoning: {
-                            effort: "medium",
-                            summary: "auto"
-                        },
-                        tools: [],
-                        store: true
+                        temperature: 0.7
                     })
                 });
 
@@ -4178,29 +4148,19 @@ ${quarterlyImprovements.slice(-10).map(imp => {
 4. 次の3ヶ月に向けた戦略的提言
 5. 長期的な成長のための具体的アクション`;
 
-                const response = await fetch('https://api.openai.com/v1/responses', {
+                const response = await fetch('https://api.openai.com/v1/chat/completions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${app.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: "o3",
-                        input: [
-                            { role: 'system', content: 'あなたは成長戦略の専門家です。PDCAサイクルを使った長期的な自己改善の分析と戦略立案を行います。' },
-                            { role: 'user', content: prompt }
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            { role: "system", content: "あなたは成長戦略の専門家です。PDCAサイクルを使った長期的な自己改善の分析と戦略立案を行います。" },
+                            { role: "user", content: prompt }
                         ],
-                        text: {
-                            format: {
-                                type: "text"
-                            }
-                        },
-                        reasoning: {
-                            effort: "medium",
-                            summary: "auto"
-                        },
-                        tools: [],
-                        store: true
+                        temperature: 0.7
                     })
                 });
 
