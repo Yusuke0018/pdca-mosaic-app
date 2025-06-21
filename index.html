@@ -551,17 +551,17 @@ if ('serviceWorker' in navigator) {
             let touchEndX = 0;
             let touchStartY = 0;
             let touchEndY = 0;
-            const mainContent = document.querySelector('.main-content');
+            const swipeTarget = document.body;
             const sections = ['dashboard', 'play', 'calendar', 'daily', 'weekly', 'monthly', 'quarterly', 'completed', 'trash'];
             
             // タッチ開始
-            mainContent.addEventListener('touchstart', function(e) {
+            swipeTarget.addEventListener('touchstart', function(e) {
                 touchStartX = e.changedTouches[0].screenX;
                 touchStartY = e.changedTouches[0].screenY;
             }, { passive: true });
-            
+
             // タッチ終了
-            mainContent.addEventListener('touchend', function(e) {
+            swipeTarget.addEventListener('touchend', function(e) {
                 touchEndX = e.changedTouches[0].screenX;
                 touchEndY = e.changedTouches[0].screenY;
                 handleSwipe();
