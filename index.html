@@ -1876,7 +1876,7 @@ if ('serviceWorker' in navigator) {
             });
             
             // 最終チェック日を更新
-            localStorage.setItem(SDataManager.STORAGE_KEYS.LAST_CHECK_DATE, today.toDateString());
+            localStorage.setItem(DataManager.STORAGE_KEYS.LAST_CHECK_DATE, today.toDateString());
             
             saveData();
             closeModal('logModal');
@@ -3176,9 +3176,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
 </script>
 <!-- JavaScript -->
 <script src="js/utils.js"></script>
-<script>
-    // ここから元のアプリケーションコードが続く
-    <script src="js/data.js"></script>
-    <script src="js/ui.js"></script>
+<script src="js/data.js"></script>
+<script src="js/ui.js"></script>
 </body>
 </html>
