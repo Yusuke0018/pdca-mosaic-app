@@ -1509,6 +1509,7 @@ if ('serviceWorker' in navigator) {
                 
                 // タッチ開始
                 item.addEventListener('touchstart', function(e) {
+                    e.stopPropagation();
                     touchStartX = e.touches[0].clientX;
                     isDragging = true;
                     startTime = Date.now();
@@ -1518,21 +1519,22 @@ if ('serviceWorker' in navigator) {
                 // タッチ移動
                 item.addEventListener('touchmove', function(e) {
                     if (!isDragging) return;
-                    
+                    e.stopPropagation();
                     touchEndX = e.touches[0].clientX;
                     currentX = touchEndX - touchStartX;
-                    
+
                     // 左スワイプのみ許可（削除）
                     if (currentX < 0) {
                         // 最大-100pxまで
                         currentX = Math.max(currentX, -100);
                         item.style.transform = `translateX(${currentX}px)`;
                     }
-                }, { passive: true });
+                }, { passive: false });
                 
                 // タッチ終了
                 item.addEventListener('touchend', function(e) {
                     if (!isDragging) return;
+                    e.stopPropagation();
                     isDragging = false;
                     
                     const endTime = Date.now();
@@ -1566,6 +1568,7 @@ if ('serviceWorker' in navigator) {
                 let isMouseDragging = false;
                 
                 item.addEventListener('mousedown', function(e) {
+                    e.stopPropagation();
                     mouseStartX = e.clientX;
                     isMouseDragging = true;
                     startTime = Date.now();
@@ -1575,6 +1578,7 @@ if ('serviceWorker' in navigator) {
                 
                 document.addEventListener('mousemove', function(e) {
                     if (!isMouseDragging) return;
+                    e.stopPropagation();
                     
                     currentX = e.clientX - mouseStartX;
                     
@@ -1586,6 +1590,7 @@ if ('serviceWorker' in navigator) {
                 
                 document.addEventListener('mouseup', function(e) {
                     if (!isMouseDragging) return;
+                    e.stopPropagation();
                     isMouseDragging = false;
                     
                     const endTime = Date.now();
