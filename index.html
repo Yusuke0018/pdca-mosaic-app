@@ -492,19 +492,27 @@ if ('serviceWorker' in navigator) {
             filterPhase: 'all'
         };
 
+        function saveData() {
+            DataManager.saveData(app);
+        }
+
+        function loadData() {
+            const loadedData = DataManager.loadData();
+            if (loadedData) {
+                app.ideas = loadedData.ideas;
+                app.projects = loadedData.projects;
+                app.logs = loadedData.logs;
+                app.improvements = loadedData.improvements;
+                app.apiKey = loadedData.apiKey;
+            }
+        }
+
         
 
         // 初期化
       document.addEventListener('DOMContentLoaded', function() {
     // データを読み込む
-    const loadedData = DataManager.loadData();
-    if (loadedData) {
-        app.ideas = loadedData.ideas;
-        app.projects = loadedData.projects;
-        app.logs = loadedData.logs;
-        app.improvements = loadedData.improvements;
-        app.apiKey = loadedData.apiKey;
-    }
+    loadData();
     
     renderDashboard();
     setupEventListeners();
@@ -636,7 +644,14 @@ if ('serviceWorker' in navigator) {
         // 複数タブ同期処理
         function handleStorageChange(e) {
             if (e.key && e.key.startsWith('pdca_')) {
-                loadData();
+                const loadedData = DataManager.loadData();
+                if (loadedData) {
+                    app.ideas = loadedData.ideas;
+                    app.projects = loadedData.projects;
+                    app.logs = loadedData.logs;
+                    app.improvements = loadedData.improvements;
+                    app.apiKey = loadedData.apiKey;
+                }
                 renderCurrentSection();
                 UI.showToast('データが更新されました', 'success');
             }
@@ -2710,7 +2725,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
         // 毎日のリマインダーチェック
         function checkDailyReminder() {
             const today = new Date().toDateString();
-            const lastCheckDate = localStorage.getItem(STORAGE_KEYS.LAST_CHECK_DATE);
+            const lastCheckDate = localStorage.getItem(DataManager.STORAGE_KEYS.LAST_CHECK_DATE);
             
             // 今日まだチェックしていない場合
             if (lastCheckDate !== today) {
@@ -2735,7 +2750,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
                         document.getElementById('reminderBanner').classList.add('show');
                         
                         // ブラウザ通知を送信
-                        if (localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS) === 'enabled') {
+                        if (localStorage.getItem(DataManager.STORAGE_KEYS.NOTIFICATION_SETTINGS) === 'enabled') {
                             sendNotification();
                         }
                     }
@@ -2770,32 +2785,32 @@ ${quarterlyImprovements.slice(-10).map(imp => {
 
         // 通知設定の切り替え
         function toggleNotifications() {
-            const currentStatus = localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS);
+            const currentStatus = localStorage.getItem(DataManager.STORAGE_KEYS.NOTIFICATION_SETTINGS);
             const newStatus = currentStatus === 'enabled' ? 'disabled' : 'enabled';
             
             if (newStatus === 'enabled' && 'Notification' in window) {
                 if (Notification.permission === 'default') {
                     Notification.requestPermission().then(permission => {
                         if (permission === 'granted') {
-                            localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled');
+                            localStorage.setItem(DataManager.STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled');
                             updateNotificationStatus();
                         }
                     });
                 } else if (Notification.permission === 'granted') {
-                    localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled');
+                    localStorage.setItem(DataManager.STORAGE_KEYS.NOTIFICATION_SETTINGS, 'enabled');
                     updateNotificationStatus();
                 } else {
                     alert('ブラウザの設定で通知を許可してください');
                 }
             } else {
-                localStorage.setItem(STORAGE_KEYS.NOTIFICATION_SETTINGS, 'disabled');
+                localStorage.setItem(DataManager.STORAGE_KEYS.NOTIFICATION_SETTINGS, 'disabled');
                 updateNotificationStatus();
             }
         }
 
         // 通知ステータスの表示更新
         function updateNotificationStatus() {
-            const status = localStorage.getItem(STORAGE_KEYS.NOTIFICATION_SETTINGS);
+            const status = localStorage.getItem(DataManager.STORAGE_KEYS.NOTIFICATION_SETTINGS);
             const statusElement = document.getElementById('notificationStatus');
             if (statusElement) {
                 statusElement.textContent = status === 'enabled' ? '通知がオンです' : '通知をオンにする';
@@ -2812,7 +2827,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             }
             
             app.apiKey = apiKey;
-            localStorage.setItem(STORAGE_KEYS.API_KEY, apiKey);
+            localStorage.setItem(DataManager.STORAGE_KEYS.API_KEY, apiKey);
             
             closeModal('apiKeyModal');
             showToast('APIキーを保存しました', 'success');

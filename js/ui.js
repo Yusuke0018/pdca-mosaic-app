@@ -46,3 +46,9 @@ const UI = {
         }
     }
 };
+
+// グローバル関数として公開
+window.showToast = UI.showToast.bind(UI);
+window.showModal = UI.showModal.bind(UI);
+window.closeModal = UI.closeModal.bind(UI);
+window.showSection = UI.showSection.bind(UI);
