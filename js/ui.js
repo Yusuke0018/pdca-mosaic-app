@@ -40,6 +40,12 @@ const UI = {
             tab.classList.remove('active');
         });
         
+        // 現在のタブをアクティブにする
+        const activeTab = document.querySelector(`.nav-tab[onclick="showSection('${sectionName}')"]`);
+        if (activeTab) {
+            activeTab.classList.add('active');
+        }
+        
         // 現在のセクションを記録
         if (window.app) {
             window.app.currentSection = sectionName;
