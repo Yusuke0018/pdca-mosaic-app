@@ -585,12 +585,22 @@ if ('serviceWorker' in navigator) {
                 const currentIndex = sections.indexOf(app.currentSection);
                 let newIndex = currentIndex;
                 
-                if (swipeDistanceX > 0 && currentIndex > 0) {
+                if (swipeDistanceX > 0) {
                     // 右スワイプ（前のセクションへ）
-                    newIndex = currentIndex - 1;
-                } else if (swipeDistanceX < 0 && currentIndex < sections.length - 1) {
+                    if (currentIndex > 0) {
+                        newIndex = currentIndex - 1;
+                    } else {
+                        // 最初のページから最後のページへループ
+                        newIndex = sections.length - 1;
+                    }
+                } else if (swipeDistanceX < 0) {
                     // 左スワイプ（次のセクションへ）
-                    newIndex = currentIndex + 1;
+                    if (currentIndex < sections.length - 1) {
+                        newIndex = currentIndex + 1;
+                    } else {
+                        // 最後のページから最初のページへループ
+                        newIndex = 0;
+                    }
                 }
                 
                 if (newIndex !== currentIndex) {
