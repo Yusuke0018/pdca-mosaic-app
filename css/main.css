@@ -1445,15 +1445,20 @@
         @media (max-width: 768px) {
             /* 既存のナビゲーションを非表示 */
             .nav-tabs {
-                display: none;
+                display: none !important;
             }
             
             .bottom-nav {
-                display: none;
+                display: none !important;
             }
             
             .header .nav-item {
-                display: none;
+                display: none !important;
+            }
+            
+            /* ヘッダーの設定ボタンも非表示 */
+            .header button {
+                display: none !important;
             }
             
             /* ドロワーハンドルを目立たせる */
@@ -1463,7 +1468,13 @@
             }
             
             .main-content {
-                padding-bottom: 120px;
+                padding-top: 1rem;
+                padding-bottom: 2rem;
+            }
+            
+            /* セクションコンテナの調整 */
+            .section {
+                padding-top: 0;
             }
 
             .bottom-nav {
