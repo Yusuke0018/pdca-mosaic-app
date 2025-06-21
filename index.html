@@ -468,124 +468,15 @@
     </div>
 
     <!-- Service Worker Registration Script -->
-    <script>
-        // Service Worker のコード（Base64エンコード）
-        const serviceWorkerCode = `
-// Service Worker - v1
-const CACHE_NAME = 'pdca-mosaic-v1';
-const urlsToCache = [
-    '/',
-    '/index.html'
-];
-
-// インストール時にキャッシュ
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
-    );
-});
-
-// フェッチ時にキャッシュから返す
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request))
-    );
-});
-
-// 古いキャッシュの削除
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheName !== CACHE_NAME) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
-});
-`;
-
-        // Service Worker を Blob URL として作成
-        const blob = new Blob([serviceWorkerCode], { type: 'application/javascript' });
-        const swUrl = URL.createObjectURL(blob);
-
-        // PWA インストール関連の変数
-        let deferredPrompt = null;
-        let hasShownInstallPrompt = false;
-
-        // Service Worker を登録
-                } catch (error) {
-                    console.error('"'"'Error creating Service Worker:'"'"', error);
-                }
-            });
-            });
-        }
-
-        // PWA インストールプロンプトの処理
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            // 一度しか表示しない（セッション中）
-            if (!hasShownInstallPrompt) {
-                showInstallPrompt();
-                hasShownInstallPrompt = true;
-            }
-        });
-
-        function showInstallPrompt() {
-            const prompt = document.getElementById('installPrompt');
-            if (prompt) {
-                prompt.classList.add('show');
-                
-                // 10秒後に自動的に非表示
-                setTimeout(() => {
-                    if (prompt.classList.contains('show')) {
-                        dismissInstallPrompt();
-                    }
-                }, 10000);
-            }
-        }
-
-        function installPWA() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('PWA installed');
-                        showToast('アプリをインストールしました！', 'success');
-                    }
-                    deferredPrompt = null;
-                    dismissInstallPrompt();
-                });
-            }
-        }
-
-        function dismissInstallPrompt() {
-            const prompt = document.getElementById('installPrompt');
-            if (prompt) {
-                prompt.classList.remove('show');
-            }
-        }
-
-        // インストール済みかチェック
-        window.addEventListener('appinstalled', (evt) => {
-            console.log('PWA was installed');
-            dismissInstallPrompt();
-        });
-
-        // スタンドアロンモードで起動しているかチェック
-        if (window.matchMedia('(display-mode: standalone)').matches || 
-            window.navigator.standalone === true) {
-            console.log('Running as PWA');
-        }
-    </script>
-
+   <script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(registration => console.log('SW registered:', registration))
+            .catch(error => console.log('SW registration failed:', error));
+    });
+}
+</script>
     <!-- Original Application Script -->
     <script>
         // アプリケーションの状態管理
