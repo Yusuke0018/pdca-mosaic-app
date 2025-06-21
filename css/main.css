@@ -28,6 +28,7 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            touch-action: pan-y;
         }
 
         /* PWAインストールプロンプト */
@@ -820,6 +821,10 @@
         }
 
         /* Inbox Item */
+        #inboxList {
+            touch-action: pan-y;
+        }
+
         .inbox-item {
             background: var(--white);
             border-radius: var(--radius);
