@@ -492,27 +492,21 @@ if ('serviceWorker' in navigator) {
             filterPhase: 'all'
         };
 
-        // ローカルストレージのキー
-        const STORAGE_KEYS = {
-            IDEAS: 'pdca_ideas',
-            PROJECTS: 'pdca_projects',
-            LOGS: 'pdca_logs',
-            IMPROVEMENTS: 'pdca_improvements',
-            API_KEY: 'pdca_api_key',
-            LAST_CHECK_DATE: 'pdca_last_check',
-            NOTIFICATION_SETTINGS: 'pdca_notifications'
-        };
+        
 
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
-            loadData();
-            renderDashboard();
-            setupEventListeners();
-            checkDailyReminder();
-            requestNotificationPermission();
-            // 複数タブ同期
-            window.addEventListener('storage', handleStorageChange);
-        });
+    const loadedData = DataManager.loadData();
+    if (loadedData) {
+        Object.assign(app, loadedData);
+    }
+    renderDashboard();
+    setupEventListeners();
+    checkDailyReminder();
+    requestNotificationPermission();
+    // 複数タブ同期
+    window.addEventListener('storage', handleStorageChange);
+});
 
         // ナビゲーションメニューの切り替え
         function toggleNavMenu() {
@@ -674,32 +668,8 @@ if ('serviceWorker' in navigator) {
             }, 3000);
         }
 
-        // データの読み込み
-        function loadData() {
-            try {
-                app.ideas = JSON.parse(localStorage.getItem(STORAGE_KEYS.IDEAS) || '[]');
-                app.projects = JSON.parse(localStorage.getItem(STORAGE_KEYS.PROJECTS) || '[]');
-                app.logs = JSON.parse(localStorage.getItem(STORAGE_KEYS.LOGS) || '[]');
-                app.improvements = JSON.parse(localStorage.getItem(STORAGE_KEYS.IMPROVEMENTS) || '[]');
-                app.apiKey = localStorage.getItem(STORAGE_KEYS.API_KEY);
-            } catch (error) {
-                console.error('データの読み込みに失敗しました:', error);
-                showToast('データの読み込みに失敗しました', 'error');
-            }
-        }
 
-        // データの保存
-        function saveData() {
-            try {
-                localStorage.setItem(STORAGE_KEYS.IDEAS, JSON.stringify(app.ideas));
-                localStorage.setItem(STORAGE_KEYS.PROJECTS, JSON.stringify(app.projects));
-                localStorage.setItem(STORAGE_KEYS.LOGS, JSON.stringify(app.logs));
-                localStorage.setItem(STORAGE_KEYS.IMPROVEMENTS, JSON.stringify(app.improvements));
-            } catch (error) {
-                console.error('データの保存に失敗しました:', error);
-                showToast('データの保存に失敗しました', 'error');
-            }
-        }
+
 
         // 検索・フィルター機能
         function filterProjects() {
@@ -879,7 +849,7 @@ if ('serviceWorker' in navigator) {
             if (project) {
                 project.deleted = true;
                 project.deletedAt = new Date().toISOString();
-                saveData();
+                DataManager.saveData(app);
                 renderDashboard();
                 showToast('プロジェクトをゴミ箱に移動しました', 'success');
             }
@@ -1974,7 +1944,7 @@ if ('serviceWorker' in navigator) {
             });
             
             // 最終チェック日を更新
-            localStorage.setItem(STORAGE_KEYS.LAST_CHECK_DATE, today.toDateString());
+            localStorage.setItem(SDataManager.STORAGE_KEYS.LAST_CHECK_DATE, today.toDateString());
             
             saveData();
             closeModal('logModal');
@@ -3092,10 +3062,6 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             return dayDiv;
         }
 
-        // 日付をキー用の文字列に変換
-        function formatDateForKey(date) {
-            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-        }
 
         // カレンダーの日付を選択
         function selectCalendarDate(date) {
@@ -3267,18 +3233,7 @@ ${quarterlyImprovements.slice(-10).map(imp => {
             renderCalendar();
         }
 
-        // 日付フォーマット
-        function formatDate(date, format = 'display') {
-            if (format === 'file') {
-                return date.toISOString().split('T')[0];
-            }
-            
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            
-            return `${year}/${month}/${day}`;
-        }
+       
     </script>
     <script>
   if ('serviceWorker' in navigator) {
@@ -3287,5 +3242,10 @@ ${quarterlyImprovements.slice(-10).map(imp => {
     });
   }
 </script>
+<!-- JavaScript -->
+<script src="js/utils.js"></script>
+<script>
+    // ここから元のアプリケーションコードが続く
+    <script src="js/data.js"></script>
 </body>
 </html>
