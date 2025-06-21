@@ -1,0 +1,17 @@
+{
+  "name": "PDCA Mosaic - あなたの人生をデザインする",
+  "short_name": "PDCA Mosaic",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#6366f1",
+  "description": "あなたのPDCAサイクルを管理し、人生をデザインするためのウェブアプリです。",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3e%3cdefs%3e%3clinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3e%3cstop offset='0%25' style='stop-color:%236366f1;stop-opacity:1' /%3e%3cstop offset='100%25' style='stop-color:%23f59e0b;stop-opacity:1' /%3e%3c/linearGradient%3e%3c/defs%3e%3crect width='100' height='100' rx='20' fill='url(%23grad)' /%3e%3ctext x='50' y='68' font-family='sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle'%3e◈%3c/text%3e%3c/svg%3e",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any"
+    }
+  ]
+}
