@@ -281,7 +281,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeModal('addModal')">キャンセル</button>
+                <button class="btn btn-secondary" onclick="UI.closeModal('addModal')">キャンセル</button>
                 <button class="btn btn-primary" onclick="addIdea()">追加</button>
             </div>
         </div>
@@ -632,7 +632,7 @@ if ('serviceWorker' in navigator) {
             if (e.key && e.key.startsWith('pdca_')) {
                 loadData();
                 renderCurrentSection();
-                showToast('データが更新されました', 'success');
+                UI.showToast('データが更新されました', 'success');
             }
         }
 
@@ -657,20 +657,7 @@ if ('serviceWorker' in navigator) {
             }
         }
 
-        // トースト通知
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = `toast ${type} show`;
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-
-
-
+       
         // 検索・フィルター機能
         function filterProjects() {
             app.searchQuery = document.getElementById('searchInput').value.toLowerCase();
@@ -689,66 +676,7 @@ if ('serviceWorker' in navigator) {
             renderDashboard();
         }
 
-        // セクションの表示切り替え
-        function showSection(sectionName) {
-            // ドロップダウンメニューを閉じる
-            const dropdown = document.querySelector('.nav-dropdown');
-            if (dropdown) {
-                dropdown.classList.remove('active');
-            }
-            
-            // セクションの切り替え
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionName).classList.add('active');
-            
-            // ナビゲーションタブの更新
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            // ボトムナビゲーションの更新
-            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            
-            // 対応するボトムナビゲーションアイテムをアクティブに
-            const navMap = {
-                'dashboard': 0,
-                'play': 1,
-                'weekly': 3,
-                'completed': -1,
-                'trash': -1
-            };
-            if (navMap[sectionName] !== undefined && navMap[sectionName] !== -1) {
-                document.querySelectorAll('.bottom-nav .nav-item')[navMap[sectionName]].classList.add('active');
-            }
-            
-            app.currentSection = sectionName;
-            
-            // セクション固有の処理
-            if (sectionName === 'dashboard') {
-                renderDashboard();
-            } else if (sectionName === 'play') {
-                renderIdeas();
-            } else if (sectionName === 'completed') {
-                renderCompletedProjects();
-            } else if (sectionName === 'trash') {
-                renderTrashProjects();
-            } else if (sectionName === 'weekly') {
-                renderWeeklyReport();
-            } else if (sectionName === 'daily') {
-                renderDailyComment();
-            } else if (sectionName === 'monthly') {
-                renderMonthlyInsight();
-            } else if (sectionName === 'quarterly') {
-                renderQuarterlyInsight();
-            } else if (sectionName === 'calendar') {
-                renderCalendar();
-            }
-        }
+        
 
         // ダッシュボードの描画
         function renderDashboard() {
@@ -1387,16 +1315,14 @@ if ('serviceWorker' in navigator) {
         }
 
         function showAPIKeyModal() {
-            closeModal('settingsModal');
+            UI.showSection('settingsModal');
             const modal = document.getElementById('apiKeyModal');
             const apiKeyInput = document.getElementById('apiKey');
             apiKeyInput.value = app.apiKey || '';
             modal.classList.add('active');
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        }
+      
 
         // 改善点メモモーダルの表示
         function showImprovementModal(projectId) {
@@ -1667,7 +1593,7 @@ if ('serviceWorker' in navigator) {
             
             saveData();
             closeModal('designModal');
-            showSection('dashboard');
+            UI.showSection('dashboard');
             
             showToast('プロジェクトを作成しました', 'success');
         }
@@ -3247,5 +3173,6 @@ ${quarterlyImprovements.slice(-10).map(imp => {
 <script>
     // ここから元のアプリケーションコードが続く
     <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
 </body>
 </html>
