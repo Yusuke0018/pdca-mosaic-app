@@ -3,6 +3,140 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* Navigation Drawer */
+        .nav-drawer {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: var(--white);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            z-index: 1100;
+        }
+        
+        .nav-drawer.active {
+            transform: translateX(280px);
+        }
+        
+        .nav-drawer-content {
+            height: 100%;
+            overflow-y: auto;
+            padding-bottom: 2rem;
+        }
+        
+        .nav-drawer-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .nav-drawer-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .nav-drawer-items {
+            padding: 1rem 0;
+        }
+        
+        .nav-drawer-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 0.875rem 1.5rem;
+            background: transparent;
+            border: none;
+            color: var(--dark);
+            font-size: 0.95rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-drawer-item:hover {
+            background: var(--light-gray);
+        }
+        
+        .nav-drawer-item.active {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .nav-drawer-item .nav-icon {
+            font-size: 1.2rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+        
+        .nav-drawer-divider {
+            height: 1px;
+            background: var(--light-gray);
+            margin: 0.5rem 0;
+        }
+        
+        /* Drawer Handle */
+        .nav-drawer-handle {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 0 12px 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1050;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-drawer-handle:hover {
+            width: 32px;
+            background: var(--primary-dark);
+        }
+        
+        .nav-drawer-handle-bar {
+            width: 4px;
+            height: 32px;
+            background: var(--white);
+            border-radius: 2px;
+            position: relative;
+            left: -2px;
+        }
+        
+        .nav-drawer-handle.active {
+            left: 280px;
+        }
+        
+        /* Drawer Overlay */
+        .nav-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         :root {
             --primary: #6366f1;
@@ -1309,6 +1443,25 @@
 
         /* 片手操作の改善 */
         @media (max-width: 768px) {
+            /* 既存のナビゲーションを非表示 */
+            .nav-tabs {
+                display: none;
+            }
+            
+            .bottom-nav {
+                display: none;
+            }
+            
+            .header .nav-item {
+                display: none;
+            }
+            
+            /* ドロワーハンドルを目立たせる */
+            .nav-drawer-handle {
+                width: 28px;
+                height: 100px;
+            }
+            
             .main-content {
                 padding-bottom: 120px;
             }

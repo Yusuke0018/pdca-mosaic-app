@@ -46,6 +46,71 @@
         <div class="reminder-text">🔔 今日のタスクをチェックしましょう！</div>
         <div class="reminder-subtext">タップして記録を開始</div>
     </div>
+    
+    <!-- 左側ナビゲーションドロワー -->
+    <div class="nav-drawer" id="navDrawer">
+        <div class="nav-drawer-content">
+            <div class="nav-drawer-header">
+                <div class="logo">
+                    <div class="logo-icon">◈</div>
+                    <span>PDCA Mosaic</span>
+                </div>
+            </div>
+            <nav class="nav-drawer-items">
+                <button class="nav-drawer-item active" onclick="showSection('dashboard'); closeNavDrawer()">
+                    <span class="nav-icon">📊</span>
+                    <span>ダッシュボード</span>
+                </button>
+                <button class="nav-drawer-item" onclick="showSection('play'); closeNavDrawer()">
+                    <span class="nav-icon">💡</span>
+                    <span>アイデア</span>
+                </button>
+                <button class="nav-drawer-item" onclick="showSection('daily'); closeNavDrawer()">
+                    <span class="nav-icon">💬</span>
+                    <span>デイリーコメント</span>
+                </button>
+                <button class="nav-drawer-item" onclick="showSection('calendar'); closeNavDrawer()">
+                    <span class="nav-icon">📅</span>
+                    <span>カレンダー</span>
+                </button>
+                <div class="nav-drawer-divider"></div>
+                <button class="nav-drawer-item" onclick="showSection('weekly'); closeNavDrawer()">
+                    <span class="nav-icon">📊</span>
+                    <span>週次レポート</span>
+                </button>
+                <button class="nav-drawer-item" onclick="showSection('monthly'); closeNavDrawer()">
+                    <span class="nav-icon">📈</span>
+                    <span>月次インサイト</span>
+                </button>
+                <button class="nav-drawer-item" onclick="showSection('quarterly'); closeNavDrawer()">
+                    <span class="nav-icon">🎯</span>
+                    <span>3ヶ月インサイト</span>
+                </button>
+                <div class="nav-drawer-divider"></div>
+                <button class="nav-drawer-item" onclick="showSection('completed'); closeNavDrawer()">
+                    <span class="nav-icon">✅</span>
+                    <span>完了済み</span>
+                </button>
+                <button class="nav-drawer-item" onclick="showSection('trash'); closeNavDrawer()">
+                    <span class="nav-icon">🗑️</span>
+                    <span>ゴミ箱</span>
+                </button>
+                <div class="nav-drawer-divider"></div>
+                <button class="nav-drawer-item" onclick="showSettings(); closeNavDrawer()">
+                    <span class="nav-icon">⚙️</span>
+                    <span>設定</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- ドロワーハンドル -->
+    <div class="nav-drawer-handle" id="navDrawerHandle">
+        <div class="nav-drawer-handle-bar"></div>
+    </div>
+    
+    <!-- ドロワーオーバーレイ -->
+    <div class="nav-drawer-overlay" id="navDrawerOverlay" onclick="closeNavDrawer()"></div>
 
     <!-- Header -->
     <header class="header">
@@ -637,6 +702,76 @@ if ('serviceWorker' in navigator) {
             }
         }
         
+        // ナビゲーションドロワーの開閉
+        function openNavDrawer() {
+            document.getElementById('navDrawer').classList.add('active');
+            document.getElementById('navDrawerHandle').classList.add('active');
+            document.getElementById('navDrawerOverlay').classList.add('active');
+        }
+        
+        function closeNavDrawer() {
+            document.getElementById('navDrawer').classList.remove('active');
+            document.getElementById('navDrawerHandle').classList.remove('active');
+            document.getElementById('navDrawerOverlay').classList.remove('active');
+        }
+        
+        function toggleNavDrawer() {
+            const drawer = document.getElementById('navDrawer');
+            if (drawer.classList.contains('active')) {
+                closeNavDrawer();
+            } else {
+                openNavDrawer();
+            }
+        }
+        
+        // ドロワーのスワイプ設定
+        function setupDrawerSwipe() {
+            const handle = document.getElementById('navDrawerHandle');
+            const drawer = document.getElementById('navDrawer');
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let isDragging = false;
+            
+            // ハンドルクリックでドロワー開閉
+            handle.addEventListener('click', toggleNavDrawer);
+            
+            // 左端からのスワイプでドロワーを開く
+            document.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                // 左端20px以内からのタッチのみ
+                if (touchStartX < 20 && !drawer.classList.contains('active')) {
+                    isDragging = true;
+                }
+            }, { passive: true });
+            
+            document.addEventListener('touchmove', function(e) {
+                if (!isDragging) return;
+                touchEndX = e.touches[0].clientX;
+                const distance = touchEndX - touchStartX;
+                if (distance > 50) {
+                    openNavDrawer();
+                    isDragging = false;
+                }
+            }, { passive: true });
+            
+            document.addEventListener('touchend', function() {
+                isDragging = false;
+            }, { passive: true });
+            
+            // ドロワー内でのスワイプで閉じる
+            drawer.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            drawer.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].clientX;
+                const distance = touchStartX - touchEndX;
+                if (distance > 50) {
+                    closeNavDrawer();
+                }
+            }, { passive: true });
+        }
+        
         // イベントリスナーの設定
         function setupEventListeners() {
             // モーダルの外側クリックで閉じる
@@ -650,6 +785,7 @@ if ('serviceWorker' in navigator) {
             
             // スワイプ機能の追加
             setupSwipeNavigation();
+            setupDrawerSwipe();
         }
 
         // 複数タブ同期処理

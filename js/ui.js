@@ -46,6 +46,15 @@ const UI = {
             activeTab.classList.add('active');
         }
         
+        // ドロワーアイテムもアクティブにする
+        document.querySelectorAll('.nav-drawer-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        const activeDrawerItem = document.querySelector(`.nav-drawer-item[onclick="showSection('${sectionName}'); closeNavDrawer()"]`);
+        if (activeDrawerItem) {
+            activeDrawerItem.classList.add('active');
+        }
+        
         // 現在のセクションを記録
         if (window.app) {
             window.app.currentSection = sectionName;
