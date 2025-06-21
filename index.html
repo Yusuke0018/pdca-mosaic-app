@@ -1513,7 +1513,8 @@ if ('serviceWorker' in navigator) {
                     isDragging = true;
                     startTime = Date.now();
                     item.style.transition = 'none';
-                }, { passive: true });
+                    e.stopPropagation();
+                }, { passive: false });
                 
                 // タッチ移動
                 item.addEventListener('touchmove', function(e) {
@@ -1527,8 +1528,9 @@ if ('serviceWorker' in navigator) {
                         // 最大-100pxまで
                         currentX = Math.max(currentX, -100);
                         item.style.transform = `translateX(${currentX}px)`;
+                        e.stopPropagation();
                     }
-                }, { passive: true });
+                }, { passive: false });
                 
                 // タッチ終了
                 item.addEventListener('touchend', function(e) {
@@ -1553,13 +1555,15 @@ if ('serviceWorker' in navigator) {
                             const ideaId = item.dataset.ideaId;
                             deleteIdea(ideaId);
                         });
+                        e.stopPropagation();
                     } else {
                         // 元の位置に戻す
                         item.style.transform = 'translateX(0)';
                     }
                     
                     currentX = 0;
-                }, { passive: true });
+                    e.stopPropagation();
+                }, { passive: false });
                 
                 // マウスイベントも追加（デスクトップ対応）
                 let mouseStartX = 0;
