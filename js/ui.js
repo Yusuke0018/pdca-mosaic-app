@@ -50,7 +50,7 @@ const UI = {
         if (window.app) {
             window.app.currentSection = sectionName;
         }
-
+        
         // セクション表示後に内容を再描画
         if (typeof window.renderCurrentSection === 'function') {
             window.renderCurrentSection();

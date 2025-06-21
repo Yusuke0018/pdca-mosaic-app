@@ -835,15 +835,18 @@ if ('serviceWorker' in navigator) {
             const emptyState = document.getElementById('trashEmpty');
             
             const deletedProjects = app.projects.filter(p => p.deleted);
+            const deletedIdeas = app.ideas.filter(i => i.deleted);
             
-            if (deletedProjects.length === 0) {
+            if (deletedProjects.length === 0 && deletedIdeas.length === 0) {
                 grid.innerHTML = '';
                 emptyState.style.display = 'block';
                 return;
             }
             
             emptyState.style.display = 'none';
-            grid.innerHTML = deletedProjects.map(project => {
+            
+            // プロジェクトのレンダリング
+            const projectsHtml = deletedProjects.map(project => {
                 const deletedDate = new Date(project.deletedAt);
                 
                 return `
@@ -870,6 +873,43 @@ if ('serviceWorker' in navigator) {
                     </div>
                 `;
             }).join('');
+            
+            // アイデアのレンダリング
+            const ideasHtml = deletedIdeas.map(idea => {
+                const deletedDate = new Date(idea.deletedAt);
+                
+                return `
+                    <div class="project-card" style="opacity: 0.7; background-color: #f8f9fa;">
+                        <div class="project-header">
+                            <div>
+                                <div class="project-title" style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="font-size: 0.875rem; color: var(--gray);">💡</span>
+                                    ${idea.title}
+                                </div>
+                                <div style="font-size: 0.875rem; color: var(--gray); margin-top: 0.25rem;">
+                                    ${idea.content}
+                                </div>
+                                <div style="font-size: 0.875rem; color: var(--gray); margin-top: 0.5rem;">
+                                    削除日: ${formatDate(deletedDate)}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"
+                                    onclick="restoreIdeaFromTrash(event, '${idea.id}')">
+                                復元する
+                            </button>
+                            <button class="btn btn-danger" style="padding: 0.5rem 1rem; font-size: 0.875rem;"
+                                    onclick="permanentlyDeleteIdea(event, '${idea.id}')">
+                                完全に削除
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            grid.innerHTML = projectsHtml + ideasHtml;
         }
 
         // 完全削除
@@ -885,15 +925,42 @@ if ('serviceWorker' in navigator) {
             }
         }
 
+        // アイデアを復元
+        function restoreIdeaFromTrash(event, ideaId) {
+            event.stopPropagation();
+            
+            const idea = app.ideas.find(i => i.id === ideaId);
+            if (idea) {
+                delete idea.deleted;
+                delete idea.deletedAt;
+                saveData();
+                renderTrashProjects();
+                showToast('アイデアを復元しました', 'success');
+            }
+        }
+
+        // アイデアを完全削除
+        function permanentlyDeleteIdea(event, ideaId) {
+            event.stopPropagation();
+            
+            if (confirm('このアイデアを完全に削除しますか？この操作は取り消せません。')) {
+                app.ideas = app.ideas.filter(i => i.id !== ideaId);
+                saveData();
+                renderTrashProjects();
+                showToast('アイデアを完全に削除しました', 'success');
+            }
+        }
+
         // ゴミ箱を空にする
         function emptyTrash() {
-            if (confirm('ゴミ箱内のすべてのプロジェクトを完全に削除しますか？この操作は取り消せません。')) {
+            if (confirm('ゴミ箱内のすべてのプロジェクトとアイデアを完全に削除しますか？この操作は取り消せません。')) {
                 const deletedProjectIds = app.projects
                     .filter(p => p.deleted)
                     .map(p => p.id);
                 
                 app.projects = app.projects.filter(p => !p.deleted);
                 app.logs = app.logs.filter(log => !deletedProjectIds.includes(log.projectId));
+                app.ideas = app.ideas.filter(i => !i.deleted);
                 
                 saveData();
                 renderTrashProjects();
@@ -1470,14 +1537,17 @@ if ('serviceWorker' in navigator) {
             const list = document.getElementById('inboxList');
             const emptyState = document.getElementById('inboxEmpty');
             
-            if (app.ideas.length === 0) {
+            // 削除されていないアイデアのみフィルタリング
+            const activeIdeas = app.ideas.filter(idea => !idea.deleted);
+            
+            if (activeIdeas.length === 0) {
                 list.innerHTML = '';
                 emptyState.style.display = 'block';
                 return;
             }
             
             emptyState.style.display = 'none';
-            list.innerHTML = app.ideas.map(idea => `
+            list.innerHTML = activeIdeas.map(idea => `
                 <div class="inbox-item" data-idea-id="${idea.id}">
                     <div class="inbox-content">
                         <div>${idea.content}</div>
@@ -1621,20 +1691,21 @@ if ('serviceWorker' in navigator) {
             });
         }
         
-        // アイデアを削除
+        // アイデアを削除（ゴミ箱に移動）
         function deleteIdea(ideaId) {
-            const index = app.ideas.findIndex(i => i.id === ideaId);
-            if (index !== -1) {
-                app.ideas.splice(index, 1);
+            const idea = app.ideas.find(i => i.id === ideaId);
+            if (idea) {
+                idea.deleted = true;
+                idea.deletedAt = new Date().toISOString();
                 saveData();
                 renderIdeas();
-                showToast('アイデアを削除しました', 'info');
+                showToast('アイデアをゴミ箱に移動しました', 'info');
             }
         }
         
         // プロジェクト設計開始
         function startDesign(ideaId) {
-            const idea = app.ideas.find(i => i.id === ideaId);
+            const idea = app.ideas.find(i => i.id === ideaId && !i.deleted);
             if (!idea) return;
             
             // アイデアを一時保存
