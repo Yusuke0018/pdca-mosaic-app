@@ -834,11 +834,34 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            touch-action: pan-y;
         }
 
         .inbox-item:hover {
             transform: translateX(4px);
+        }
+        
+        .inbox-delete-bg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            background: #ff4444;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            pointer-events: none;
+            cursor: pointer;
+        }
+        
+        .inbox-delete-bg span {
+            font-size: 0.875rem;
         }
 
         .inbox-content {

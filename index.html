@@ -1468,7 +1468,7 @@ if ('serviceWorker' in navigator) {
             
             emptyState.style.display = 'none';
             list.innerHTML = app.ideas.map(idea => `
-                <div class="inbox-item">
+                <div class="inbox-item" data-idea-id="${idea.id}">
                     <div class="inbox-content">
                         <div>${idea.content}</div>
                         <div class="inbox-date">${formatDate(new Date(idea.createdAt))}</div>
@@ -1476,10 +1476,143 @@ if ('serviceWorker' in navigator) {
                     <button class="inbox-action" onclick="startDesign('${idea.id}')">
                         プロジェクト化
                     </button>
+                    <div class="inbox-delete-bg">
+                        <span>削除</span>
+                    </div>
                 </div>
             `).join('');
+            
+            // スワイプ機能を設定
+            setupInboxSwipe();
         }
 
+        // インボックスアイテムのスワイプ機能
+        function setupInboxSwipe() {
+            const items = document.querySelectorAll('.inbox-item');
+            
+            items.forEach(item => {
+                let touchStartX = 0;
+                let touchEndX = 0;
+                let currentX = 0;
+                let isDragging = false;
+                let startTime = 0;
+                
+                // タッチ開始
+                item.addEventListener('touchstart', function(e) {
+                    touchStartX = e.touches[0].clientX;
+                    isDragging = true;
+                    startTime = Date.now();
+                    item.style.transition = 'none';
+                }, { passive: true });
+                
+                // タッチ移動
+                item.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    
+                    touchEndX = e.touches[0].clientX;
+                    currentX = touchEndX - touchStartX;
+                    
+                    // 左スワイプのみ許可（削除）
+                    if (currentX < 0) {
+                        // 最大-100pxまで
+                        currentX = Math.max(currentX, -100);
+                        item.style.transform = `translateX(${currentX}px)`;
+                    }
+                }, { passive: true });
+                
+                // タッチ終了
+                item.addEventListener('touchend', function(e) {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const endTime = Date.now();
+                    const timeDiff = endTime - startTime;
+                    const velocity = Math.abs(currentX) / timeDiff;
+                    
+                    item.style.transition = 'transform 0.3s ease-out';
+                    
+                    // スワイプの判定（-50px以上または高速スワイプ）
+                    if (currentX < -50 || (currentX < -20 && velocity > 0.5)) {
+                        // 削除位置まで移動
+                        item.style.transform = 'translateX(-100px)';
+                        
+                        // 削除ボタンをクリック可能にする
+                        const deleteBtn = item.querySelector('.inbox-delete-bg');
+                        deleteBtn.style.pointerEvents = 'auto';
+                        deleteBtn.addEventListener('click', function() {
+                            const ideaId = item.dataset.ideaId;
+                            deleteIdea(ideaId);
+                        });
+                    } else {
+                        // 元の位置に戻す
+                        item.style.transform = 'translateX(0)';
+                    }
+                    
+                    currentX = 0;
+                }, { passive: true });
+                
+                // マウスイベントも追加（デスクトップ対応）
+                let mouseStartX = 0;
+                let isMouseDragging = false;
+                
+                item.addEventListener('mousedown', function(e) {
+                    mouseStartX = e.clientX;
+                    isMouseDragging = true;
+                    startTime = Date.now();
+                    item.style.transition = 'none';
+                    e.preventDefault();
+                });
+                
+                document.addEventListener('mousemove', function(e) {
+                    if (!isMouseDragging) return;
+                    
+                    currentX = e.clientX - mouseStartX;
+                    
+                    if (currentX < 0) {
+                        currentX = Math.max(currentX, -100);
+                        item.style.transform = `translateX(${currentX}px)`;
+                    }
+                });
+                
+                document.addEventListener('mouseup', function(e) {
+                    if (!isMouseDragging) return;
+                    isMouseDragging = false;
+                    
+                    const endTime = Date.now();
+                    const timeDiff = endTime - startTime;
+                    const velocity = Math.abs(currentX) / timeDiff;
+                    
+                    item.style.transition = 'transform 0.3s ease-out';
+                    
+                    if (currentX < -50 || (currentX < -20 && velocity > 0.5)) {
+                        item.style.transform = 'translateX(-100px)';
+                        
+                        const deleteBtn = item.querySelector('.inbox-delete-bg');
+                        deleteBtn.style.pointerEvents = 'auto';
+                        deleteBtn.addEventListener('click', function() {
+                            const ideaId = item.dataset.ideaId;
+                            deleteIdea(ideaId);
+                        });
+                    } else {
+                        item.style.transform = 'translateX(0)';
+                    }
+                    
+                    currentX = 0;
+                });
+            });
+        }
+        
+        // アイデアを削除
+        function deleteIdea(ideaId) {
+            const index = app.ideas.findIndex(i => i.id === ideaId);
+            if (index !== -1) {
+                app.ideas.splice(index, 1);
+                saveData();
+                renderIdeas();
+                showToast('アイデアを削除しました', 'info');
+            }
+        }
+        
         // プロジェクト設計開始
         function startDesign(ideaId) {
             const idea = app.ideas.find(i => i.id === ideaId);
