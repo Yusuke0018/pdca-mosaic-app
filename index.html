@@ -495,11 +495,17 @@ if ('serviceWorker' in navigator) {
         
 
         // 初期化
-        document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function() {
+    // データを読み込む
     const loadedData = DataManager.loadData();
     if (loadedData) {
-        Object.assign(app, loadedData);
+        app.ideas = loadedData.ideas;
+        app.projects = loadedData.projects;
+        app.logs = loadedData.logs;
+        app.improvements = loadedData.improvements;
+        app.apiKey = loadedData.apiKey;
     }
+    
     renderDashboard();
     setupEventListeners();
     checkDailyReminder();
@@ -1315,7 +1321,7 @@ if ('serviceWorker' in navigator) {
         }
 
         function showAPIKeyModal() {
-            UI.showSection('settingsModal');
+            showSection('settingsModal');
             const modal = document.getElementById('apiKeyModal');
             const apiKeyInput = document.getElementById('apiKey');
             apiKeyInput.value = app.apiKey || '';
